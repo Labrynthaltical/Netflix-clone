@@ -1,0 +1,82 @@
+@import url(https://db.onlinewebfonts.com/c/ab83b275830b2d585ea027c47e3b237a?family=Graphique+W01+Regular);
+@font-face {
+    font-family: "Graphique W01 Regular";
+    src: url("https://db.onlinewebfonts.com/t/ab83b275830b2d585ea027c47e3b237a.eot");
+    src: url("https://db.onlinewebfonts.com/t/ab83b275830b2d585ea027c47e3b237a.eot?#iefix")format("embedded-opentype"),
+    url("https://db.onlinewebfonts.com/t/ab83b275830b2d585ea027c47e3b237a.woff2")format("woff2"),
+    url("https://db.onlinewebfonts.com/t/ab83b275830b2d585ea027c47e3b237a.woff")format("woff"),
+    url("https://db.onlinewebfonts.com/t/ab83b275830b2d585ea027c47e3b237a.ttf")format("truetype"),
+    url("https://db.onlinewebfonts.com/t/ab83b275830b2d585ea027c47e3b237a.svg#Graphique W01 Regular")format("svg");
+}
+body{
+    background-image: url(../Images/Background.jpg);
+    background-attachment: fixed;
+    color: whitesmoke;
+    font-family: sans-serif;
+    /* font-family: "Graphique W01 Regular"; */
+    }
+.Login{
+    background-color: rgba(0, 0, 0, 0.87);
+    height: 500px;
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 5%;
+    margin-bottom: 5%;
+}
+.Login h1{
+    display: inline-block;
+    text-align: left;
+    margin: 40px;
+}
+.inputter{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+    display: block;
+    background-color: rgb(58, 58, 58);
+}
+.inputter::placeholder{
+    color: rgb(134, 134, 134);
+    padding: 10px;
+    font-size: 14px;
+}
+#tosign{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    width: 70%;
+    display: block;
+    background-color: rgb(255, 26, 26);
+    color: white;
+    font-size: 14px;
+
+}
+#Remember_me{
+    float: left;
+    margin-left: 15%;
+    color: green;
+    margin-right: auto;
+}
+#Remember_me::checkmark{
+    height: 20px;
+    width: 20px;
+    background-color: purple;
+}
+#labe{
+    color:rgb(167, 167, 167);
+    margin-left: 1%;
+    font-size: 12px;
+}
+#needhelp{
+    float: right;
+}
