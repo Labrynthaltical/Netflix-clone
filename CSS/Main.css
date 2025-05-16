@@ -8,14 +8,7 @@
     url("https://db.onlinewebfonts.com/t/ab83b275830b2d585ea027c47e3b237a.ttf")format("truetype"),
     url("https://db.onlinewebfonts.com/t/ab83b275830b2d585ea027c47e3b237a.svg#Graphique W01 Regular")format("svg");
 }
-body{
-    background-image: url(../Images/Background.jpg);
-    background-attachment: fixed;
-    color: whitesmoke;
-    font-family: sans-serif;
-    overflow: hidden;
-    /* font-family: "Graphique W01 Regular"; */
-    }
+
     nav{
         position: fixed;
         margin-top: 0px;
@@ -160,4 +153,17 @@ left: 1px;
 }
 #capstuff{
     margin-top: 5%;
+}
+@media(min-width: 500px){
+body{
+    background-image: url(../Images/Background.jpg);
+    background-attachment: fixed;
+    color: whitesmoke;
+    font-family: sans-serif;
+    overflow: hidden;
+    /* font-family: "Graphique W01 Regular"; */
+    }
+
+
+
 }
