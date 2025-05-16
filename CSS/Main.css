@@ -9,7 +9,6 @@
     url("https://db.onlinewebfonts.com/t/ab83b275830b2d585ea027c47e3b237a.svg#Graphique W01 Regular")format("svg");
 }
 body{
-    z-index: 1;
     background-image: url(../Images/Background.jpg);
     background-attachment: fixed;
     color: whitesmoke;
