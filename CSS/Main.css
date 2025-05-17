@@ -22,16 +22,7 @@
  #logo:hover{
     cursor: pointer;
  }
-.Login{
-    /* position: absolute; */
-    background-color: rgba(0, 0, 0, 0.87);
-    height:510px;
-    width: 450px;
-    margin-right: auto;
-    margin-left: auto;
-    /* margin-top: 5%; */
-    margin-bottom: 5%;
-}
+
 .Login h1{
     display: inline-block;
     text-align: left;
@@ -156,14 +147,22 @@ left: 1px;
 }
 @media(min-width: 500px){
 body{
-    background-image: url(../Images/Background.jpg);
     background-attachment: fixed;
     color: whitesmoke;
+    background-color: black;
     font-family: sans-serif;
     overflow: hidden;
     /* font-family: "Graphique W01 Regular"; */
     }
-
+.Login{
+border: 1px solid white;    background-color: rgba(0, 0, 0, 0.87);
+    height:510px;
+    width: 450px;
+    margin-right: auto;
+    margin-left: auto;
+    /* margin-top: 5%; */
+    margin-bottom: 5%;
+}
 
 
 }
