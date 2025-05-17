@@ -11,23 +11,6 @@
  #logo:hover{
     cursor: pointer;
  }
-#tosign{
-    margin-right: auto;
-    margin-left: auto;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    height: 50px;
-    border: none;
-    border-radius: 5px;
-    width: 76%;
-    display: block;
-    background-color: rgb(255, 26, 26);
-    color: white;
-    font-size: 14px;
-}
-#tosign:hover{
-    background-color: rgb(221, 23, 23);
-}
 #Remember_me{
     cursor: pointer;
     appearance: none;
@@ -127,27 +110,24 @@ body{
     /* margin-block: 0px; */
     margin-bottom: 0px;
     margin-left: 2rem;
-    /* padding: 0px; */
     color: rgb(255, 255, 255);
     font-size: 2rem;
-    font-weight: 700;
-    /* text-align: start; */
-    /* user-select: text; */
+    font-weight:900;
 }
-}
+
 .inputter{
     margin-right: auto;
     margin-left: auto;
-    margin-top: 15px;
-    margin-bottom: 20px;
+    margin-top: 1rem;
+    /* margin-bottom: 20px; */
     padding-left: 20px;
     height: 50px;
-    border: none;
+    border: 1px solid rgb(131, 131, 131);
     border-radius: 5px;
     width: 410px;
     color: rgb(255, 255, 255);
     /* display: block; */
-    background-color: rgb(58, 58, 58);
+    background-color: rgb(12, 12, 12);
     font-size: 15px;
 }
 .inputter:autofill{
@@ -155,7 +135,24 @@ body{
     color: black;
 }
 .inputter::placeholder{
-    color: rgb(134, 134, 134);
-    padding: 10px;
-    /* font-size: 14px; */
+    color: rgb(206, 205, 205);
+    padding: 2px;
+    font-size: 1rem;
+    font-weight:500;
+}
+#tosign{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    width:440px;
+    /* display: block; */
+    background-color: rgb(223, 23, 23);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}
 }
