@@ -11,45 +11,6 @@
  #logo:hover{
     cursor: pointer;
  }
-#Remember_me{
-    cursor: pointer;
-    appearance: none;
-    height: 11px;
-    width: 11px;
-    float: left;
-    border-radius: 2px;
-    margin-left: 15%;
-    background-color: rgb(224, 224, 224);
-    margin-right: auto;
-}
-#Remember_me:checked{
- background-color: rgb(224, 224, 224);
- font-weight:bolder ;
- line-height: 20px;
- content: \2713;
-}
-#Remember_me:checked::after{
- rotate: 15deg;
-content: "\2713";
-display: inline-block;
-color: rgb(46, 46, 46);
-font-size: 11px;
-position: relative;
-top: -5px;
-left: 1px;
-}
-#labe{
-    color:rgb(167, 167, 167);
-    margin-left: 1%;
-    font-size: 12px;
-}
-#needhelp{
-    float: right;
-    color: rgb(167, 167, 167);
-    font-size: 12px;
-    text-decoration: none;
-    margin-right: 15%;
-}
 #needhelp:hover{
     text-decoration: underline;
 }
@@ -84,13 +45,14 @@ left: 1px;
 #capstuff{
     margin-top: 5%;
 }
-@media(min-width: 500px){
+@media(min-width: 100px){
 body{
+    margin: 0px;
+    padding: 0px;
     background-attachment: fixed;
     color: whitesmoke;
     background-color: black;
     font-family: sans-serif;
-    /* overflow: hidden; */
     /* font-family: "Graphique W01 Regular"; */
     }
 .Login{
@@ -141,6 +103,7 @@ body{
     font-weight:500;
 }
 #tosign{
+        transition-duration: 0.25s;
     margin-right: auto;
     margin-left: auto;
     margin-top: 20px;
@@ -154,5 +117,138 @@ body{
     color: white;
     font-size: 15px;
     font-weight: bold;
+}
+#tosign:hover{
+background-color: rgb(190, 20, 20);
+}
+#or{
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 12px;
+    padding: 0px;
+    color: rgb(255, 255, 255, 0.7);
+}
+#tousecode{
+        transition-duration: 0.25s;
+     margin-right: auto;
+    margin-left: auto;
+    /* margin-top: 20px; */
+    margin-bottom: 10px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    width:440px;
+    background-color: rgba(170, 170, 170, 0.3);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;   
+}
+#needhelp{
+        transition-duration: 0.25s;
+    text-align: center;
+    color: rgb(218, 216, 216);
+    font-weight: 600 ;   
+    margin: 10px;
+}
+#needhelp:hover{
+    color: rgba(190, 190, 190, 0.822);
+}
+#Remember_me{
+    transition-duration: 0.25s;
+    cursor: pointer;
+    appearance: none;
+    height: 1.25rem;
+    width: 1.25rem;
+    /* float: left; */
+    border: 1px solid rgba(170, 170, 170, 0.3);
+    border-radius: 2px;
+    margin-left: 10%;
+    /* background-color: rgb(224, 224, 224); */
+    /* margin-right: auto; */
+}
+#Remember_me:checked{
+ background-color: white;
+ font-weight:1000 ;
+ line-height: 20px;
+ content: \2713;
+}
+#Remember_me:checked::after{
+ rotate: 20deg;
+ text-align: center;
+content: "\2713";
+display: inline-block;
+color: rgb(46, 46, 46);
+/* font-size: 11px; */
+position: relative;
+/* top: -5px; */
+left: 3px;
+}
+#Remember_me:hover{
+    border: 1px solid white;
+}
+#labe{
+    padding-top: 5px;
+    padding-left: 0.75rem;
+    color:white;
+    /* margin-bottom: 70px; */
+    /* display: inline-block; */
+}
+#reminpt{
+    display: flex;
+}
+#contend{
+    background-color: gainsboro;
+}
+#end p{
+    margin-left: 25px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+#end{
+    font-size:medium;
+    overflow: hidden;
+    display: flex;
+    flex-direction:column ;
+    margin-top: 15%;
+    color: rgb(167, 167, 167);
+    background-color: rgb(36, 36, 36);
+}
+.links{
+    text-decoration: none;
+    display: block;
+    margin-left: 25px;
+    margin-bottom: 25px;
+    font-size: 15px;
+    width: 100px;
+    color: rgba(255, 255, 255, 0.7);
+    /* background-image: linear-gradient(transparent,transparent); */
+    transition-duration: 0.19s;
+}
+.links:hover{
+    transform: scale(1.1);
+    color: rgb(255, 255, 255);
+  /* background-image: linear-gradient(0.15turn,rgb(0, 0, 0),rgb(255, 255, 255)); */
+}
+#continent{
+    column-count: 2;
+    padding-bottom: 50px;
+}
+}
+
+
+
+
+
+
+
+
+
+
+@keyframes bordermation {
+  0% {border: none;}
+  100% {
+    border-top: 1px solid green;
+    border-bottom: 1px solid yellow;
 }
 }
