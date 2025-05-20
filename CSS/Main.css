@@ -71,7 +71,7 @@ body{
 .Login h1{
     /* margin-block: 0px; */
     margin-bottom: 0px;
-    margin-left: 2rem;
+    margin-left: 4rem;
     color: rgb(255, 255, 255);
     font-size: 2rem;
     font-weight:900;
@@ -243,19 +243,178 @@ left: 3px;
 }
 }
 
-
-
-
-
-
-
-
-
-
-@keyframes bordermation {
-  0% {border: none;}
-  100% {
-    border-top: 1px solid green;
-    border-bottom: 1px solid yellow;
+@media(min-width : 600px){
+body{
+    background-image: url(../Images/Background.jpg);
+    background-attachment: fixed;
+    color: whitesmoke;
+    font-family: sans-serif;
+    margin: 0px;
+    /* overflow: hidden; */
+    /* font-family: "Graphique W01 Regular"; */
+    }
+ #logo{
+  /* width: 150px; */
+  /* background-color: salmon; */
+  /* margin-bottom: 0px; */
+  /* margin-top: -50px; */
+ }
+ #logo:hover{
+    cursor: pointer;
+ }
+.Login{
+    /* position: absolute; */
+    background-color: rgba(0, 0, 0, 0.87);
+    height:510px;
+    width: 450px;
+    margin-right: auto;
+    margin-left: auto;
+    /* margin-top: 5%; */
+    margin-bottom: 5%;
+}
+.Login h1{
+    display: inline-block;
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-left: 4rem;
+}
+.inputter{
+    /* margin-right: auto; */
+    /* margin-left: auto; */
+    /* margin-top: 15px; */
+    /* margin-bottom: 20px; */
+    /* padding-left: 20px; */
+    height: 50px;
+    line-height: 100px;
+    /* border: 1px solid rgb(58, 58, 58); */
+    border-radius: 5px;
+    background-color: rgba(255, 217, 0, 0) ;
+    width: 70%;
+    color: rgb(255, 255, 255);
+    display: inline-block;
+    font-size: 15px;
+}
+.inputter:autofill{
+    background-color: white;
+    color: black;
+}
+.inputter::placeholder{
+    color: rgb(134, 134, 134);
+    padding: 10px;
+    font-size: 14px;
+}
+.inputter:focus{
+    outline: none;
+}
+#tosign{
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 30px;
+    /* margin-bottom: 10px; */
+    line-height: 40px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+    width: 76%;
+    display: block;
+    background-color: rgb(255, 26, 26);
+    color: white;
+    /* font-size: 14px; */
+}
+#tosign:hover{
+    background-color: rgb(221, 23, 23);
+}
+#tousecode{
+        transition-duration: 0.25s ;
+     margin-right: auto;
+    margin-left: auto;
+    /* margin-top: 20px; */
+    margin-bottom: 10px;
+    line-height: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    width:76%;
+    background-color: rgba(170, 170, 170, 0.3);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;  
+     margin-right: auto;
+    margin-left: auto; 
+}
+#Remember_me{
+    cursor: pointer;
+    appearance: none;
+    height: 11px;
+    width: 11px;
+    /* float: left; */
+    border-radius: 2px;
+    /* margin-left: 15%; */
+    background-color: rgb(224, 224, 224);
+    margin-right: auto;
+}
+#Remember_me:checked{
+ background-color: rgb(224, 224, 224);
+ font-weight:bolder ;
+ line-height: 20px;
+ content: \2713;
+}
+#Remember_me:checked::after{
+ rotate: 15deg;
+content: "\2713";
+display: inline-block;
+color: rgb(46, 46, 46);
+font-size: 11px;
+position: relative;
+top: -5px;
+left: 1px;
+}
+#labe{
+    color:rgb(167, 167, 167);
+    margin-left: 1%;
+    font-size: 12px;
+}
+#needhelp{
+    float: right;
+    color: rgb(167, 167, 167);
+    /* font-size: 12px; */
+    text-decoration: none;
+    /* margin-right: 15%; */
+}
+#needhelp:hover{
+    text-decoration: underline;
+}
+#new{
+    color: rgb(167, 167, 167);
+    display: inline;
+}
+#signup{
+    color: white;
+    text-decoration: none;
+}
+#signup:hover{
+    text-decoration: underline;
+}
+#extra{
+    margin-top:10%;
+    margin-left: 10%;
+    margin-right:10% ;
+}
+#capcha{
+    display: inline;
+    color: rgb(167, 167, 167);
+}
+#learnmore{
+    display: inline;
+    color: blue;
+    text-decoration: none;
+}
+#learnmore:hover{
+    text-decoration: underline;
+}
+#capstuff{
+    margin-top: 5%;
 }
 }
