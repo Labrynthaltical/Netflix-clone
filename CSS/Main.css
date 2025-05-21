@@ -26,7 +26,8 @@
     text-decoration: underline;
 }
 #extra{
-    margin-top:10%;
+    /* height: 1rem; */
+    margin-top:2rem;
     margin-left: 10%;
     margin-right:10% ;
 }
@@ -56,7 +57,6 @@ body{
     /* font-family: "Graphique W01 Regular"; */
     }
 .Login{
-    /* border: 1px solid white;    background-color: rgba(0, 0, 0, 0.87); */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -265,12 +265,13 @@ body{
 .Login{
     /* position: absolute; */
     background-color: rgba(0, 0, 0, 0.87);
-    height:510px;
-    width: 450px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-right: auto;
     margin-left: auto;
-    /* margin-top: 5%; */
-    margin-bottom: 5%;
+    width: 80%;
+    height: auto;
 }
 .Login h1{
     display: inline-block;
@@ -291,7 +292,7 @@ body{
     /* border: 1px solid rgb(58, 58, 58); */
     border-radius: 5px;
     background-color: rgba(255, 217, 0, 0) ;
-    width: 70%;
+    width: 23rem;
     color: rgb(255, 255, 255);
     display: inline-block;
     font-size: 15px;
@@ -317,7 +318,7 @@ body{
     height: 50px;
     border: none;
     border-radius: 5px;
-    width: 76%;
+    width: 25rem;
     display: block;
     background-color: rgb(255, 26, 26);
     color: white;
@@ -336,7 +337,7 @@ body{
     height: 40px;
     border: none;
     border-radius: 5px;
-    width:76%;
+    width:25rem;
     background-color: rgba(170, 170, 170, 0.3);
     color: white;
     font-size: 15px;
@@ -345,20 +346,22 @@ body{
     margin-left: auto; 
 }
 #Remember_me{
+     margin-left: 10%;
+    transition-duration: 0.25s;
     cursor: pointer;
     appearance: none;
-    height: 11px;
-    width: 11px;
+    height: 1.25rem;
+    width: 1.25rem;
     /* float: left; */
     border-radius: 2px;
     /* margin-left: 15%; */
-    background-color: rgb(224, 224, 224);
-    margin-right: auto;
+    background-color: rgb(0, 0, 0);
+    /* margin-right: auto; */
 }
 #Remember_me:checked{
  background-color: rgb(224, 224, 224);
  font-weight:bolder ;
- line-height: 20px;
+ /* line-height: 20px; */
  content: \2713;
 }
 #Remember_me:checked::after{
@@ -371,10 +374,14 @@ position: relative;
 top: -5px;
 left: 1px;
 }
+#Remember_me:hover{
+    transform: scale(1.1);
+}
 #labe{
+    margin-bottom: 15px;
     color:rgb(167, 167, 167);
-    margin-left: 1%;
-    font-size: 12px;
+    /* margin-left: 1%; */
+    font-size: 15px;
 }
 #needhelp{
     float: right;
@@ -398,7 +405,7 @@ left: 1px;
     text-decoration: underline;
 }
 #extra{
-    margin-top:10%;
+    /* margin-top:10%; */
     margin-left: 10%;
     margin-right:10% ;
 }
