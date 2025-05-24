@@ -81,35 +81,46 @@ body{
         margin-left: 1.5rem;
         width: 86%;
     }
-    #help{
-        /* display: block; */
-        /* margin-top: 5rem; */
-    }
-    #help h1{
-        text-align: center;
-        font-size:40px;
-    }
-    #searchbar{
-        background:
-                linear-gradient(to right, #0080ff 100%, transparent 100%) top,
-                linear-gradient(to left, #0080ff 100%, transparent 100%) bottom;
-    }
-    input[type = search]{
-        height: 2.5rem;
-        margin-left: auto;
-        margin-right: auto;
-        display: flex;
-        width: 90%;
-        /* padding: 10px; */
-        border: 10 px solid transparent;
-        border-image-slice: 1;
-        border-width: 2px;
-        border-radius: 10px;
-        background-clip: border-box;
-        border-image-source: linear-gradient(to left, #0140c9,rgb(177, 0, 177), #df2424);
-        border-radius: 50px;
-    }
-    input[type = search]:focus{
-        outline: none;
-    }
+  #help h1 {
+  text-align: center;
+  font-size: 40px;
+}
+
+#searchbar {
+  background: linear-gradient(to left, #0140c9, rgb(177, 0, 177), #df2424);
+  padding: 2px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  max-width: 600px;
+  margin: 1rem auto;
+}
+
+/* Make label behave like a container */
+#searchbar label {
+  display: flex;
+  align-items: center;
+  background: white;
+  border-radius: 3px;
+  padding: 10px 15px;
+  width: 100%;
+  cursor: text;
+}
+
+/* Style the icon without a class */
+#searchbar i {
+  margin-right: 10px;
+  color: gray;
+}
+
+#searchbar input[type="search"] {
+  flex: 1;
+  border: none;
+  border-radius: 3px;
+  font-size: 16px;
+  outline: none;
+  background: transparent;
+}
+
 }
