@@ -178,6 +178,9 @@ input[type="search"]::placeholder{
     animation-duration: 0.5s;
     animation-iteration-count: 2;
 }
+.cards{
+    border: 1px solid rgba(128, 128, 128, .4);
+}
 details {
   border: 1px solid #ccc;
   border-radius: 10px;
