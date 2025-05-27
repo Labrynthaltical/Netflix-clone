@@ -199,6 +199,11 @@ summary {
 } */
 details[open] summary::marker {
   content: " 🎈";
+  float: right;
+}
+details summary::marker {
+  content: " ";
+  float: right;
 }
 
 
