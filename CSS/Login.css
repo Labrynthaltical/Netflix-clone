@@ -50,9 +50,8 @@
 body{
     margin: 0px;
     padding: 0px;
-    background-attachment: fixed;
     color: whitesmoke;
-    background-color: black;
+    background-color: red;
     font-family: sans-serif;
     overflow:hidden
     /* font-family: "Graphique W01 Regular"; */
