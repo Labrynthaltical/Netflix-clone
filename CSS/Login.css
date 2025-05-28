@@ -51,7 +51,6 @@ body{
     margin: 0px;
     padding: 0px;
     color: whitesmoke;
-    background-color: red;
     font-family: sans-serif;
     overflow:hidden
     /* font-family: "Graphique W01 Regular"; */
@@ -62,6 +61,7 @@ body{
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
+    background-color: green;
 }
  #logo{
   width: 85px;
