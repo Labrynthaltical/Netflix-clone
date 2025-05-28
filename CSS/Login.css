@@ -54,6 +54,7 @@ body{
     color: whitesmoke;
     background-color: black;
     font-family: sans-serif;
+    overflow:hidden
     /* font-family: "Graphique W01 Regular"; */
     }
 .Login{
