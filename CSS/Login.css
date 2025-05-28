@@ -56,7 +56,17 @@ body{
     font-family: sans-serif;
     /* font-family: "Graphique W01 Regular"; */
     }
+    .wrapper{
+        background-color: saddlebrown;
+        margin: 0px;
+        height: fit-content;
+        width: 100%;
+        padding: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
 .Login{
+    /* background-color: sienna; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -78,15 +88,15 @@ body{
 }
 
 .inputter{
-    margin-right: auto;
-    margin-left: auto;
+    margin-right: 5%;
+    margin-left: 5%;
     margin-top: 1rem;
     /* margin-bottom: 20px; */
     padding-left: 20px;
     height: 50px;
     border: 1px solid rgb(131, 131, 131);
     border-radius: 5px;
-    width: 410px;
+    max-width: auto;
     color: rgb(255, 255, 255);
     /* display: block; */
     background-color: rgb(12, 12, 12);
@@ -111,7 +121,7 @@ body{
     height: 40px;
     border: none;
     border-radius: 5px;
-    width:440px;
+    width:90%;
     /* display: block; */
     background-color: rgb(223, 23, 23);
     color: white;
@@ -138,7 +148,7 @@ background-color: rgb(190, 20, 20);
     height: 40px;
     border: none;
     border-radius: 5px;
-    width:440px;
+    /* width:440px; */
     background-color: rgba(170, 170, 170, 0.3);
     color: white;
     font-size: 15px;
@@ -288,8 +298,8 @@ body{
     margin-left: 4rem;
 }
 .inputter{
-    /* margin-right: auto; */
-    /* margin-left: auto; */
+    margin-right: auto;
+    margin-left: auto;
     /* margin-top: 15px; */
     /* margin-bottom: 20px; */
     /* padding-left: 20px; */
