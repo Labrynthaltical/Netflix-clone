@@ -50,13 +50,14 @@
 body{
     margin: 0px;
     padding: 0px;
+    background-attachment: fixed;
     color: whitesmoke;
+    background-color: black;
     font-family: sans-serif;
-    overflow:hidden
     /* font-family: "Graphique W01 Regular"; */
     }
     .wrapper{
-        background-color: saddlebrown;
+        background-color: seagreen;
         margin: 0px;
         height: fit-content;
         width: 100%;
@@ -69,9 +70,6 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: green;
 }
  #logo{
   width: 85px;
