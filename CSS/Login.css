@@ -11,6 +11,7 @@
  #logo:hover{
     cursor: pointer;
  }
+ 
 #needhelp:hover{
     text-decoration: underline;
 }
@@ -28,43 +29,54 @@
 #extra{
     /* height: 1rem; */
     margin-top:2rem;
-    margin-left: 10%;
-    margin-right:10% ;
+    /* margin-left: 10%; */
+    /* margin-right:10% ; */
 }
 #capcha{
+    font-size: 14px;
+    /* font-weight: bold; */
     display: inline;
     color: rgb(167, 167, 167);
 }
 #learnmore{
-    display: inline;
+    display: block;
     color: blue;
+    margin-top: 1rem;
     text-decoration: none;
 }
 #learnmore:hover{
     text-decoration: underline;
 }
 #capstuff{
-    margin-top: 2rem;
+    margin-left: 0%;
+    margin-right:0%;
+    margin-top: 1rem;
 }
-@media(min-width: 0px){
+@media(min-width: 100px){
 body{
+      display: flex;
+    flex-direction: column;
+     min-height: 100vh;
     margin: 0px;
     padding: 0px;
     background-attachment: fixed;
     color: whitesmoke;
     background-color: black;
     font-family: sans-serif;
-    /* overflow-y: hidden; */
     /* font-family: "Graphique W01 Regular"; */
     }
-    .wrapper{
-        /* background-color: seagreen; */
+    .wrapper {
+        flex: 1 0 auto;  
         margin: 0px;
         height: fit-content;
         width: 100%;
         padding: auto;
         margin-left: auto;
         margin-right: auto;
+    }
+    .Login div{
+        margin-left: 5%;
+        margin-right: 5%;
     }
 .Login{
     /* background-color: sienna; */
@@ -82,7 +94,7 @@ body{
 .Login h1{
     /* margin-block: 0px; */
     margin-bottom: 0px;
-    margin-left: 4rem;
+    margin-left: 5%;
     color: rgb(255, 255, 255);
     font-size: 2rem;
     font-weight:900;
@@ -149,7 +161,7 @@ background-color: rgb(190, 20, 20);
     height: 40px;
     border: none;
     border-radius: 5px;
-    /* width:440px; */
+    width:90%;
     background-color: rgba(170, 170, 170, 0.3);
     color: white;
     font-size: 15px;
@@ -166,7 +178,7 @@ background-color: rgb(190, 20, 20);
     color: rgba(190, 190, 190, 0.822);
 }
 #Remember_me{
-     margin-left: 10%;
+     /* margin-left: 10%; */
     transition-duration: 0.25s;
     cursor: pointer;
     appearance: none;
@@ -191,15 +203,14 @@ background-color: rgb(190, 20, 20);
 content: "\2713";
 display: inline-block;
 color: rgb(46, 46, 46);
-line-height: 10px;
-font-size: 30px;
-/* position: relative; */
-top: -3px;
-left: 5px;
+line-height: 5px;
+font-size: 15px;
+position: relative;
+top: -1px;
+left: 2px;
 }
 #Remember_me:hover{
     border: 1px solid white;
-    transform: scale(1,2);
 }
 #labe{
     padding-top: 5px;
@@ -215,11 +226,12 @@ left: 5px;
     background-color: gainsboro;
 }
 #end p{
-    margin-left: 25px;
+    /* margin-left: 25px; */
     margin-bottom: 20px;
     font-weight: bold;
 }
 #end{
+    flex-shrink: 0;
     font-size:medium;
     overflow: hidden;
     display: flex;
@@ -229,9 +241,8 @@ left: 5px;
     background-color: rgb(36, 36, 36);
     margin-right: auto;
     margin-left: auto;
-    width: auto;
+    width: 100%;
     justify-content: space-evenly;
-    margin-bottom: 0px;
 }
 .links{
     padding:5px;
@@ -263,13 +274,10 @@ left: 5px;
 
 @media(min-width : 600px){
 body{
-    height: 100%; 
-    margin: 0;    
-    background-image: url("../Images/Background.jpg");
+    background-image: url(../Images/Background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-size: cover;           
-    background-position: center center; 
-    background-attachment: fixed; 
     color: whitesmoke;
     font-family: sans-serif;
     margin: 0px;
@@ -286,6 +294,7 @@ body{
     cursor: pointer;
  }
 .Login{
+    margin-top: 5rem;
     /* position: absolute; */
     background-color: rgba(0, 0, 0, 0.87);
     display: flex;
@@ -310,7 +319,7 @@ body{
     /* margin-top: 15px; */
     /* margin-bottom: 20px; */
     /* padding-left: 20px; */
-    height: 50px;
+    height: 40px;
     line-height: 100px;
     /* border: 1px solid rgb(58, 58, 58); */
     border-radius: 5px;
@@ -339,7 +348,7 @@ body{
     margin-top: 30px;
     /* margin-bottom: 10px; */
     line-height: 40px;
-    height: 50px;
+    height: 40px;
     border: none;
     border-radius: 5px;
     width: 22rem;
@@ -429,11 +438,13 @@ position: relative;
     text-decoration: underline;
 }
 #extra{
+    margin-bottom: 7rem;
     /* margin-top:10%; */
-    margin-left: 10%;
-    margin-right:10% ;
+    margin-left: 14%;
+    margin-right:14% ;
 }
 #capcha{
+    
     display: inline;
     color: rgb(167, 167, 167);
 }
@@ -457,13 +468,11 @@ position: relative;
     margin-top: 5rem;
     color: rgb(167, 167, 167);
     background-color: rgb(36, 36, 36);
-    margin-bottom: 0px;
 }
 }
 @media (min-width : 990px){
  #continent{
 column-count: 4;
-margin-bottom: 0px;
 }
  #logo{
   width: 155px;
