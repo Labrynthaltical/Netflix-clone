@@ -46,6 +46,7 @@
 }
 #learnmore:hover{
     text-decoration: underline;
+    color: rgb(53, 53, 255);
 }
 #capstuff{
     margin-left: 0%;
@@ -227,8 +228,9 @@ left: 2px;
 }
 #end p{
     /* margin-left: 25px; */
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
     font-weight: bold;
+    margin-left: 25px;
 }
 #end{
     flex-shrink: 0;
@@ -450,7 +452,6 @@ position: relative;
 }
 #learnmore{
     display: inline;
-    color: blue;
     text-decoration: none;
 }
 #learnmore:hover{
@@ -469,14 +470,44 @@ position: relative;
     color: rgb(167, 167, 167);
     background-color: rgb(36, 36, 36);
 }
+#end p{
+    margin-left: 3%;
+}
 }
 @media (min-width : 990px){
+    #end{
+   
+    }
  #continent{
-column-count: 4;
+    margin-left: 2%;
+    margin-right: 2%;
+    column-count: 4;
+     align-items: center;
 }
  #logo{
   width: 155px;
   height: 50px;
   margin: 15px;
  }
+ #end p{
+    margin-left: 9%;
+}
+}
+@media (min-width : 1440px){
+    #continent{
+        margin-left: 7%;
+        margin-right: 7%;
+        
+    }
+}
+@media (min-width : 1990px){
+    #end p{
+        margin-left: 21%;
+    }
+    #continent{
+        width: 100%;
+        column-count: 4 ;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 }
