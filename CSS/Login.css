@@ -286,17 +286,11 @@ body{
     /* overflow: hidden; */
     /* font-family: "Graphique W01 Regular"; */
     }
- #logo{
-  /* width: 150px; */
-  /* background-color: salmon; */
-  /* margin-bottom: 0px; */
-  /* margin-top: -50px; */
- }
  #logo:hover{
     cursor: pointer;
  }
 .Login{
-    margin-top: 5rem;
+    margin-top: 2rem;
     /* position: absolute; */
     background-color: rgba(0, 0, 0, 0.87);
     display: flex;
@@ -475,9 +469,6 @@ position: relative;
 }
 }
 @media (min-width : 990px){
-    #end{
-   
-    }
  #continent{
     margin-left: 2%;
     margin-right: 2%;

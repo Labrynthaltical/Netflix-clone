@@ -14,6 +14,9 @@ body{
     hr{
         display: none;
     }
+    #buttoner{
+        display: flex;
+    }
     #Logo{
         display: block;
          content: url("../Images/Small_logo_cropped.png");
@@ -33,12 +36,13 @@ body{
         font-weight: 600;
     }
     #join{
-        margin-right: 1rem;
         background-color: transparent;
         border: 1px solid rgba(0, 0, 0, 0.288);
         border-radius: 5px;
         transition-duration: 0.2s;
-        padding: 5px;
+        padding-top: 4px;
+        padding-bottom: 4px;
+
     }
     #join:hover{
         background-color: rgb(202, 200, 200);
@@ -180,14 +184,35 @@ input[type="search"]::placeholder{
 }
 .cards{
     border: 1px solid rgba(128, 128, 128, .4);
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+
+}
+.card-head{
+    /* background-color: rebeccapurple; */
+    display: flex;
+    align-items: center;
+    vertical-align: baseline;
+    height: 3rem;
+}
+.cards i{
+    color: rgb(184, 15, 42);
+    font-size: 20px;
+    margin-left: 10px;
+}
+.cards h3{
+    color: #221f1f;
+    margin-left: 2rem;
+    font-size: 18px;
 }
 details {
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  padding: 1rem;
+  border-top: 1px solid #ccc;
+  padding: 10px;
   width: 90%;
-  max-width: 500px;
-  margin: 1rem auto;
+  /* margin: 1rem auto; */
   font-family: sans-serif;
   background-color: white;
 }
@@ -197,16 +222,25 @@ summary {
   cursor: pointer;
   outline: none;
 }
-/* summary::after {
-  content: " ▼";
-} */
-details[open] summary::marker {
-  content: " 🎈";
-  float: right;
+details summary {
+  color: #df2424;
+  list-style: none;
 }
-details summary::marker {
-  content: " ";
+/* summary::-webkit-details-marker {
+  display: none
+} */
+summary::after {
+  font-family: "Font Awesome 6 Free";
+  content: "\f078"; /* Unicode for fa-chevron-down */
+  font-weight: 900; /* Needed for Font Awesome solid icons */
+  margin-left: 5px;
+  transition-duration: 0.2s;
   float: right;
+  /* rotate: 270deg ; */
+}
+details[open] summary:after {
+  /* content: " ▼"; */
+  rotate: 180deg;
 }
 
 
