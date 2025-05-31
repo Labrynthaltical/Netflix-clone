@@ -223,8 +223,13 @@ summary {
   outline: none;
 }
 details summary {
-  color: #df2424;
   list-style: none;
+}
+ul{
+    list-style: none;
+}
+li::before{
+    /* content: "a"; */
 }
 /* summary::-webkit-details-marker {
   display: none
