@@ -169,7 +169,7 @@ input[type="search"]::placeholder{
 #topicexplo h5{
     margin: 0px;
 }
-}
+
 #arowwa{
     font-size: 30px;
     margin-top: 10px;
@@ -187,6 +187,7 @@ input[type="search"]::placeholder{
     margin-right: auto;
     margin-left: auto;
     width: 90%;
+    max-width: 590px;
     border-radius: 10px;
     margin-bottom: 1rem;
 
@@ -218,9 +219,10 @@ details {
 }
 
 summary {
-  font-weight: bold;
   cursor: pointer;
   outline: none;
+  font-weight: 700;
+  padding: 10px;
 }
 details summary {
   list-style: none;
@@ -228,24 +230,17 @@ details summary {
 ul{
     list-style: none;
 }
-li::before{
-    /* content: "a"; */
-}
-/* summary::-webkit-details-marker {
-  display: none
-} */
 summary::after {
   font-family: "Font Awesome 6 Free";
-  content: "\f078"; /* Unicode for fa-chevron-down */
-  font-weight: 900; /* Needed for Font Awesome solid icons */
+  content: "\f078"; 
+  font-weight: 900; 
   margin-left: 5px;
   transition-duration: 0.2s;
   float: right;
-  /* rotate: 270deg ; */
 }
 details[open] summary:after {
-  /* content: " ▼"; */
   rotate: 180deg;
+}
 }
 
 
