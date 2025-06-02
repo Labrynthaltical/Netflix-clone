@@ -212,12 +212,16 @@ input[type="search"]::placeholder{
 details {
   border-top: 1px solid #ccc;
   padding: 10px;
-  width: 90%;
+  /* width: 90%; */
   /* margin: 1rem auto; */
   font-family: sans-serif;
   background-color: white;
 }
-
+.bordiv{
+    /* background-color: #0140c9; */
+    padding-right: 10px;
+    padding-left: 10px;
+}
 summary {
   cursor: pointer;
   outline: none;
@@ -240,6 +244,21 @@ summary::after {
 }
 details[open] summary:after {
   rotate: 180deg;
+}
+#quicklink{
+    /* background-color: rgb(255, 166, 0); */
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+}
+.quilin{
+    border-top: 1px solid gray;
+    font-size: 100%;
+    font-weight: 700;
+    padding: 1rem;
+    display: list-item;
+    color: black;
+    list-style: none;
 }
 }
 
