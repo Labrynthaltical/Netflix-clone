@@ -251,8 +251,15 @@ details[open] summary:after {
     margin-left: auto;
     width: 90%;
 }
-.quilin{
+.linkcon{
+    display: flex;
+    vertical-align: baseline;
+    align-items: center;
     border-top: 1px solid gray;
+    font-weight: 500;
+
+}
+.quilin{
     font-size: 100%;
     font-weight: 700;
     padding: 1rem;
