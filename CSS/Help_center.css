@@ -295,10 +295,15 @@ details[open] summary:after {
     /* max-width: 20rem; */
 }
 #folin{
-    background-color: #fafafa;
+    background-color: hsl(0deg 0% 98.04%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 }
 #langdiv{
     margin-bottom: 4rem;
+    margin-top: 2rem;
+    background-color: hsl(0deg 0% 98.04%);
 }
 #Langs{
     display: flex;
