@@ -335,6 +335,10 @@ details[open] summary:after {
 select,::picker-icon {
  appearance: base-select;
 }
+#contain{
+            border-bottom:1px solid rgba(150, 150, 150, 0.288) ;
+
+}
 select::picker-icon {
     border-radius: 5px;
   color: #999;
@@ -385,7 +389,6 @@ option{
         }
         #contain{
             /* justify-content: space-between; */
-            border-bottom:1px solid rgba(150, 150, 150, 0.288) ;
         } 
           #helsen{
         color: black;
