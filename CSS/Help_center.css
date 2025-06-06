@@ -301,17 +301,40 @@ details[open] summary:after {
     margin-bottom: 4rem;
 }
 #Langs{
-    color: red;
-  background-color: #ffffff;
-  border: 1px solid rgb(92, 92, 92);
-  padding: 0.5em;
-  /* appearance: none; */
-  padding: 0.5em;
+    display: flex;
+    color: rgb(92, 92, 92);
+    border-radius: 0px;
+    background-color: #ffffff;
+    border: 1px solid rgb(92, 92, 92);
+    padding-top: 1rem;
+    font-weight: bold;
+    font-size: large;
+    margin-left: 10px;
+    width: 200px;
+    height: 50px;
+    transition-duration: 0.2s;
+}
+#Langs:focus{
+    color: #ffffff;
+    background-color: rgb(92, 92, 92);
+}
+#Langs:focus::picker-icon {
+    color: #ffffff;
+    background-color: rgb(92, 92, 92);
+}
+select,::picker-icon {
+ appearance: base-select;
+}
+select::picker-icon {
+    border-radius: 5px;
+  color: #999;
+  transition: 0.4s rotate;
 }
 option{
       /* Limited styles may work — but many are ignored */
-  background-color: white; /* May work in Firefox */
-  color: black;
+    background-color: white; /* May work in Firefox */
+    font-weight: normal;
+    font-size: medium;
 }
 .folinlinks{
     position: relative;
