@@ -245,11 +245,12 @@ summary::after {
 details[open] summary:after {
   rotate: 180deg;
 }
-#quicklink{
-    /* background-color: rgb(255, 166, 0); */
-    margin-right: auto;
+.containerdiv{
     margin-left: auto;
+    margin-right: auto;
     width: 90%;
+}
+#quicklink{
 }
 .linkcon{
     display: flex;
@@ -268,9 +269,6 @@ details[open] summary:after {
     list-style: none;
 }
 #conlast{
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
     margin-top: 3rem;
     margin-bottom: 5rem;
     display: flex;
@@ -298,6 +296,30 @@ details[open] summary:after {
 }
 #folin{
     background-color: #fafafa;
+}
+#langdiv{
+    margin-bottom: 4rem;
+}
+#Langs{
+    color: red;
+  background-color: #ffffff;
+  border: 1px solid rgb(92, 92, 92);
+  padding: 0.5em;
+  /* appearance: none; */
+  padding: 0.5em;
+}
+option{
+      /* Limited styles may work — but many are ignored */
+  background-color: white; /* May work in Firefox */
+  color: black;
+}
+.folinlinks{
+    position: relative;
+    display: block;
+    color: rgb(92, 92, 92);
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 15px;
 }
 }
 
