@@ -73,6 +73,67 @@ body{
         margin-bottom: 1rem;
         text-decoration: none;
     }
+    #quicklink{
+    margin-top: 4rem;
+    margin-right: auto;
+    margin-left: auto;
+    width: 90%;
+    max-width: 590px;
+}
+.linkcon{
+    display: flex;
+    vertical-align: baseline;
+    align-items: center;
+    border-top: 1px solid gray;
+    font-weight: 500;
+
+}
+.quilin{
+    font-size: 100%;
+    font-weight: 700;
+    padding: 1rem;
+    display: list-item;
+    color: black;
+    list-style: none;
+}
+#Conprob{
+    color: #221f1f;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: rgba(34, 30, 30, 0.479); */
+    width: 90%;
+    max-width: 590px;
+    margin-top: 5rem;
+}
+#tells{
+    margin-top: 3rem;
+    font-size: large;
+}
+#dainput{
+    display: flex;
+    border: 1px solid rgba(34, 31, 31, 0.384);
+}
+#speak{
+    margin-left: auto;
+    margin-right: auto;
+    height: 2.5rem;
+    outline: none;
+    width: 90%;
+    /* border-radius: 5px; */
+    /* border: 1px solid rgba(0, 0, 0, 0.479); */
+    border: none;
+    padding-left: 1rem;
+    font-size: 15px;
+}
+#arrow{
+    border: none;
+    font-size: 25px;
+    padding: auto;
+    color: rgba(34, 31, 31, 0.384);
+}
+#speak::placeholder{
+    font-size: 17px;
+}
 }
 @media(min-width : 760px){
     #Nav{
@@ -104,7 +165,7 @@ body{
         max-width: 85px;
         margin: 0px;
         /* margin-top: 1rem; */
-        padding-right: 30px;
+        padding-right: 15px;
         border-right: 1px solid rgb(92, 92, 92);
         /* margin-bottom: 1rem; */
         /* margin-left: -1rem; */
