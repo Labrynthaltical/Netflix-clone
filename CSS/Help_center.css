@@ -136,6 +136,11 @@ body{
   outline: none;
   background: transparent;
 }
+input::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
 input[type="search"]::placeholder{
   color: rgba(2, 3, 5, 0.788);
   font-family: " Sans", Helvetica, Arial, sans-serif;
@@ -231,6 +236,12 @@ details summary {
 ul{
     list-style: none;
 }
+li a{
+    color: black;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 0px;
+}
 summary::after {
   font-family: "Font Awesome 6 Free";
   content: "\f078"; 
@@ -295,6 +306,10 @@ details[open] summary:after {
     width: 15rem;
     border-radius: 5px;
     /* max-width: 20rem; */
+}
+#tocontwus a{
+    text-decoration: none;
+    color: white;
 }
 #folin{
     background-color: hsl(0deg 0% 98.04%);
