@@ -1,3 +1,4 @@
+
 body{
     margin: 0px;
     font-family: " Sans", Helvetica, Arial, sans-serif;
@@ -134,6 +135,73 @@ body{
 #speak::placeholder{
     font-size: 17px;
 }
+#folin{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    max-width: 1220px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#folincon{
+    min-height: 60vh;
+    background: linear-gradient(200deg in oklab,rgb(88, 1, 1) ,black );
+    margin-bottom: 0px;
+}
+#langdiv{
+    margin-bottom: 4rem;
+    margin-top: 2rem;
+    /* background-color: hsl(0deg 0% 98.04%); */
+}
+#Langs{
+    display: flex;
+    color: rgb(92, 92, 92);
+    border-radius: 0px;
+    /* background-color: #ffffff; */
+    border: 1px solid rgb(92, 92, 92);
+    padding-top: 1rem;
+    font-weight: bold;
+    font-size: large;
+    margin-left: 10px;
+    width: 200px;
+    height: 50px;
+    transition-duration: 0.2s;
+}
+#Langs:focus{
+    color: #ffffff;
+    background-color: rgb(92, 92, 92);
+}
+#Langs:focus::picker-icon {
+    color: #ffffff;
+    background-color: rgb(92, 92, 92);
+}
+select,::picker-icon {
+ appearance: base-select;
+}
+#contain{
+            border-bottom:1px solid rgba(150, 150, 150, 0.288) ;
+
+}
+select::picker-icon {
+    border-radius: 5px;
+  color: #999;
+  transition: 0.4s rotate;
+}
+option{
+      /* Limited styles may work — but many are ignored */
+    background-color: white; /* May work in Firefox */
+    font-weight: normal;
+    font-size: medium;
+}
+.folinlinks{
+    position: relative;
+    display: block;
+    color: rgb(141, 141, 141);
+    margin-left: 10px;
+    margin-bottom: 20px;
+    font-size: 15px;
+    text-decoration: none;
+}
 }
 @media(min-width : 760px){
     #Nav{
@@ -191,4 +259,5 @@ body{
         /* margin-top: auto; */
         margin-bottom: 1rem;
     }
+    
 }
