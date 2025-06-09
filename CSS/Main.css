@@ -112,13 +112,16 @@ body{
         
         /* margin-bottom:5%; */
     }
-    details[open] ul{
+    /* details[open] ul{
         animation: dropdown 0.3s ease-out forwards;
-    }
+    } */
+     .animatedrop{
+        animation: dropdown 0.3s ease-out forwards;
+     }
     summary{
         list-style-type: none;
     }
-    summary::after {
+    summary:after {
     font-family: "Font Awesome 6 Free";
     content: "\f078"; 
     font-weight: 900; 
@@ -126,6 +129,11 @@ body{
     transition-duration: 0.2s;
     /* float: right; */
     }
+    details[open]summary:after{
+    rotate: 80deg;
+    }
+    .animatedrop{
+         animation: dropdown 0.3s ease-out forwards;    }
     li{
         /* display: none; */
         margin-left: 0px;
