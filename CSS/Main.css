@@ -86,23 +86,25 @@ body{
     }
     li{
         /* margin: 0px; */
+        margin-left: 0px;
         list-style: none;
+        display: block;
         /* background-color: green; */
     }
     ul{
-        /* background-color: rgb(128, 0, 0); */
+        /* margin-block-start:0px; */
+        /* margin: block end 0px; */
+        padding-inline-start: 0px;
+        background-color: transparent;
+        border-radius: 3px;
+        text-align: center;
         /* display: none; */
         color: black;
         position: absolute;
-        margin-top: 0px;
+        margin-top: 10px;
         /* width: 5rem; */
-        margin-right: 3rem;
+        
         /* overflow: hidden; */
-    }
-    #centero{
-        background-color: red;
-        margin-left: -2.4rem;
-        /* margin-right: 35rem; */
     }
     details{
         position: relative;
@@ -206,7 +208,7 @@ body{
   }
   to {
     /* opacity: 1; */
-    height: 100px;
+    height: 200px;
     overflow: hidden;
   }
 }
