@@ -15,7 +15,8 @@ body{
     }
     #Nav{
         display: flex;
-        /* justify-content: space-between; */
+        justify-content: space-between;
+        align-items: baseline;
         /* margin-bottom: 1.1rem; */
         color: white;
         /* background-color: black; */
@@ -41,10 +42,10 @@ body{
     .navbuts{
         cursor: pointer;
         float: right;
-        margin-top: 1rem;
-        margin-left: 1rem;
-        height: 2rem;
-        min-width: 5rem;
+        /* margin-top: 1rem; */
+        /* margin-left: 1rem; */
+        /* height: 2rem; */
+        /* min-width: 5rem; */
         font-size: 14px;
         font-weight: 600;
     }
@@ -117,9 +118,6 @@ body{
     /* details[open] ul{
         animation: dropdown 0.3s ease-out forwards;
     } */
-     .animatedrop{
-        animation: dropdown 0.3s ease-out forwards;
-     }
     summary{
         list-style-type: none;
     }
@@ -135,7 +133,8 @@ body{
     rotate: 80deg;
     }
     .animatedrop{
-         animation: dropdown 0.3s ease-out forwards;    }
+         animation: dropdown 0.3s ease-out forwards;
+    }
     li{
         /* display: none; */
         margin-left: 0px;
