@@ -135,6 +135,10 @@ body{
     .animatedrop{
          animation: dropdown 0.3s ease-out forwards;
     }
+    .users{
+        width: 20px;
+        width: 20px;
+    }
     li{
         /* display: none; */
         margin-left: 0px;
