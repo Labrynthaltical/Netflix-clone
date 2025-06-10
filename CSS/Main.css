@@ -138,6 +138,13 @@ body{
     .users{
         width: 20px;
         width: 20px;
+        display: inline;
+    }
+    .userli{
+        color: green;
+        display: flex;
+        flex-direction: row;
+        justify-content: baseline;
     }
     li{
         /* display: none; */
@@ -211,7 +218,7 @@ body{
   }
   to {
     /* opacity: 1; */
-    height: 200px;
+    height: 250px;
     overflow: hidden;
   }
 }
