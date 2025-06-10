@@ -10,34 +10,46 @@ body{
         margin-top: auto;
         margin-bottom: auto;
     }
+    #containall{
+        background-image: url(../Images/Red_Demo_redemotion.jfif);
+        background-repeat: no-repeat;
+        background-size:cover;
+        height: 40vh;
+    }
     #contain{
         background-color: rgb(0, 0, 0);
+        /* width: 90%; */
+        margin-right: auto;
+        margin-left: auto;
     }
     #Nav{
         display: flex;
-        justify-content: space-between;
-        align-items: baseline;
+        justify-content: space-around;
+        /* align-items: baseline; */
+        align-items: center;
         /* margin-bottom: 1.1rem; */
         color: white;
         /* background-color: black; */
     }
     #corner{
-        margin-left: 10px;
+        /* margin-top: 20px; */
+        /* margin-left: 10px; */
         display: flex;
         flex-direction: row;
-        justify-content: center;
         justify-content: space-between;
+        align-items: baseline;
+        justify-content: space-around;
     }
     #buttoner{
         display: flex;
     }
     #Logo{
-        display: block;
+        display: inline-block;
          content: url("../Images/Netflix-logo-cropped.png");
         max-height: 30px;
         max-width: 60px;
         /* margin-bottom: 1rem; */
-        /* margin-left: -1rem; */
+        margin-right: 5px;
         }
     .navbuts{
         cursor: pointer;
@@ -51,12 +63,15 @@ body{
     }
     #join{
         background-color: transparent;
-        border: 1px solid rgba(255, 255, 255, 0.288);
+        outline: none;
+        /* border: 1px solid rgba(255, 255, 255, 0.288); */
+        border: none;
         border-radius: 5px;
         transition-duration: 0.2s;
         height: fit-content;
-        padding-top: 5px;
-        padding-bottom: 5px;
+        margin-right: 10px;
+        padding-top: 3px;
+        /* padding-bottom: 5px; */
         padding-left: 5px;
         padding-right: 5px;
         color: white;
@@ -128,6 +143,14 @@ body{
     margin-left: 5px;
     transition-duration: 0.2s;
     /* float: right; */
+    }
+    #helse summary{
+        /* background-color: red !important; */
+        /* margin-top: -10px; */
+        /* width: 10rem; */
+    }
+    #helse summary li{
+        display: inline;
     }
     details[open]summary:after{
     rotate: 80deg;
