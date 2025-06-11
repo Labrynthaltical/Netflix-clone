@@ -16,7 +16,7 @@ body{
         background-repeat: no-repeat;
         background-clip: border-box;
         background-size:cover;
-        display: flex;
+        /* display: flex; */
         /* flex-direction: column; */
         height: 100%;
     }
@@ -89,7 +89,6 @@ body{
 
     input[type=search]{
         display: none;
-        /* transition-duration: 0.5s; */
         border: none;
         outline: none;
         background-color: rgb(255, 255, 255);
@@ -103,7 +102,7 @@ body{
     display: none;
     }
      #join:focus input[type=search]{
-     display: inline;
+     /* display: inline; */
     }
     #Signin{
         transition-duration: 0.2s;
@@ -203,6 +202,14 @@ body{
         /* display: none; */
         margin-left: 0px;
         margin-top: 10px;
+    }
+    #first_movie{
+        color: white;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+        font-weight:500;
     }
 }
 @media(min-width : 760px){

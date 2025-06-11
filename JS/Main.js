@@ -16,3 +16,15 @@ function toggleani1(){
 }
 totoggle1.addEventListener("click",toggleani1)
 
+const showninput = document.getElementById("join")
+const toshow = document.getElementById("searchmo")
+const cancelshow = document.querySelector("body")
+toshow.addEventListener("blur", () => {
+  toshow.style.display = "none";
+});
+function focusoninput(){
+    toshow.style.display = "inline"
+    toshow.focus
+}
+showninput.addEventListener("click",focusoninput)
+
