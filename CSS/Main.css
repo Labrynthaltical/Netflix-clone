@@ -1,5 +1,6 @@
 
 body{
+    height: 100vh;
     margin: 0px;
     font-family: " Sans", Helvetica, Arial, sans-serif;
 }
@@ -11,13 +12,16 @@ body{
         margin-bottom: auto;
     }
     #containall{
-        background-image: url(../Images/Red_Demo_redemotion.jfif);
+        background-image: url(../Images/Poster_image.jfif);
         background-repeat: no-repeat;
+        background-clip: border-box;
         background-size:cover;
-        height: 40vh;
+        display: flex;
+        /* flex-direction: column; */
+        height: 100%;
     }
     #contain{
-        background-color: rgb(0, 0, 0);
+        /* background-color: rgb(0, 0, 0); */
         /* width: 90%; */
         margin-right: auto;
         margin-left: auto;
@@ -30,6 +34,9 @@ body{
         /* margin-bottom: 1.1rem; */
         color: white;
         /* background-color: black; */
+    }
+    #Nav div{
+        margin-top: 1rem;
     }
     #corner{
         /* margin-top: 20px; */
@@ -78,6 +85,16 @@ body{
     }
     #join:hover{
         background-color: rgb(202, 200, 200);
+    }
+
+    input[type=search]{
+        /* display: none; */
+        /* height: 1000px; */
+        border: none;
+        background-color: rgba(255, 255, 255, 0.486);
+        position: absolute;
+        width: 5rem;
+        margin-left: -5rem;
     }
     #Signin{
         transition-duration: 0.2s;
@@ -152,6 +169,9 @@ body{
     #helse summary li{
         display: inline;
     }
+    #helse summary img{
+        margin-right: 5px;
+    }
     details[open]summary:after{
     rotate: 80deg;
     }
@@ -162,9 +182,10 @@ body{
         width: 20px;
         width: 20px;
         display: inline;
+        margin-right: 5px;
     }
     .userli{
-        color: green;
+        color: white;
         display: flex;
         flex-direction: row;
         justify-content: baseline;
