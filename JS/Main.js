@@ -16,15 +16,15 @@ function toggleani1(){
 }
 totoggle1.addEventListener("click",toggleani1)
 
-const showninput = document.getElementById("join")
-const toshow = document.getElementById("searchmo")
-const cancelshow = document.querySelector("body")
+const showninput = document.getElementById("join");
+const toshow = document.getElementById("searchmo");
+
+showninput.addEventListener("click", () => {
+  toshow.style.display = "inline";
+  toshow.focus();
+});
+
+// Hide the input when it loses focus
 toshow.addEventListener("blur", () => {
   toshow.style.display = "none";
 });
-function focusoninput(){
-    toshow.style.display = "inline"
-    toshow.focus
-}
-showninput.addEventListener("click",focusoninput)
-
