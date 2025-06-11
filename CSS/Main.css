@@ -300,16 +300,34 @@ body{
     #tocontwus1:before{
         content: "🔬";
     }
+    .housedcontent{
+        /* margin-left: 3rem; */
+        margin-top: 2rem;
+    }
     .contentcards{
-        margin-left: 3rem;
         overflow-x: auto;
         display: flex;
         flex-direction: row;
         color: white;
     }
+    .classification{
+        color: white;
+        margin-left: 3rem;
+        /* display: inline; */
+    }
+    .thecontent{
+        height: 190px;
+        width: 190px;
+        margin-right: 3rem;
+        transition-duration: 0.2s;
+    }
+    .thecontent:hover{
+        transform: scale(1.5);
+    }
     .Cardposter{
-        height: 150px;
-        width: 150px;
+        height: 180px;
+        width: 220px;
+        margin-left: 3rem;
     }
 }
 @media(min-width : 760px){
