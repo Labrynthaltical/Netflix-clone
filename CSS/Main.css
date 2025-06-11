@@ -84,17 +84,26 @@ body{
         color: white;
     }
     #join:hover{
-        background-color: rgb(202, 200, 200);
+        /* background-color: rgb(202, 200, 200); */
     }
 
     input[type=search]{
-        /* display: none; */
-        /* height: 1000px; */
+        display: none;
+        /* transition-duration: 0.5s; */
         border: none;
-        background-color: rgba(255, 255, 255, 0.486);
+        outline: none;
+        background-color: rgb(255, 255, 255);
         position: absolute;
-        width: 5rem;
-        margin-left: -5rem;
+        width: 6rem;
+        margin-left: -4.3rem;
+    }
+    input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    display: none;
+    }
+     #join:focus input[type=search]{
+     display: inline;
     }
     #Signin{
         transition-duration: 0.2s;
