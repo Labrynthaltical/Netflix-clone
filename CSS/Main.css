@@ -4,7 +4,7 @@
 } */
 body{
     overflow-y: auto;
-    height: auto;
+    height: 100%;
     margin: 0px;
     font-family: " Sans", Helvetica, Arial, sans-serif;
     background-color: rgb(29, 29, 29);
@@ -132,14 +132,15 @@ body{
         /* margin-bottom: 1rem; */
         text-decoration: none;
     }
-    li{
+    .Navlist{
+        color: white;
         /* margin: 0px; */
         margin-left: 0px;
         list-style: none;
         display: block;
         /* background-color: green; */
     }
-    ul{
+    #droplol{
         /* margin-block-start:0px; */
         /* margin: block end 0px; */
         padding-inline-start: 0px;
@@ -148,6 +149,20 @@ body{
         text-align: center;
         /* display: none; */
         color: black;
+        position: absolute;
+        margin-top: 10px;
+        /* width: 5rem; */
+        
+        /* overflow: hidden; */
+    }
+        #droplo{
+        /* margin-block-start:0px; */
+        /* margin: block end 0px; */
+        padding-inline-start: 0px;
+        background-color: transparent;
+        border-radius: 3px;
+        text-align: center;
+        /* display: none; */
         position: absolute;
         margin-top: 10px;
         /* width: 5rem; */
@@ -220,7 +235,11 @@ body{
         margin-right: auto;
         width: 90%;
         font-weight:500;
-        justify-content: space-around
+        justify-content: space-around;
+        font-size: .9rem;
+    }
+    #first_movie h1{
+        font-size: 2.2rem;
     }
     #movie-buttons{
         /* align-self: flex-end; */
@@ -304,19 +323,21 @@ body{
     }
   .housedcontent {
   margin-top: 2rem;
-  overflow-x: hidden;
 }
 
 .classification {
   color: white;
   margin-left: 3rem;
+  margin-bottom: 0px;
+  z-index: 1;
+  position: relative;
 }
 
 .contentcards {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
-  gap: 1.5rem;
+  gap: 1.2rem;
   padding: 1rem 3rem;
   scroll-behavior: smooth;
 }
@@ -325,35 +346,52 @@ body{
 }
 .thecontent {
   flex: 0 0 auto;
-  width: 180px;
+  width: 230px;
+  height: fit-content;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  transition: transform 0.3s ease;
+  /* justify-content: space-around; */
+  transition:  0.3s ease;
+  z-index: 10;
+  position: relative;
+  /* background-color: blue; */
 }
 
 .thecontent:hover {
-  transform: scale(1.1);
+  transform: scale(1.3);
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 .Cardposter {
   width: 100%;
-  height: auto;
-  border-radius: 5px;
+  height: 10rem;
+  margin-top: 20px;
+  border-radius: 5px 5px 0px 0px;
 }
 
 .contentdetails {
-background-color: red;
+  /* background-color: red; */
+  display: none;
+  /* margin-top: 0.5rem; */
+}
+.thecontent:hover .contentdetails{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* margin-top: 0.5rem; */
+  gap: 0rem;
+  background-color: rgba(44, 44, 44, 0.521);
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  height: 100px;
+  padding-top: 10px
 }
 
 .moviebuttons {
   display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  justify-content: space-between;
+  /* align-items: center; */
   flex-direction: row;
 }
 
@@ -361,7 +399,7 @@ background-color: red;
   display: flex;
   flex-direction: column;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
 }
 
 .buttoncontent {
@@ -372,7 +410,36 @@ background-color: red;
   background-color: #eee;
   cursor: pointer;
 }
-
+.contentdetails p{
+    margin: 10px;
+    color: white;
+}
+.contentdetails ul{
+    margin: 10px;
+}
+.contentname{
+    font-weight: bold;
+}
+.contentmatch{
+    color: rgb(1, 175, 1) !important;
+    font-weight: bold;
+    font-size: 14px;
+}
+.contenttaglist{
+    padding-inline-start: 0px;
+    list-style: disc;
+    margin-left: 0px;
+    font-size: 13px;
+    color: rgba(235, 235, 235, 0.822);
+}
+.contenttag{
+    display: inline-block;
+    margin-top: 0px;
+    margin-right: 20%;
+}
+.contenttag:before{
+    content: "•";
+}
 }
 @media(min-width : 760px){
     #Nav{
