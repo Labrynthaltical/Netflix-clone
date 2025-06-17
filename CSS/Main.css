@@ -361,6 +361,7 @@ body{
   transform: scale(1.3);
   margin-left: 3rem;
   margin-right: 3rem;
+  /* width: 300px; */
 }
 
 .Cardposter {
@@ -381,24 +382,29 @@ body{
   justify-content: center;
   gap: 0rem;
   background-color: rgba(44, 44, 44, 0.521);
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
   padding-bottom: 20px;
   height: 100px;
   padding-top: 10px
 }
 
 .moviebuttons {
+  margin-top: 1rem;
   display: flex;
-  justify-content: space-between;
-  /* align-items: center; */
+  width: 100%;
+  justify-content:start;
+  gap: 2%;
   flex-direction: row;
 }
-
+.moviebuttons :nth-child(5){
+    align-self: flex-end;
+    margin-left: auto;
+}
 .containbutton {
-  display: flex;
-  flex-direction: column;
-  margin-top: 1rem;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* margin-top: 1rem; */
   /* margin-bottom: 1rem; */
 }
 
