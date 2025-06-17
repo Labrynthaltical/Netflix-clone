@@ -411,10 +411,18 @@ body{
 .buttoncontent {
   height: 2rem;
   width: 2rem;
-  border: none;
+  border: 2px solid rgb(150, 150, 150);
   border-radius: 50%;
-  background-color: #eee;
+  background-color: #eeeeee00;
+  color: white;
   cursor: pointer;
+}
+.containbutton:nth-child(1) .buttoncontent{
+    border: none ;
+    background-color: white;
+}
+.containbutton:nth-child(1) i{
+    color: black !important;
 }
 .contentdetails p{
     margin: 10px;

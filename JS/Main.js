@@ -28,3 +28,25 @@ showninput.addEventListener("click", () => {
 toshow.addEventListener("blur", () => {
   toshow.style.display = "none";
 });
+
+
+// Set your API key here
+const apiKey = 'key=3a7d0cb81bd3425fb81201656250504&q=';
+const url = `https://api.watchmode.com/v1/sources/?apiKey=${apiKey}`;
+
+async function Getdata() {
+  try{
+
+  
+
+let response = await fetch(url);
+let json = await response.json();
+console.log(json);
+
+
+}
+
+catch (error){
+  console.log(error);
+}
+}
