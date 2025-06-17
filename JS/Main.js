@@ -31,22 +31,32 @@ toshow.addEventListener("blur", () => {
 
 
 // Set your API key here
-const apiKey = 'key=3a7d0cb81bd3425fb81201656250504&q=';
-const url = `https://api.watchmode.com/v1/sources/?apiKey=${apiKey}`;
+async function GetPopularTMDbTitles() {
+  try {
+    const apiKey = '185134e7391a581ac86e9efd4a3a4bb3'; // Replace with your TMDb API key
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1`;
 
-async function Getdata() {
-  try{
+    const response = await fetch(url);
+    const data = await response.json();
+    const movies = data.results;
 
-  
+    for (let i = 0; i < movies.length; i++) {
+      const item = movies[i];
+      const title = item.title || item.name;
+      const year = item.release_date ? item.release_date.split('-')[0] : 'N/A';
+      const posterPath = item.poster_path;
+      const posterUrl = posterPath
+        ? `https://image.tmdb.org/t/p/w500${posterPath}`
+        : 'https://via.placeholder.com/300x450?text=No+Image';
 
-let response = await fetch(url);
-let json = await response.json();
-console.log(json);
-
-
+      console.log(`#${i + 1}: ${title}`);
+      console.log(`Year: ${year}`);
+      console.log(`Poster: ${posterUrl}`);
+      console.log('---');
+    }
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
 }
 
-catch (error){
-  console.log(error);
-}
-}
+GetPopularTMDbTitles();
