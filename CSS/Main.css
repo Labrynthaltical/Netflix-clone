@@ -17,7 +17,7 @@ body{
         margin-bottom: auto;
     }
     #containall{
-        background-image: url(../Images/Poster_image.jfif);
+        /* background-image: url(../Images/Poster_image.jfif); */
         background-repeat: no-repeat;
         background-clip: border-box;
         background-size:cover;
