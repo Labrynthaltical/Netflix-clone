@@ -36,6 +36,7 @@ async function GetPopularTMDbTitles() {
     const response = await fetch(url);
     const data = await response.json();
     const movies = data.results;
+    console.log(movies)
     for (let i = 0; i < movies.length; i++) {
       const content = movies[i];
       const title = content.title || content.name;
@@ -52,14 +53,28 @@ async function GetPopularTMDbTitles() {
       console.log(`describtion: ${describtion}`);
       console.log(`Poster: ${PosterPath}`)
       
-const posterPath = movies[3].poster_path;
-const fullPosterUrl = posterPath
-  ? `https://image.tmdb.org/t/p/w500${posterPath}`
-  : 'https://via.placeholder.com/300x450?text=No+Image';
+      const posterPath = movies[0].poster_path;
+      const fullPosterUrl = posterPath
+        ? `https://image.tmdb.org/t/p/w500${posterPath}`
+        : 'https://via.placeholder.com/300x450?text=No+Image';
 
-document.getElementById("containall").style.backgroundImage = `url('${fullPosterUrl}')`;
+      document.getElementById("containall").style.backgroundImage = `url('${fullPosterUrl}')`;
+      document.getElementById("thefirst_title").innerHTML = movies[0].title
+      document.getElementById("thefirst_describtion").innerHTML = movies[0].overview
     }
-    console.log(movies[1])
+    const popularposters = document.getElementsByClassName("Cardposter_popular")
+
+    // const
+for (let i = 0; i < movies.length && i < popularposters.length; i++) {
+  const posterPath = movies[i].poster_path;
+  const posterUrl = posterPath
+  // const populardescribtion = movies[i].overview
+  // const 
+    ? `https://image.tmdb.org/t/p/w500${posterPath}`
+    : 'https://via.placeholder.com/300x450?text=No+Image';
+
+  popularposters[i].src = posterUrl;
+}
   } catch (error) {
     console.error('Error fetching data:', error);
   }
@@ -68,3 +83,5 @@ document.getElementById("containall").style.backgroundImage = `url('${fullPoster
 }
 GetPopularTMDbTitles();
 // document.getElementById("containall").style.backgroundimage="url(../Images/Movie5-21_jump_street.jfif)";
+
+// todo : add list items to your content cards using code from the task list project and add the genres to it

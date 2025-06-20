@@ -364,7 +364,7 @@ body{
   /* width: 300px; */
 }
 
-.Cardposter {
+.Cardposter_popular {
   width: 100%;
   height: 10rem;
   margin-top: 20px;
@@ -439,21 +439,21 @@ body{
     font-weight: bold;
     font-size: 14px;
 }
-.contenttaglist{
+.contenttag_popularlist{
     padding-inline-start: 0px;
-    list-style: disc;
+    list-style: none;
     margin-left: 0px;
     font-size: 13px;
     color: rgba(235, 235, 235, 0.822);
 }
-.contenttag{
+.contenttag_popular{
     display: inline-block;
     margin-top: 0px;
     margin-right: 20%;
 }
-.contenttag:before{
+/* .contenttag_popular:before{
     content: "•";
-}
+} */
 }
 @media(min-width : 760px){
     #Nav{
