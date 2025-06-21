@@ -70,7 +70,7 @@ async function GetPopularTMDbTitles() {
       document.getElementById("thefirst_describtion").innerHTML = movies[0].overview
     }
     const popularposters = document.getElementsByClassName("Cardposter_popular")
-
+    const popularposterspop = document.getElementsByClassName("Cardposter_popular-popup")
     // const
 for (let i = 0; i < movies.length && i < popularposters.length; i++) {
   const posterPath = movies[i].poster_path;
@@ -81,6 +81,7 @@ for (let i = 0; i < movies.length && i < popularposters.length; i++) {
     : 'https://via.placeholder.com/300x450?text=No+Image';
 
   popularposters[i].src = posterUrl;
+  popularposterspop[i].src = posterUrl;
 }
   } catch (error) {
     console.error('Error fetching data:', error);
@@ -92,3 +93,5 @@ GetPopularTMDbTitles();
 // document.getElementById("containall").style.backgroundimage="url(../Images/Movie5-21_jump_street.jfif)";
 
 // todo : add list items to your content cards using code from the task list project and add the genres to it
+
+// todo : finish the popup div
