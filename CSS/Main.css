@@ -358,7 +358,7 @@ body{
 }
 
 .thecontent:hover {
-  transform: scale(1.3);
+  /* transform: scale(1.3); */
   margin-left: 3rem;
   margin-right: 3rem;
   /* width: 300px; */
@@ -454,6 +454,22 @@ body{
 /* .contenttag_popular:before{
     content: "•";
 } */
+ .popupdiv{
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90%;
+  height: 90%;
+  background-color: rgba(0, 0, 0, 0.9); /* dark overlay */
+  /* z-index: 9999; */
+  padding: 2rem;
+  color: white;
+
+ }
+ .thecontent:hover .popupdiv{
+    display: flex;
+ }
 }
 @media(min-width : 760px){
     #Nav{

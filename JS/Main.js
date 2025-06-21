@@ -28,6 +28,13 @@ showninput.addEventListener("click", () => {
 toshow.addEventListener("blur", () => {
   toshow.style.display = "none";
 });
+
+function popupfunction(){
+
+}
+
+
+
 async function GetPopularTMDbTitles() {
   try {
     const apiKey = '185134e7391a581ac86e9efd4a3a4bb3';
