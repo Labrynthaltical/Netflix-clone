@@ -60,7 +60,7 @@ body{
      min-height: 100vh;
     margin: 0px;
     padding: 0px;
-    background-attachment: fixed;
+    -attachment: fixed;
     color: whitesmoke;
     background-color: black;
     font-family: sans-serif;

@@ -24,15 +24,37 @@ showninput.addEventListener("click", () => {
   toshow.focus();
 });
 
-// Hide the input when it loses focus
 toshow.addEventListener("blur", () => {
   toshow.style.display = "none";
 });
 
-function popupfunction(){
+const showbuttons = document.getElementsByClassName("displaymore");
+const popups = document.getElementsByClassName("popup-div_popular");
 
+// Show popup on button click
+for (let i = 0; i < showbuttons.length; i++) {
+  showbuttons[i].addEventListener("click", function (event) {
+    event.stopPropagation(); // Prevent bubbling
+
+    for (let i = 0; i < popups.length; i++) {
+      popups[i].style.display = "none";
+    }
+        popups[i].style.display = "inline";
+  }
+)
 }
 
+document.addEventListener("click", function () {
+  for (let i = 0; i < popups.length; i++) {
+    popups[i].style.display = "none";
+  }
+});
+
+// for (let i = 0; i < popups.length; i++) {
+//   popups[i].addEventListener("click", function (event) {
+//     event.stopPropagation();
+//   });
+// }
 
 
 async function GetPopularTMDbTitles() {
@@ -69,6 +91,7 @@ async function GetPopularTMDbTitles() {
       document.getElementById("thefirst_title").innerHTML = movies[0].title
       document.getElementById("thefirst_describtion").innerHTML = movies[0].overview
     }
+    const popupcover = document.getElementsByClassName("popup-div_popular")
     const popularposters = document.getElementsByClassName("Cardposter_popular")
     const popularposterspop = document.getElementsByClassName("Cardposter_popular-popup")
     // const
@@ -81,7 +104,7 @@ for (let i = 0; i < movies.length && i < popularposters.length; i++) {
     : 'https://via.placeholder.com/300x450?text=No+Image';
 
   popularposters[i].src = posterUrl;
-  popularposterspop[i].src = posterUrl;
+popupcover[i].style.backgroundImage = `url('${posterUrl}')`;
 }
   } catch (error) {
     console.error('Error fetching data:', error);
