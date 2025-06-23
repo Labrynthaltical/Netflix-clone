@@ -35,27 +35,26 @@ const popups = document.getElementsByClassName("popup-div_popular");
 for (let i = 0; i < showbuttons.length; i++) {
   showbuttons[i].addEventListener("click", function (event) {
     event.stopPropagation(); // Prevent bubbling
+    // Show only the one related to this button
+    popups[i].style.display = "inline";
+    // popups[i].style.backgroundImage = 'url("../Images/User2.png")'
+  });
 
-    for (let i = 0; i < popups.length; i++) {
-      popups[i].style.display = "none";
-    }
-        popups[i].style.display = "inline";
-  }
-)
-}
 
+// Hide all popups when clicking outside
 document.addEventListener("click", function () {
   for (let i = 0; i < popups.length; i++) {
     popups[i].style.display = "none";
   }
 });
 
-// for (let i = 0; i < popups.length; i++) {
-//   popups[i].addEventListener("click", function (event) {
-//     event.stopPropagation();
-//   });
-// }
-
+// Prevent click inside popup from closing it
+for (let i = 0; i < popups.length; i++) {
+  popups[i].addEventListener("click", function (event) {
+    event.stopPropagation();
+  });
+}
+}
 
 async function GetPopularTMDbTitles() {
   try {
@@ -94,7 +93,8 @@ async function GetPopularTMDbTitles() {
     const popupcover = document.getElementsByClassName("popup-div_popular")
     const popularposters = document.getElementsByClassName("Cardposter_popular")
     const popularposterspop = document.getElementsByClassName("Cardposter_popular-popup")
-    // const
+    const popupbutton = document.getElementsByClassName("displaymore")
+    // for(let j = 0; j < popupbutton.length;j++)
 for (let i = 0; i < movies.length && i < popularposters.length; i++) {
   const posterPath = movies[i].poster_path;
   const posterUrl = posterPath
@@ -104,8 +104,9 @@ for (let i = 0; i < movies.length && i < popularposters.length; i++) {
     : 'https://via.placeholder.com/300x450?text=No+Image';
 
   popularposters[i].src = posterUrl;
-popupcover[i].style.backgroundImage = `url('${posterUrl}')`;
+// popupcover[i].style.backgroundImage = `url('${posterUrl}')`;
 }
+return([response,url,response,data,movies,content,title,year,describtion,PosterPath,posterUrl])
   } catch (error) {
     console.error('Error fetching data:', error);
   }
