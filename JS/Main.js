@@ -28,34 +28,6 @@ toshow.addEventListener("blur", () => {
   toshow.style.display = "none";
 });
 
-const showbuttons = document.getElementsByClassName("displaymore");
-const popups = document.getElementsByClassName("popup-div_popular");
-
-// Show popup on button click
-for (let i = 0; i < showbuttons.length; i++) {
-  showbuttons[i].addEventListener("click", function (event) {
-    event.stopPropagation(); // Prevent bubbling
-    // Show only the one related to this button
-    popups[i].style.display = "inline";
-    // popups[i].style.backgroundImage = 'url("../Images/User2.png")'
-  });
-
-
-// Hide all popups when clicking outside
-document.addEventListener("click", function () {
-  for (let i = 0; i < popups.length; i++) {
-    popups[i].style.display = "none";
-  }
-});
-
-// Prevent click inside popup from closing it
-for (let i = 0; i < popups.length; i++) {
-  popups[i].addEventListener("click", function (event) {
-    event.stopPropagation();
-  });
-}
-}
-
 async function GetPopularTMDbTitles() {
   try {
     const apiKey = '185134e7391a581ac86e9efd4a3a4bb3';
@@ -98,15 +70,39 @@ async function GetPopularTMDbTitles() {
 for (let i = 0; i < movies.length && i < popularposters.length; i++) {
   const posterPath = movies[i].poster_path;
   const posterUrl = posterPath
-  // const populardescribtion = movies[i].overview
-  // const 
     ? `https://image.tmdb.org/t/p/w500${posterPath}`
     : 'https://via.placeholder.com/300x450?text=No+Image';
 
   popularposters[i].src = posterUrl;
 // popupcover[i].style.backgroundImage = `url('${posterUrl}')`;
 }
-return([response,url,response,data,movies,content,title,year,describtion,PosterPath,posterUrl])
+for (let j = 0; j < popupbutton.length; j++) {
+        // const posterUrl = PosterPath
+        // ? `https://image.tmdb.org/t/p/w500${PosterPath}`
+        // : 'https://via.placeholder.com/300x450?text=No+Image';
+  const contento = movies[j]
+  const PosterPath1 = contento.poster_path;
+  const posterUrl1 = PosterPath1
+      ? `https://image.tmdb.org/t/p/w500${PosterPath1}`
+    : 'https://via.placeholder.com/300x450?text=No+Image';
+  console.log(PosterPath1)
+  console.log(posterUrl1)
+  let showbuts = popupbutton[j];
+  let thebowl = document.getElementById("popupcontain")
+  showbuts.addEventListener("click", () => {
+  console.log("testing");
+    console.log(contento)
+
+  let popcontain = document.createElement("div")
+  popcontain.classList.add("popup-div_popular")
+  thebowl.appendChild(popcontain)
+  popcontain.style.display = "block"
+  popcontain.style.backgroundImage = `url('${posterUrl1}')`
+  // popcontain.style.backgroundImage = `url('${posterUrl[j]}')`
+  });
+}
+
+// return([response,url,response,data,movies,content,title,year,describtion,PosterPath,posterUrl])
   } catch (error) {
     console.error('Error fetching data:', error);
   }
@@ -119,3 +115,5 @@ GetPopularTMDbTitles();
 // todo : add list items to your content cards using code from the task list project and add the genres to it
 
 // todo : finish the popup div
+
+// todo : add popup divs just like the first task 
