@@ -2,8 +2,8 @@
     height: 100%;
     overflow-y: auto;
 } */
- #popupcontain{
-    
+ #whiten{
+color: white !important;
  }
 body{
     overflow-y: auto;

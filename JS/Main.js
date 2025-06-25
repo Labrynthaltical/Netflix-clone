@@ -88,19 +88,38 @@ for (let j = 0; j < popupbutton.length; j++) {
   console.log(PosterPath1)
   console.log(posterUrl1)
   let showbuts = popupbutton[j];
+  let titles = movies[j].title || movies[j].name;
   let thebowl = document.getElementById("popupcontain")
   showbuts.addEventListener("click", () => {
   console.log("testing");
     console.log(contento)
 
   let popcontain = document.createElement("div")
+  let popuptitle = document.createElement("h4")
+  popuptitle.classList.add("popup-div_popular-title")
+  let thetitle = document.createTextNode(titles)
+  popuptitle.appendChild(thetitle)
+  popuptitle.style.display = "inline"
+  popuptitle.style.color = "red"
   popcontain.classList.add("popup-div_popular")
   thebowl.appendChild(popcontain)
+  popcontain.appendChild(popuptitle)
   popcontain.style.display = "block"
   popcontain.style.backgroundImage = `url('${posterUrl1}')`
   // popcontain.style.backgroundImage = `url('${posterUrl[j]}')`
   });
 }
+const todelete = document.getElementById("popupcontain");
+
+todelete.addEventListener("click", () => {
+  console.log("event listener working so far");
+  let bedeleted = document.getElementsByClassName("popup-div_popular");
+
+  // loop backwards to avoid live collection issues
+  for (let i = bedeleted.length - 1; i >= 0; i--) {
+    bedeleted[i].remove();
+  }
+});
 
 // return([response,url,response,data,movies,content,title,year,describtion,PosterPath,posterUrl])
   } catch (error) {
