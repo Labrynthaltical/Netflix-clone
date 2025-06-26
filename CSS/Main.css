@@ -325,7 +325,7 @@ body{
         content: "🔬";
     }
   .housedcontent {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
 }
 
 .classification {
@@ -341,7 +341,7 @@ body{
   flex-direction: row;
   overflow-x: auto;
   gap: 1.2rem;
-  padding: 1rem 3rem;
+  padding: 0.1rem 3rem;
   scroll-behavior: smooth;
 }
 .contentcards::-webkit-scrollbar {
@@ -361,12 +361,10 @@ body{
 }
 
 .thecontent:hover {
-  /* transform: scale(1.3); */
-  margin-left: 1rem;
-  margin-right: 1rem;
-  width: 325px;
-  height: 350px;
-  margin-top: -2rem;
+    position:static ;
+  transform: scale(1.1);
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 .Cardposter_popular {
