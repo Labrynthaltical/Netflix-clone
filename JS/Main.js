@@ -1,20 +1,22 @@
-const totoggle = document.getElementById("helsen")
-const affected = document.getElementById("droplol")
-function toggleani(){
-    affected.classList.remove("animatedrop")
-    void affected.offsetWidth;
-    affected.classList.add("animatedrop")
-}
-totoggle.addEventListener("click",toggleani)
+const totoggle = document.getElementById("helsen");
+const affected = document.getElementById("droplol");
 
-const totoggle1 = document.getElementById("helse")
-const affected1 = document.getElementById("droplo")
-function toggleani1(){
-    affected1.classList.remove("animatedrop")
-    void affected1.offsetWidth;
-    affected1.classList.add("animatedrop")
+function toggleani() {
+  affected.classList.remove("animatedrop");
+  void affected.offsetWidth;
+  affected.classList.add("animatedrop");
 }
-totoggle1.addEventListener("click",toggleani1)
+totoggle.addEventListener("click", toggleani);
+
+const totoggle1 = document.getElementById("helse");
+const affected1 = document.getElementById("droplo");
+
+function toggleani1() {
+  affected1.classList.remove("animatedrop");
+  void affected1.offsetWidth;
+  affected1.classList.add("animatedrop");
+}
+totoggle1.addEventListener("click", toggleani1);
 
 const showninput = document.getElementById("join");
 const toshow = document.getElementById("searchmo");
@@ -36,12 +38,14 @@ async function GetPopularTMDbTitles() {
     const response = await fetch(url);
     const data = await response.json();
     const movies = data.results;
-    console.log(movies)
+
+    console.log(movies);
+
     for (let i = 0; i < movies.length; i++) {
       const content = movies[i];
       const title = content.title || content.name;
       const year = content.release_date ? content.release_date.split('-')[0] : 'N/A';
-      const describtion = content.overview
+      const describtion = content.overview;
       const PosterPath = content.poster_path;
       const posterUrl = PosterPath
         ? `https://image.tmdb.org/t/p/w500${PosterPath}`
@@ -51,88 +55,89 @@ async function GetPopularTMDbTitles() {
       console.log(`Year: ${year}`);
       console.log('---');
       console.log(`describtion: ${describtion}`);
-      console.log(`Poster: ${PosterPath}`)
-      
+      console.log(`Poster: ${PosterPath}`);
+
       const posterPath = movies[0].poster_path;
       const fullPosterUrl = posterPath
         ? `https://image.tmdb.org/t/p/w500${posterPath}`
         : 'https://via.placeholder.com/300x450?text=No+Image';
 
       document.getElementById("containall").style.backgroundImage = `url('${fullPosterUrl}')`;
-      document.getElementById("thefirst_title").innerHTML = movies[0].title
-      document.getElementById("thefirst_describtion").innerHTML = movies[0].overview
+      document.getElementById("thefirst_title").innerHTML = movies[0].title;
+      document.getElementById("thefirst_describtion").innerHTML = movies[0].overview;
     }
-    const popupcover = document.getElementsByClassName("popup-div_popular")
-    const popularposters = document.getElementsByClassName("Cardposter_popular")
-    const popularposterspop = document.getElementsByClassName("Cardposter_popular-popup")
-    const popupbutton = document.getElementsByClassName("displaymore")
-    // for(let j = 0; j < popupbutton.length;j++)
-for (let i = 0; i < movies.length && i < popularposters.length; i++) {
-  const posterPath = movies[i].poster_path;
-  const posterUrl = posterPath
-    ? `https://image.tmdb.org/t/p/w500${posterPath}`
-    : 'https://via.placeholder.com/300x450?text=No+Image';
 
-  popularposters[i].src = posterUrl;
-// popupcover[i].style.backgroundImage = `url('${posterUrl}')`;
-}
+    const popupcover = document.getElementsByClassName("popup-div_popular");
+    const popularposters = document.getElementsByClassName("Cardposter_popular");
+    const popularposterspop = document.getElementsByClassName("Cardposter_popular-popup");
+    const popupbutton = document.getElementsByClassName("displaymore");
+
+    for (let i = 0; i < movies.length && i < popularposters.length; i++) {
+      const posterPath = movies[i].poster_path;
+      const posterUrl = posterPath
+        ? `https://image.tmdb.org/t/p/w500${posterPath}`
+        : 'https://via.placeholder.com/300x450?text=No+Image';
+
+      popularposters[i].src = posterUrl;
+    }
+
 for (let j = 0; j < popupbutton.length; j++) {
-        // const posterUrl = PosterPath
-        // ? `https://image.tmdb.org/t/p/w500${PosterPath}`
-        // : 'https://via.placeholder.com/300x450?text=No+Image';
-  const contento = movies[j]
+  const contento = movies[j];
   const PosterPath1 = contento.poster_path;
   const posterUrl1 = PosterPath1
-      ? `https://image.tmdb.org/t/p/w500${PosterPath1}`
+    ? `https://image.tmdb.org/t/p/w500${PosterPath1}`
     : 'https://via.placeholder.com/300x450?text=No+Image';
-  console.log(PosterPath1)
-  console.log(posterUrl1)
+
   let showbuts = popupbutton[j];
   let titles = movies[j].title || movies[j].name;
-  let thebowl = document.getElementById("popupcontain")
-  showbuts.addEventListener("click", () => {
-  console.log("testing");
-    console.log(contento)
+  let thebowl = document.getElementById("popupcontain");
 
-  let popcontain = document.createElement("div")
-  let popuptitle = document.createElement("h4")
-  popuptitle.classList.add("popup-div_popular-title")
-  let thetitle = document.createTextNode(titles)
-  popuptitle.appendChild(thetitle)
-  popuptitle.style.display = "inline"
-  popuptitle.style.color = "red"
-  popcontain.classList.add("popup-div_popular")
-  thebowl.appendChild(popcontain)
-  popcontain.appendChild(popuptitle)
-  popcontain.style.display = "block"
-  popcontain.style.backgroundImage = `url('${posterUrl1}')`
-  // popcontain.style.backgroundImage = `url('${posterUrl[j]}')`
+  showbuts.addEventListener("click", () => {
+    console.log("testing");
+    console.log(contento);
+
+    let popcontain = document.createElement("div");
+    let popuptitle = document.createElement("h4");
+    popuptitle.classList.add("popup-div_popular-title");
+
+    let thetitle = document.createTextNode(titles);
+    popuptitle.appendChild(thetitle);
+    popuptitle.style.display = "inline";
+    popuptitle.style.color = "red";
+
+    popcontain.classList.add("popup-div_popular");
+    popcontain.id = "deleteme";
+
+    popcontain.style.display = "block";
+    popcontain.style.backgroundImage = `url('${posterUrl1}')`;
+
+    popcontain.appendChild(popuptitle);
+    thebowl.appendChild(popcontain);
+
+    // 🔒 Prevent immediate self-removal by delaying the listener
+    setTimeout(() => {
+      document.addEventListener(
+        "click",
+        function handleOutsideClick(e) {
+          if (!popcontain.contains(e.target)) {
+            console.log("Clicked outside popup – removing it");
+            popcontain.remove();
+            document.removeEventListener("click", handleOutsideClick);
+          }
+        },
+        { once: true }
+      );
+    }, 0);
   });
 }
-const todelete = document.getElementById("popupcontain");
 
-todelete.addEventListener("click", () => {
-  console.log("event listener working so far");
-  let bedeleted = document.getElementsByClassName("popup-div_popular");
-
-  // loop backwards to avoid live collection issues
-  for (let i = bedeleted.length - 1; i >= 0; i--) {
-    bedeleted[i].remove();
-  }
-});
-
-// return([response,url,response,data,movies,content,title,year,describtion,PosterPath,posterUrl])
   } catch (error) {
     console.error('Error fetching data:', error);
   }
-    
-
 }
+
 GetPopularTMDbTitles();
-// document.getElementById("containall").style.backgroundimage="url(../Images/Movie5-21_jump_street.jfif)";
 
-// todo : add list items to your content cards using code from the task list project and add the genres to it
-
-// todo : finish the popup div
-
-// todo : add popup divs just like the first task 
+// todo: add list items to your content cards using code from the task list project and add the genres to it
+// todo: finish the popup div
+// todo: add popup divs just like the first task
