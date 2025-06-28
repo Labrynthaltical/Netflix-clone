@@ -25,7 +25,6 @@ body{
         background-clip: border-box;
         background-size:cover;
         margin-bottom: 2rem;
-        background-position: center;
         /* display: flex; */
         /* flex-direction: column; */
         height: 100%;
@@ -267,7 +266,6 @@ body{
     #tocontwus{
         display: flex;
         justify-content: space-between;
-        align-items: center;
         border: none;
         outline: none;
         color: white;
@@ -290,7 +288,6 @@ body{
         content: "►";
         color: black;
         font-size: 20px;
-        align-items: center;
     }
     #conlast1{
     margin-top: 3rem;
@@ -368,10 +365,6 @@ body{
   transform: scale(1.1);
   margin-left: 3rem;
   margin-right: 3rem;
-  /* find solution for crappy hover animation 
-  ask if can have video posters
-  look out for hover and focus animations
-  */
 }
 
 .Cardposter_popular {
