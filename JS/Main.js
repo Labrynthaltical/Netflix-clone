@@ -87,10 +87,9 @@ async function GetPopularTMDbTitles() {
                 thebowl.appendChild(popcontain);
 
                 setTimeout(() => {
-                    document.addEventListener("click", function handleOutsideClick(e) {
+                    document.getElementById("allbutpop").addEventListener("click", function handleOutsideClick(e) {
                         if (!popcontain.contains(e.target) && !showbuts.contains(e.target)) {
                             popcontain.remove();
-                            document.removeEventListener("click", handleOutsideClick);
                         }
                     }
                   );

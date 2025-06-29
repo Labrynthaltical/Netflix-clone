@@ -360,7 +360,7 @@ body{
   /* background-color: blue; */
 }
 
-.thecontent:hover {
+.thecontent:focus-within {
     position:static ;
   transform: scale(1.1);
   margin-left: 3rem;
@@ -382,7 +382,7 @@ body{
   display: none;
   /* margin-top: 0.5rem; */
 }
-.thecontent:hover .contentdetails{
+.thecontent:focus-within .contentdetails{
   display: flex;
   flex-direction: column;
   justify-content: center;
