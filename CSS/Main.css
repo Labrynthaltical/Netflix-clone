@@ -24,6 +24,7 @@ body{
         background-repeat: no-repeat;
         background-clip: border-box;
         background-size:cover;
+        background-position: center;
         margin-bottom: 2rem;
         /* display: flex; */
         /* flex-direction: column; */
@@ -350,21 +351,25 @@ body{
 .thecontent {
   flex: 0 0 auto;
   width: 230px;
+  transition: 0.3s;
   height: fit-content;
   display: flex;
   flex-direction: column;
   /* justify-content: space-around; */
-  transition:  0.3s ease;
+  /* transition:  0.3s ease; */
   z-index: 10;
   position: relative;
+    animation: triggerContent 3s forwards;
+
   /* background-color: blue; */
 }
 
 .thecontent:focus-within {
-    position:static ;
-  transform: scale(1.1);
-  margin-left: 3rem;
-  margin-right: 3rem;
+    /* position:static ; */
+  transform: scale(1.3);
+  z-index: 99999999999;  
+  /* position: absolute; */
+  /* left: 50; */
 }
 
 .Cardposter_popular {
@@ -403,7 +408,7 @@ body{
   gap: 2%;
   flex-direction: row;
 }
-.moviebuttons :nth-child(5){
+.moviebuttons :nth-child(4){
     align-self: flex-end;
     margin-left: auto;
 }
@@ -560,4 +565,24 @@ body{
     height: 250px;
     overflow: hidden;
   }
+}
+@keyframes triggerContent {
+  to {
+    --details-visible: 1;
+  }
+}
+
+.contentdetails {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0s;
+}
+
+.thecontent:focus-within {
+  animation: triggerContent 3s forwards;
+}
+
+.thecontent:focus-within .contentdetails {
+  opacity: var(--details-visible, 0);
+  visibility: visible;
 }
