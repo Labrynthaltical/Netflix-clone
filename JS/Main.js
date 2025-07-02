@@ -47,7 +47,7 @@ async function GetPopularTMDbTitles() {
         for (let i = 0; i < movies.length && i < popularposters.length; i++) {
             const posterPath = movies[i].poster_path;
             const posterUrl = posterPath
-                ? `https://image.tmdb.org/t/p/w500${posterPath}`
+                ? `https://image.tmdb.org/t/p/original${posterPath}`
                 : 'https://via.placeholder.com/300x450?text=No+Image';
 
             popularposters[i].src = posterUrl;
@@ -57,7 +57,7 @@ async function GetPopularTMDbTitles() {
             const contento = movies[j];
             const PosterPath1 = contento.poster_path;
             const posterUrl1 = PosterPath1
-                ? `https://image.tmdb.org/t/p/w500${PosterPath1}`
+                ? `https://image.tmdb.org/t/p/original${PosterPath1}`
                 : 'https://via.placeholder.com/300x450?text=No+Image';
 
             let showbuts = popupbutton[j];
@@ -100,7 +100,7 @@ async function GetPopularTMDbTitles() {
         // Update first movie preview
         const posterPath = movies[0].poster_path;
         const fullPosterUrl = posterPath
-            ? `https://image.tmdb.org/t/p/w500${posterPath}`
+            ? `https://image.tmdb.org/t/p/original${posterPath}`
             : 'https://via.placeholder.com/300x450?text=No+Image';
 
         document.getElementById("containall").style.backgroundImage = `url('${fullPosterUrl}')`;

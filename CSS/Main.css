@@ -326,6 +326,7 @@ body{
         content: "🔬";
     }
   .housedcontent {
+    /* height: 1000px; */
   /* margin-top: 2rem; */
 }
 
@@ -365,6 +366,7 @@ body{
 }
 
 .thecontent:focus-within {
+    background-color: blue;
     /* position:static ; */
   transform: scale(1.3);
   z-index: 99999999999;  
@@ -392,16 +394,16 @@ body{
   flex-direction: column;
   justify-content: center;
   gap: 0rem;
-  background-color: rgba(44, 44, 44, 0.521);
+  /* background-color: rgba(44, 44, 44, 0.521); */
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 20px;
-  height: 100px;
+  height: fit-content;
   padding-top: 10px
 }
 
 .moviebuttons {
-  margin-top: 2rem;
+  /* margin-top: 2rem; */
   display: flex;
   width: 100%;
   justify-content:start;
