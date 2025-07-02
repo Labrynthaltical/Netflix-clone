@@ -351,7 +351,7 @@ body{
 }
 .thecontent {
   flex: 0 0 auto;
-  width: 230px;
+  /* width: 230px; */
   transition: 0.3s;
   height: fit-content;
   display: flex;
@@ -364,7 +364,31 @@ body{
 
   /* background-color: blue; */
 }
-
+.torank{
+    /* background-color: red; */
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+}
+.rankings{
+    width: 36%;
+    padding-bottom: 2.1rem;
+    display: inline-block;
+    transform: scaleY(1.5);
+  font-size: 140px;
+  font-weight: 900;
+  color: black;
+  z-index: 1;
+  /* top: -30px; */
+  /* left: -10px; */
+  pointer-events: none;
+  text-shadow:
+    -2px -2px 0 white,
+     2px -2px 0 white,
+    -2px  2px 0 white,
+     2px  2px 0 white,
+     0px  0px 6px white;
+}
 .thecontent:focus-within {
     background-color: blue;
     /* position:static ; */
