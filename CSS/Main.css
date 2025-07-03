@@ -326,6 +326,8 @@ body{
         content: "🔬";
     }
   .housedcontent {
+    z-index: 0;
+    max-height: 200px;
     /* height: 1000px; */
   /* margin-top: 2rem; */
 }
@@ -342,16 +344,21 @@ body{
   display: flex;
   flex-direction: row;
   overflow-x: auto;
+  /* overflow-y: hidden; */
+  position: relative;
   gap: 1.2rem;
   padding: 0.1rem 3rem;
   scroll-behavior: smooth;
+  /* max-height: 180px; */
+  z-index: 0;
 }
 .contentcards::-webkit-scrollbar {
   display: none;  
 }
 .thecontent {
+    /* background-color: rebeccapurple; */
   flex: 0 0 auto;
-  /* width: 230px; */
+  width: 200px;
   transition: 0.3s;
   height: fit-content;
   display: flex;
@@ -359,22 +366,30 @@ body{
   /* justify-content: space-around; */
   /* transition:  0.3s ease; */
   z-index: 10;
-  position: relative;
+  /* position: relative; */
     animation: triggerContent 3s forwards;
 
   /* background-color: blue; */
 }
 .torank{
     /* background-color: red; */
+    margin-right: 3rem;
     display: flex;
+    height: fit-content;
     flex-direction: row;
     gap: 0px;
+    margin-top: 10px;
 }
 .rankings{
-    width: 36%;
-    padding-bottom: 2.1rem;
-    display: inline-block;
+    /* background-color: purple !important; */
+    width: 44%;
     transform: scaleY(1.5);
+    margin-top: -1.5rem;
+    margin-bottom: 0rem;
+    display: inline-block;
+    height: auto;
+    /* height: 400px; */
+    /* transform: scaleY(1.5); */
   font-size: 140px;
   font-weight: 900;
   color: black;
@@ -383,28 +398,36 @@ body{
   /* left: -10px; */
   pointer-events: none;
   text-shadow:
-    -2px -2px 0 white,
-     2px -2px 0 white,
-    -2px  2px 0 white,
-     2px  2px 0 white,
-     0px  0px 6px white;
+    -1px -1px 0 rgb(211, 211, 211),
+     1px -1px 0 rgb(211, 211, 211),
+    -1px  1px 0 rgb(211, 211, 211),
+     1px  1px 0 rgb(211, 211, 211),
+     0px  0px 3px rgb(211, 211, 211);
 }
 .thecontent:focus-within {
-    background-color: blue;
+    /* background-color: blue; */
     /* position:static ; */
   transform: scale(1.3);
-  z-index: 99999999999;  
+  
+  z-index: 99999999999;
+  height: fit-content;
+  background-color: rgb(29, 29, 29);
+  /* background-color: red;   */
   /* position: absolute; */
   /* left: 50; */
 }
-
+.thecontent:focus-within .torank{
+    /* background-color: green !important; */
+    margin-top: 2.4rem;
+}
 .Cardposter_popular {
     display: flex;
     justify-content: center;
   width: 100%;
   height: 10rem;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   border-radius: 5px 5px 0px 0px;
+   z-index: 10;
 }
 .Cardposter_popular-popup{
     height: 70%;
@@ -420,12 +443,14 @@ body{
   flex-direction: column;
   justify-content: center;
   gap: 0rem;
+  /* background-color: blue !important; */
   /* background-color: rgba(44, 44, 44, 0.521); */
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 20px;
   height: fit-content;
-  padding-top: 10px
+  padding-top: 10px;
+  overflow: hidden;
 }
 
 .moviebuttons {
@@ -519,6 +544,10 @@ body{
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+ }
+ .thebin{
+    background-color: red;
+    z-index: -10;
  }
  .thecontent:hover .popup-div_popular{
     /* display: inline; */
