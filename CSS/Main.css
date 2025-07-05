@@ -25,6 +25,7 @@ body{
         background-clip: border-box;
         background-size:cover;
         background-position: center;
+        overflow-x: hidden;
         /* margin-bottom: 2rem; */
         /* display: flex; */
         /* flex-direction: column; */
