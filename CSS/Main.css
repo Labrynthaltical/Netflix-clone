@@ -364,7 +364,7 @@ body{
 .contentcards {
   display: flex;
   flex-direction: row;
-  /* overflow-x: auto; */
+  overflow-x: auto; 
   overflow-y: visible;
   position: relative;
   gap: 1.2rem;
