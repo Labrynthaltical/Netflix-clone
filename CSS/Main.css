@@ -336,7 +336,7 @@ body{
         flex-direction: column;
           position: relative;
   z-index: 0;
-  overflow: visible;
+  overflow-x:  visible;
         /* background-color: red; */
     }
   .housedcontent {
