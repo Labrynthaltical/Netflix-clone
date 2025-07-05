@@ -336,7 +336,7 @@ body{
         flex-direction: column;
           position: relative;
   z-index: 0;
-  overflow:auto;
+  overflow-y:auto;
   background-color: cyan;
         /* background-color: red; */
     }
