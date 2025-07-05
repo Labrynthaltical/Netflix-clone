@@ -113,3 +113,39 @@ async function GetPopularTMDbTitles() {
 }
 
 GetPopularTMDbTitles();
+
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    let currentPopup = null; // Reference to existing popup
+
+    document.querySelectorAll('.thecontent').forEach(el => {
+      el.addEventListener('focusin', () => {
+        // Remove previous popup if any
+        if (currentPopup) {
+          currentPopup.remove();
+          currentPopup = null;
+        }
+
+        // Create new popup
+        const popup = document.createElement('div');
+        popup.classList.add('popup-sim');
+        popup.innerHTML = '<p>I am a dynamic popup!</p>';
+        document.body.appendChild(popup);
+        currentPopup = popup;
+
+        // Position it near the focused .thecontent
+        const rect = el.getBoundingClientRect();
+        popup.style.top = `${rect.top + window.scrollY}px`;
+        popup.style.left = `${rect.left + window.scrollX}px`;
+        popup.style.display = 'block';
+      });
+
+      el.addEventListener('focusout', () => {
+        if (currentPopup) {
+          currentPopup.remove();
+          currentPopup = null;
+        }
+      });
+    });
+  });
