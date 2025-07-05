@@ -344,6 +344,7 @@ body{
     z-index: 20;
     max-height: 200px;
     position: relative;
+    background-color:blue;
     /* height: 1000px; */
   /* margin-top: 2rem; */
 }
