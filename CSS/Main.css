@@ -13,10 +13,10 @@ color: white !important;
     top: 0;
     left: 0;
     display: none;
-    z-index: 99999;
+    /* z-index: 99999; */
   }
 body{
-    overflow-y: auto;
+    overflow: hidden;
     height: 100%;
     margin: 0px;
     font-family: " Sans", Helvetica, Arial, sans-serif;
