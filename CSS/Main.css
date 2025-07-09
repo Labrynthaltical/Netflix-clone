@@ -10,13 +10,14 @@ color: white !important;
     width: 300px;
     height: 300px;
     background-color: green;
-    top: 0;
+    top: 110;
+    margin-top: -3rem;
     left: 0;
     display: none;
     /* z-index: 99999; */
   }
 body{
-    overflow: hidden;
+    overflow-x: hidden;
     height: 100%;
     margin: 0px;
     font-family: " Sans", Helvetica, Arial, sans-serif;
@@ -25,30 +26,18 @@ body{
 
 @media(min-width : 200px){
     #containall{
-        /* background-image: url(../Images/Poster_image.jfif); */
-        background-repeat: no-repeat;
-        background-clip: border-box;
-        background-size:cover;
-        background-position: center;
-        margin-bottom: 2rem;
-        /* display: flex; */
-        /* flex-direction: column; */
         height: 100%;
         min-height: 400px;
+  position: relative;
+  z-index: 0;
     }
     #contain{
         /* background-color: rgb(0, 0, 0); */
-<<<<<<< HEAD
         width: 100%;
         /* margin-right: auto; */
         /* margin-left: auto; */
           position: absolute;
   z-index: 1;
-=======
-        /* width: 90%; */
-        margin-right: auto;
-        margin-left: auto;
->>>>>>> 38ccae1298d56ca1454e16826a23278d3398bd3b
     }
     #Nav{
         display: flex;
@@ -258,6 +247,8 @@ body{
         font-weight:500;
         justify-content: space-around;
         font-size: .9rem;
+          position: relative;
+  z-index: 0;
     }
     #first_movie h1{
         font-size: 2.2rem;
@@ -342,44 +333,46 @@ body{
     #tocontwus1:before{
         content: "🔬";
     }
+    #allbutpop{
+        display: flex;
+        flex-direction: column;
+          position: relative;
+  z-index: 0;
+        /* background-color: red; */
+    }
   .housedcontent {
-    z-index: 0;
+    z-index: 20;
     max-height: 200px;
+    position: relative;
     /* height: 1000px; */
   /* margin-top: 2rem; */
 }
- .thecontent:focus-within.housedcontent:nth-child(1){
-    height: 1000000px;
- }
+
 .classification {
   color: white;
   margin-left: 3rem;
   margin-bottom: 0px;
+  margin-top: 0px;
   z-index: 1;
+  padding-bottom: 20px;
   position: relative;
+  max-height: 1px;
+  /* padding-bottom: 1rem; */
 }
 
 .contentcards {
   display: flex;
   flex-direction: row;
   overflow-x: auto;
-<<<<<<< HEAD
   overflow-y: hidden;
-=======
-  /* overflow-y: hidden; */
->>>>>>> 38ccae1298d56ca1454e16826a23278d3398bd3b
   position: relative;
   gap: 1.2rem;
   padding: 0.1rem 3rem;
   scroll-behavior: smooth;
-<<<<<<< HEAD
   z-index: 5;
   height: fit-content;
-=======
-  /* max-height: 180px; */
-  z-index: 0;
->>>>>>> 38ccae1298d56ca1454e16826a23278d3398bd3b
 }
+
 .contentcards::-webkit-scrollbar {
   display: none;  
 }
@@ -396,9 +389,8 @@ body{
   z-index: 10;
   /* position: relative; */
     animation: triggerContent 3s forwards;
-
-  /* background-color: blue; */
 }
+.thecontent .contentdetails{}
 .torank{
     /* background-color: red; */
     margin-right: 3rem;
@@ -407,6 +399,8 @@ body{
     flex-direction: row;
     gap: 0px;
     margin-top: 10px;
+    position: relative;
+    z-index: 9999;
 }
 .rankings{
     /* background-color: purple !important; */
@@ -432,22 +426,17 @@ body{
      1px  1px 0 rgb(211, 211, 211),
      0px  0px 3px rgb(211, 211, 211);
 }
-.thecontent:focus-within {
-    /* background-color: blue; */
-    /* position:static ; */
+/* .thecontent:focus-within {
   transform: scale(1.3);
-  
   z-index: 99999999999;
   height: fit-content;
-  background-color: rgb(29, 29, 29);
-  /* background-color: red;   */
-  /* position: absolute; */
-  /* left: 50; */
-}
+  background-color: rgb(255, 0, 0);
+} */
 .thecontent:focus-within .torank{
     /* background-color: green !important; */
-    margin-top: 2.4rem;
+    /* margin-top: 2.4rem; */
 }
+
 .Cardposter_popular {
     display: flex;
     justify-content: center;
@@ -461,12 +450,7 @@ body{
     height: 70%;
     width: 100%;
 }
-.contentdetails {
-  /* background-color: red; */
-  display: none;
-  /* margin-top: 0.5rem; */
-}
-.thecontent:focus-within .contentdetails{
+.contentdetails{
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -652,24 +636,4 @@ body{
     height: 250px;
     overflow: hidden;
   }
-}
-@keyframes triggerContent {
-  to {
-    --details-visible: 1;
-  }
-}
-
-.contentdetails {
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0s;
-}
-
-.thecontent:focus-within {
-  animation: triggerContent 3s forwards;
-}
-
-.thecontent:focus-within .contentdetails {
-  opacity: var(--details-visible, 0);
-  visibility: visible;
 }
