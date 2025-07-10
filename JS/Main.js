@@ -65,7 +65,7 @@ async function GetPopularTMDbTitles() {
             let showbuts = popupbutton[j];
             let titles = movies[j].title || movies[j].name;
             let thebowl = document.getElementById("popupcontain");
-           
+           returnvalues.push(titles)
             
 
             showbuts.addEventListener("click", (event) => {
@@ -110,91 +110,102 @@ async function GetPopularTMDbTitles() {
     } catch (error) {
         console.error('Error fetching data:', error);
     }
+    
 }
 
-GetPopularTMDbTitles().then(() => {
-console.log(returnvalues)
-
-});
+GetPopularTMDbTitles()
 
 
 
 
 document.addEventListener("DOMContentLoaded", () => {
-    let currentPopup = null;
-    let popupRemovalTimeout = null; // Track the timeout
+  let currentPopup = null;
+  let popupRemovalTimeout = null;
 
-    document.querySelectorAll('.thecontent').forEach(el => {
-        el.addEventListener('focusin', () => {
-            if (popupRemovalTimeout) {
-                clearTimeout(popupRemovalTimeout);
-                popupRemovalTimeout = null;
-            }
+  // Assuming .thecontent are containers that generate popups
+  document.querySelectorAll('.thecontent').forEach((el, index) => {
+    el.addEventListener('focusin', () => {
+      // Cancel any pending removal
+      if (popupRemovalTimeout) {
+        popupRemovalTimeout = null;
+      }
 
-            if (currentPopup) {
-                currentPopup.remove();
-                currentPopup = null;
-            }
+      // Remove old popup
+      if (currentPopup) {
+        currentPopup.remove();
+        currentPopup = null;
+      }
 
-            const popup = document.createElement('div');
-            popup.classList.add('popup-sim');
+      // Create new popup
+      const popup = document.createElement('div');
+      popup.classList.add('popup-sim');
+      popup.setAttribute('tabindex', '-1'); // Make popup focusable
 
-            const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
-            const movieTitle = el.querySelector(".contentname")?.textContent || "Untitled";
+      const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
+      const movieTitle = el.querySelector(".contentname")?.textContent || "Untitled";
 
-            const genreTags = Array.from(el.querySelectorAll(".contenttag_popular"))
-                .filter(li => li.textContent.trim() !== "")
-                .map(li => `<li class=\"contenttag_popular\">${li.textContent}</li>`)
-                .join("");
+      const genreTags = Array.from(el.querySelectorAll(".contenttag_popular"))
+        .filter(li => li.textContent.trim() !== "")
+        .map(li => `<li class="contenttag_popular">${li.textContent}</li>`)
+        .join("");
 
-            popup.innerHTML = `
-                <div class="thecontent" tabindex="0">
-                    <img class="Cardposter_popular" src="${posterSrc}">
-                    <div class="contentdetails">
-                        <div class="moviebuttons">
-                            <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
-                            <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
-                            <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
-                            <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
-                        </div>
-                        <div class="contentstats">
-                            <p class="contentname">${movieTitle}</p>
-                            <p class="contentmatch">75.54% Match</p>
-                            <ul class="contenttag_popularlist">
-                                ${genreTags}
-                            </ul>
-                        </div>
-                    </div>
-                </div>`;
+      popup.innerHTML = `
+        <div class="thecontent" tabindex="0">
+          <img class="Cardposter_popular" src="${posterSrc}">
+          <div class="contentdetails">
+            <div class="moviebuttons">
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
+              <div class="containbutton showmore"><button class="displaymore" ><i class="fa-solid fa-chevron-down"></i></button></div>
+            </div>
+            <div class="contentstats">
+              <p class="contentname">${movieTitle}</p>
+              <p class="contentmatch">75.54% Match</p>
+              <ul class="contenttag_popularlist">${genreTags}</ul>
+            </div>
+          </div>
+        </div>`;
 
-            document.body.appendChild(popup);
-            currentPopup = popup;
+      document.body.appendChild(popup);
+      currentPopup = popup;
 
-            const rect = el.getBoundingClientRect();
-            popup.style.top = `${rect.top + window.scrollY}px`;
-            popup.style.left = `${rect.left + window.scrollX}px`;
-            popup.style.display = 'block';
+      const rect = el.getBoundingClientRect();
+      popup.style.top = `${rect.top + window.scrollY}px`;
+      popup.style.left = `${rect.left + window.scrollX}px`;
+      popup.style.display = 'block';
 
-            const moreButton = popup.querySelector(".displaymore");
-            if (moreButton) {
-                moreButton.addEventListener("click", () => {
-                    console.log("Display more clicked!");
-                    popup.style.width = "1000px"
-                });
-            }
+      // Find the displaymore button inside this popup
+      const moreButton = popup.querySelector(".displaymore");
+      if (moreButton) {
+        moreButton.addEventListener("click", (e) => {
+          e.preventDefault();
+          
+          // Add a class or any action you want on button click
+          popup.classList.add("helphereplz");
+          // let anotherpop = document.createElement("div")
+          // document.getElementById("allbutpop").appendChild(anotherpop)
+
+          // anotherpop.classList.add("testme")
+
+          // anotherpop.id = "tripale"
+          popup.style.height = "500px"
         });
-
-el.addEventListener('focusout', (e) => {
-    popupRemovalTimeout = setTimeout(() => {
-        const focused = document.activeElement;
-        if (currentPopup && (!currentPopup.contains(focused))) {
-            currentPopup.remove();
-            currentPopup = null;
-        }
-    }, 150); 
-});
-
+      }
     });
-});
 
+    document.getElementById("allbutpop").addEventListener("click", () => {
+      document.querySelectorAll(".popup-sim").forEach(e => {
+        e.remove()
+      });
+    })
+
+  });
+});
+// 
+
+// let bigpop = document.getElementById("tripale")
+// bigpop.addEventListener("click", () => {
+//   console.log("ayyyy")
+// })
 
