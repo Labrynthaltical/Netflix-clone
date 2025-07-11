@@ -39,13 +39,11 @@ async function GetPopularTMDbTitles() {
         const response = await fetch(url);
         const data = await response.json();
         const movies = data.results;
-
+        console.log(movies)
+        console.log(movies[1].title)
         const popupcover = document.getElementsByClassName("popup-div_popular");
         const popularposters = document.getElementsByClassName("Cardposter_popular");
         const popupbutton = document.getElementsByClassName("displaymore");
-
-
-          
         for (let i = 0; i < movies.length && i < popularposters.length; i++) {
             const posterPath = movies[i].poster_path;
             const posterUrl = posterPath
@@ -54,7 +52,15 @@ async function GetPopularTMDbTitles() {
 
             popularposters[i].src = posterUrl;
         }
-
+        returnvalues.push(...movies)
+        const maincard = document.getElementsByClassName("thecontent-popular")
+        for(let i = 0; i <maincard.length; i++){
+          maincard[i].addEventListener("focus",() => {
+            console.log("clicked")
+            let titled = document.getElementsByClassName("contentname")
+          }
+        )
+                }
         for (let j = 0; j < popupbutton.length; j++) {
             const contento = movies[j];
             const PosterPath1 = contento.poster_path;
@@ -66,35 +72,10 @@ async function GetPopularTMDbTitles() {
             let titles = movies[j].title || movies[j].name;
             let thebowl = document.getElementById("popupcontain");
            returnvalues.push(titles)
-            
+            console.log(titles)
 
             showbuts.addEventListener("click", (event) => {
-                const existing = document.getElementById("deleteme");
-                if (existing) existing.remove();
 
-                let popcontain = document.createElement("div");
-                let popuptitle = document.createElement("h4");
-                popuptitle.classList.add("popup-div_popular-title");
-
-                let thetitle = document.createTextNode(titles);
-                popuptitle.appendChild(thetitle);
-                popuptitle.style.display = "inline";
-                popuptitle.style.color = "red";
-
-                popcontain.classList.add("popup-div_popular");
-                popcontain.id = "deleteme";
-                popcontain.style.display = "block";
-                popcontain.style.backgroundImage = `url('${posterUrl1}')`;
-
-                popcontain.appendChild(popuptitle);
-                thebowl.appendChild(popcontain);
-                setTimeout(() => {
-                    document.getElementById("allbutpop").addEventListener("click", function handleOutsideClick(e) {
-                        if (!popcontain.contains(e.target) && !showbuts.contains(e.target)) {
-                            popcontain.remove();
-                        }
-                    });
-                },);
             });
         }
 
@@ -115,35 +96,27 @@ async function GetPopularTMDbTitles() {
 
 GetPopularTMDbTitles()
 
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   let currentPopup = null;
   let popupRemovalTimeout = null;
 
-  // Assuming .thecontent are containers that generate popups
-  document.querySelectorAll('.thecontent').forEach((el, index) => {
+  document.querySelectorAll('.thecontent-popular').forEach((el, index) => {
     el.addEventListener('focusin', () => {
-      // Cancel any pending removal
       if (popupRemovalTimeout) {
         popupRemovalTimeout = null;
       }
 
-      // Remove old popup
       if (currentPopup) {
         currentPopup.remove();
         currentPopup = null;
       }
 
-      // Create new popup
       const popup = document.createElement('div');
       popup.classList.add('popup-sim');
-      popup.setAttribute('tabindex', '-1'); // Make popup focusable
+      popup.setAttribute('tabindex', '-1'); 
 
       const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
-      const movieTitle = el.querySelector(".contentname")?.textContent || "Untitled";
-
+      const movieTitle = returnvalues[index]?.title || "Untitled";
       const genreTags = Array.from(el.querySelectorAll(".contenttag_popular"))
         .filter(li => li.textContent.trim() !== "")
         .map(li => `<li class="contenttag_popular">${li.textContent}</li>`)
@@ -175,13 +148,11 @@ document.addEventListener("DOMContentLoaded", () => {
       popup.style.left = `${rect.left + window.scrollX}px`;
       popup.style.display = 'block';
 
-      // Find the displaymore button inside this popup
       const moreButton = popup.querySelector(".displaymore");
       if (moreButton) {
         moreButton.addEventListener("click", (e) => {
           e.preventDefault();
           
-          // Add a class or any action you want on button click
           popup.classList.add("helphereplz");
           // let anotherpop = document.createElement("div")
           // document.getElementById("allbutpop").appendChild(anotherpop)
@@ -208,4 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
 // bigpop.addEventListener("click", () => {
 //   console.log("ayyyy")
 // })
-
+console.log(returnvalues)
+console.log("------------------------")
+console.log(returnvalues[0])
