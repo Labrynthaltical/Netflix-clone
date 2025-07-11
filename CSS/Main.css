@@ -1,21 +1,20 @@
-/* html{
+ html{
     height: 100%;
-    overflow-y: auto;
-} */
+    /* overflow-y: auto; */
+} 
  #whiten{
 color: white !important;
  }
-   .popup-sim {
+.popup-sim {
     position: absolute;
+    top: 110px; /* Add unit */
+    left: 0;
     width: 300px;
     height: 300px;
     background-color: green;
-    top: 110;
-    margin-top: -3rem;
-    left: 0;
-    display: none;
-    /* z-index: 99999; */
-  }
+    z-index: 99999;
+    display: block; /* Make sure it’s not hidden */
+}
 body{
     overflow-x: hidden;
     height: 100%;
@@ -432,9 +431,16 @@ body{
   height: fit-content;
   background-color: rgb(255, 0, 0);
 } */
- .helphereplz{
-    /* background-color: red; */
- }
+.helphereplz {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    transform: translate(-63%, -50%);
+    background-color: red;
+    height: 600px;
+    width: 650px;
+}
+
 .thecontent-popular:focus-within .torank{
     /* background-color: green !important; */
     /* margin-top: 2.4rem; */
@@ -551,7 +557,7 @@ body{
     content: "•";
 } */
  .popup-div_popular{
-  display: none;
+  /* display: none; */
   position: fixed;
   /* margin-left: 30%; */
   /* margin-right: 30%; */

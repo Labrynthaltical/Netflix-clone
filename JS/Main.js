@@ -146,7 +146,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const rect = el.getBoundingClientRect();
       popup.style.top = `${rect.top + window.scrollY}px`;
       popup.style.left = `${rect.left + window.scrollX}px`;
-      popup.style.display = 'block';
+      // popup.style.display = 'inline';
+      
+      // popup.style.position = "absolute"
 
       const moreButton = popup.querySelector(".displaymore");
       if (moreButton) {
@@ -154,13 +156,14 @@ document.addEventListener("DOMContentLoaded", () => {
           e.preventDefault();
           
           popup.classList.add("helphereplz");
+
+          // popup.scrollIntoView()
           // let anotherpop = document.createElement("div")
           // document.getElementById("allbutpop").appendChild(anotherpop)
 
           // anotherpop.classList.add("testme")
 
           // anotherpop.id = "tripale"
-          popup.style.height = "500px"
         });
       }
     });
