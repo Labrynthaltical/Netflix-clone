@@ -431,14 +431,15 @@ body{
   height: fit-content;
   background-color: rgb(255, 0, 0);
 } */
-.helphereplz {
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    transform: translate(-63%, -50%);
-    background-color: red;
-    height: 600px;
-    width: 650px;
+.helphereplz{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+  background-color: blue;
+  width: 600px;
+  height: 600px;
 }
 
 .thecontent-popular:focus-within .torank{

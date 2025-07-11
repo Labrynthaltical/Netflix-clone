@@ -154,9 +154,18 @@ document.addEventListener("DOMContentLoaded", () => {
       if (moreButton) {
         moreButton.addEventListener("click", (e) => {
           e.preventDefault();
+            popup.style.top = "";
+            popup.style.left = "";
+            popup.style.position = "";
+            popup.classList.remove("popup-sim");
+
           
           popup.classList.add("helphereplz");
-
+          setTimeout( () => {
+            popup.classList.add("deletmoi")
+          100})
+      // popup.style.top = `${rect.top + window.scrollY}px`;
+      // popup.style.left = `${rect.left + window.scrollX}px`;
           // popup.scrollIntoView()
           // let anotherpop = document.createElement("div")
           // document.getElementById("allbutpop").appendChild(anotherpop)
@@ -168,8 +177,8 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    document.getElementById("allbutpop").addEventListener("click", () => {
-      document.querySelectorAll(".popup-sim").forEach(e => {
+    document.addEventListener("click", () => {
+      document.querySelectorAll(".deletmoi").forEach(e => {
         e.remove()
       });
     })
