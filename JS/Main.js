@@ -102,13 +102,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll('.thecontent-popular').forEach((el, index) => {
     el.addEventListener('focusin', () => {
-      if (popupRemovalTimeout) {
-        popupRemovalTimeout = null;
-      }
+if (popupRemovalTimeout) {
+  clearTimeout(popupRemovalTimeout);
+  popupRemovalTimeout = null;
+}
+
 
       if (currentPopup) {
         currentPopup.remove();
         currentPopup = null;
+        
       }
 
       const popup = document.createElement('div');
@@ -164,15 +167,6 @@ document.addEventListener("DOMContentLoaded", () => {
           setTimeout( () => {
             popup.classList.add("deletmoi")
           100})
-      // popup.style.top = `${rect.top + window.scrollY}px`;
-      // popup.style.left = `${rect.left + window.scrollX}px`;
-          // popup.scrollIntoView()
-          // let anotherpop = document.createElement("div")
-          // document.getElementById("allbutpop").appendChild(anotherpop)
-
-          // anotherpop.classList.add("testme")
-
-          // anotherpop.id = "tripale"
         });
       }
     });
