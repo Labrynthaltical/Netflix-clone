@@ -148,7 +148,7 @@ if (popupRemovalTimeout) {
 
       const rect = el.getBoundingClientRect();
       popup.style.top = `${rect.top + window.scrollY}px`;
-      popup.style.left = `${rect.left + window.scrollX}px`;
+      popup.style.left = `${rect.left + window.scrollX -40}px`;
       // popup.style.display = 'inline';
       
       // popup.style.position = "absolute"
