@@ -177,12 +177,20 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    document.addEventListener("click", () => {
+    document.getElementById("allbutpop").addEventListener("click", () => {
       document.querySelectorAll(".deletmoi").forEach(e => {
         e.remove()
       });
     })
-
+el.addEventListener('focusout', (e) => {
+    popupRemovalTimeout = setTimeout(() => {
+        const focused = document.activeElement;
+        if (currentPopup && (!currentPopup.contains(focused))) {
+            currentPopup.remove();
+            currentPopup = null;
+        }
+    }, 150); 
+});
   });
 });
 // 
