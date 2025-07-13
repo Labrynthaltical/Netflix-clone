@@ -54,13 +54,7 @@ async function GetPopularTMDbTitles() {
         }
         returnvalues.push(...movies)
         const maincard = document.getElementsByClassName("thecontent-popular")
-        for(let i = 0; i <maincard.length; i++){
-          maincard[i].addEventListener("focus",() => {
-            console.log("clicked")
-            let titled = document.getElementsByClassName("contentname")
-          }
-        )
-                }
+
         for (let j = 0; j < popupbutton.length; j++) {
             const contento = movies[j];
             const PosterPath1 = contento.poster_path;
@@ -149,9 +143,17 @@ if (popupRemovalTimeout) {
       const rect = el.getBoundingClientRect();
       popup.style.top = `${rect.top + window.scrollY}px`;
       popup.style.left = `${rect.left + window.scrollX -40}px`;
-      // popup.style.display = 'inline';
+
       
-      // popup.style.position = "absolute"
+      let problem = document.querySelectorAll(".popup-sim");
+      if (problem){
+        problem.forEach(e => {
+          e.addEventListener("focusout",() => {
+            e.remove()
+          })
+        })
+      }
+
 
       const moreButton = popup.querySelector(".displaymore");
       if (moreButton) {
@@ -187,6 +189,11 @@ el.addEventListener('focusout', (e) => {
 });
   });
 });
+document.querySelectorAll(".helphereplz").forEach(e => {
+  e.addEventListener("focusout", () => {
+    e.remove()
+  })
+})
 // 
 
 // let bigpop = document.getElementById("tripale")
