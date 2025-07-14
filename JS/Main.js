@@ -65,11 +65,10 @@ async function GetPopularTMDbTitles() {
             let showbuts = popupbutton[j];
             let titles = movies[j].title || movies[j].name;
             let thebowl = document.getElementById("popupcontain");
-           returnvalues.push(titles)
+            returnvalues.push(titles)
             console.log(titles)
 
             showbuts.addEventListener("click", (event) => {
-
             });
         }
 
@@ -85,7 +84,6 @@ async function GetPopularTMDbTitles() {
     } catch (error) {
         console.error('Error fetching data:', error);
     }
-    
 }
 
 GetPopularTMDbTitles()
@@ -96,16 +94,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll('.thecontent-popular').forEach((el, index) => {
     el.addEventListener('focusin', () => {
-if (popupRemovalTimeout) {
-  clearTimeout(popupRemovalTimeout);
-  popupRemovalTimeout = null;
-}
-
+      if (popupRemovalTimeout) {
+        clearTimeout(popupRemovalTimeout);
+        popupRemovalTimeout = null;
+      }
 
       if (currentPopup) {
         currentPopup.remove();
         currentPopup = null;
-        
       }
 
       const popup = document.createElement('div');
@@ -127,7 +123,7 @@ if (popupRemovalTimeout) {
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
-              <div class="containbutton showmore"><button class="displaymore" ><i class="fa-solid fa-chevron-down"></i></button></div>
+              <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
             </div>
             <div class="contentstats">
               <p class="contentname">${movieTitle}</p>
@@ -142,64 +138,56 @@ if (popupRemovalTimeout) {
 
       const rect = el.getBoundingClientRect();
       popup.style.top = `${rect.top + window.scrollY}px`;
-      popup.style.left = `${rect.left + window.scrollX -40}px`;
+      popup.style.left = `${rect.left + window.scrollX - 40}px`;
 
-      
       let problem = document.querySelectorAll(".popup-sim");
-      if (problem){
+      if (problem) {
         problem.forEach(e => {
-          e.addEventListener("focusout",() => {
-            e.remove()
-          })
-        })
+          e.addEventListener("focusout", () => {
+            e.remove();
+          });
+        });
       }
-
 
       const moreButton = popup.querySelector(".displaymore");
       if (moreButton) {
         moreButton.addEventListener("click", (e) => {
           e.preventDefault();
-            popup.style.top = "";
-            popup.style.left = "";
-            popup.style.position = "";
-            popup.classList.remove("popup-sim");
+          popup.style.top = "";
+          popup.style.left = "";
+          popup.style.position = "";
+          popup.classList.remove("popup-sim");
 
-          
           popup.classList.add("helphereplz");
-          setTimeout( () => {
-            popup.classList.add("deletmoi")
-          100})
+
+          setTimeout(() => {
+            popup.classList.add("deletmoi");
+            document.body.classList.add('noscroll');
+
+            popup.addEventListener("focusout", () => {
+              document.body.classList.remove('noscroll');
+              popup.remove();
+            });
+          }, 100);
         });
       }
     });
 
     document.getElementById("allbutpop").addEventListener("click", () => {
       document.querySelectorAll(".deletmoi").forEach(e => {
-        e.remove()
+        e.remove();
+        document.body.classList.remove('noscroll');
       });
-    })
-el.addEventListener('focusout', (e) => {
-    popupRemovalTimeout = setTimeout(() => {
+    });
+
+    el.addEventListener('focusout', (e) => {
+      popupRemovalTimeout = setTimeout(() => {
         const focused = document.activeElement;
         if (currentPopup && (!currentPopup.contains(focused))) {
-            currentPopup.remove();
-            currentPopup = null;
+          currentPopup.remove();
+          currentPopup = null;
         }
-    }, 150); 
-});
+      }, 150);
+    });
   });
 });
-document.querySelectorAll(".helphereplz").forEach(e => {
-  e.addEventListener("focusout", () => {
-    e.remove()
-  })
-})
-// 
-
-// let bigpop = document.getElementById("tripale")
-// bigpop.addEventListener("click", () => {
-//   console.log("ayyyy")
-// })
-console.log(returnvalues)
-console.log("------------------------")
-console.log(returnvalues[0])
