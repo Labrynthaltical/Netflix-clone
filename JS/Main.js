@@ -77,9 +77,9 @@ async function GetPopularTMDbTitles() {
             ? `https://image.tmdb.org/t/p/original${posterPath}`
             : 'https://via.placeholder.com/300x450?text=No+Image';
 
-        document.getElementById("first_movie").style.backgroundImage = `url('${fullPosterUrl}')`;
+        document.getElementById("containall").style.backgroundImage = `url('${fullPosterUrl}')`;
         document.getElementById("thefirst_title").innerHTML = movies[0].title;
-        document.getElementById("thefirst_describtion").innerHTML = movies[0].overview;
+        // document.getElementById("thefirst_describtion").innerHTML = movies[0].overview;
 
     } catch (error) {
         console.error('Error fetching data:', error);
