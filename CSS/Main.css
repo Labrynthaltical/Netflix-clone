@@ -410,12 +410,13 @@ body{
     /* background-color: red; */
     margin-right: 1rem;
     display: flex;
-    height: fit-content;
-    flex-direction: row;
+    /* height: fit-content; */
+    /* flex-direction: row; */
     gap: 0px;
     margin-top: 10px;
-    position: relative;
-    z-index: 9999;
+    /* position: relative; */
+    /* z-index: 9999; */
+    /* background-color: blue; */
 }
 .rankings{
     /* background-color: purple !important; */
@@ -423,7 +424,7 @@ body{
     transform: scaleY(1.5);
     margin-top: -1.5rem;
     margin-bottom: 0rem;
-    display: inline-block;
+    display: inline;
     height: auto;
     /* height: 400px; */
     /* transform: scaleY(1.5); */
@@ -440,6 +441,11 @@ body{
     -1px  1px 0 rgb(211, 211, 211),
      1px  1px 0 rgb(211, 211, 211),
      0px  0px 3px rgb(211, 211, 211);
+}
+.containrank{
+height: fit-content;
+display: flex;
+margin-right: -2.5rem;
 }
 /* .thecontent-popular:focus-within {
   transform: scale(1.3);
