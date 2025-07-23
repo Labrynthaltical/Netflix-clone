@@ -30,6 +30,7 @@ body{
   overflow: hidden;
   /* position: fixed; */
   height: 100vh;
+  backdrop-filter: blur(5px);
 }
 
 @media(min-width : 200px){
@@ -457,8 +458,8 @@ margin-right: -2.5rem;
   background-color: rgb(255, 0, 0);
 } */
 .helphereplz{
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 110%;
   left: 51%;
   transform: translate(-50%, -50%);
   z-index: 9999;
@@ -506,6 +507,11 @@ margin-right: -2.5rem;
 .Cardposter_popular-popup{
     height: 70%;
     width: 100%;
+}
+.contenttag_popularlist li{
+    color: white;
+    display: inline-block;
+    margin-right: 20px;
 }
 .contentdetails{
   display: flex;
