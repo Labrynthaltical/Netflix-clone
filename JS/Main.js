@@ -29,8 +29,24 @@ showninput.addEventListener("click", () => {
 toshow.addEventListener("blur", () => {
     toshow.style.display = "none";
 });
+const lookouttable = {}
+
+  const genreval = []
+async function fetchGenres() {
+  const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US');
+  const genredata = await res.json();
+  genredata.genres.forEach(g => lookouttable[g.id] = g.name);
+  genreval.push(genredata)
+  console.log(genredata)
+}
+fetchGenres()
+// console.log(genreval);
+
+
 
 const returnvalues = []
+
+
 
 async function GetPopularTMDbTitles() {
     try {
@@ -39,6 +55,13 @@ async function GetPopularTMDbTitles() {
         const response = await fetch(url);
         const data = await response.json();
         const movies = data.results;
+        const ratings = movies[5].overview;
+        // const tooverview = movies.overview
+        // console.log(ratings)
+        // console.log(movies.id[0])
+        console.log(ratings)
+        console.log(ratings * 10)
+        console.log(Math.floor(ratings * 10) + "%")
         console.log(movies)
         console.log(movies[1].title)
         const popupcover = document.getElementsByClassName("popup-div_popular");
@@ -63,10 +86,9 @@ async function GetPopularTMDbTitles() {
                 : 'https://via.placeholder.com/300x450?text=No+Image';
 
             let showbuts = popupbutton[j];
-            let titles = movies[j].title || movies[j].name;
-            let thebowl = document.getElementById("popupcontain");
-            returnvalues.push(titles)
-            console.log(titles)
+            // let titles = movies[j].title || movies[j].name;
+            // let thebowl = document.getElementById("popupcontain");
+            // console.log(titles)
 
             showbuts.addEventListener("click", (event) => {
             });
@@ -110,10 +132,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
       const movieTitle = returnvalues[index]?.title || "Untitled";
-      const genreTags = Array.from(el.querySelectorAll(".contenttag_popular"))
-        .filter(li => li.textContent.trim() !== "")
-        .map(li => `<li class="contenttag_popular">${li.textContent}</li>`)
-        .join("");
+      // for(let i = 0; i < returnvalues.)
+      
+
+
 
       popup.innerHTML = `
         <div class="thecontent" tabindex="0">
@@ -127,15 +149,23 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
             <div class="contentstats">
               <p class="contentname">${movieTitle}</p>
-              <p class="contentmatch">75.54% Match</p>
-              <ul class="contenttag_popularlist">${genreTags}</ul>
+              <ul class="contenttag_popularlist"></ul>
+            <p class="content_discribtion">${returnvalues[index]?.overview || "No description available"}</p>
             </div>
           </div>
         </div>`;
-
+      const thegenres = returnvalues[index].genre_ids
+      const namedgenres = thegenres.map(id => lookouttable[id]);
+      console.log(namedgenres)
       document.body.appendChild(popup);
       currentPopup = popup;
-
+      const thegenlist = document.querySelector(".contenttag_popularlist")
+      thegenlist.innerHTML = ""
+      namedgenres.forEach(hosting => {
+        const listing = document.createElement("li")
+        listing.innerHTML = hosting
+        thegenlist.appendChild(listing)
+      })
       const rect = el.getBoundingClientRect();
       popup.style.top = `${rect.top + window.scrollY}px`;
       popup.style.left = `${rect.left + window.scrollX - 40}px`;

@@ -16,6 +16,9 @@ color: white !important;
     border-radius: 5px; 
     display: block; 
 }
+.popup-sim .content_discribtion{
+    display: none;
+}
 body{
     overflow-x: hidden;
     height: 100%;
@@ -456,12 +459,12 @@ margin-right: -2.5rem;
 .helphereplz{
   position: fixed;
   top: 50%;
-  left: 50%;
+  left: 51%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-    max-height: 90vh;
+ max-height: 90vh;
   overflow-y: auto;
-  width: 600px;
+  width: 300px;
   height: fit-content;
 }
 .helphereplz::-webkit-scrollbar {
@@ -476,7 +479,7 @@ margin-right: -2.5rem;
     justify-content: space-between;
 }
 .helphereplz .Cardposter_popular{
-    height: 70%;
+    height: 40%;
 }
 .thecontent-popular:focus-within .torank{
     /* background-color: green !important; */
