@@ -104,11 +104,29 @@ async function GetPopularTMDbTitles() {
         // document.getElementById("thefirst_describtion").innerHTML = movies[0].overview;
 
     } catch (error) {
-        console.error('Error fetching data:', error);
+        console.error('An error has occoured:', error);
     }
 }
 
 GetPopularTMDbTitles()
+
+
+async function getvidtrailers(){
+  try{
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${1087192}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+    const data = await response.json();
+    console.log(data);
+  }
+  catch (error){
+    console.log("An error has occoured" + error)
+  }
+}
+getvidtrailers()
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   let currentPopup = null;
