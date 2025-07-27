@@ -110,21 +110,24 @@ async function GetPopularTMDbTitles() {
 
 GetPopularTMDbTitles()
 
-
+const givetrailer = []
 async function getvidtrailers(){
   try{
     const response = await fetch(`https://api.themoviedb.org/3/movie/${1087192}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
-    const data = await response.json();
-    console.log(data);
+    const viddata = await response.json();
+    // console.log(viddata);
+    // console.log(viddata.results[0])
+    givetrailer.push(viddata)
   }
   catch (error){
     console.log("An error has occoured" + error)
   }
 }
+
 getvidtrailers()
+console.log(givetrailer)
 
-
-
+// TODO : succesfully exctrat the trailer key to use to get the fitting trailer + make it so the trailer is set dynamically through [index]
 
 
 
@@ -157,7 +160,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
       popup.innerHTML = `
         <div class="thecontent" tabindex="0">
+        <div class= "containpost">
+        <iframe class="trailervidi" src="https://www.youtube.com/embed/N5s-7fgCRJE" allowfullscreen autoplay></iframe>
           <img class="Cardposter_popular" src="${posterSrc}">
+          </div>
           <div class="contentdetails">
             <div class="moviebuttons">
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
