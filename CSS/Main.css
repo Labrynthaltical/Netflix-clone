@@ -16,6 +16,9 @@ color: white !important;
     border-radius: 5px; 
     display: block; 
 }
+.popup-sim img{
+    display: none;
+}
 .popup-sim .content_discribtion{
     display: none;
 }

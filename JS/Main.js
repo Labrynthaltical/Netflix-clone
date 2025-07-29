@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", () => {
       popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
-        <iframe class="trailervidi" src="https://www.youtube.com/embed/N5s-7fgCRJE" allowfullscreen autoplay></iframe>
+        <iframe class="trailervidi" src="https://www.youtube.com/embed/N5s-7fgCRJE?autoplay=1&mute=1" allowfullscreen ></iframe>
           <img class="Cardposter_popular" src="${posterSrc}">
           </div>
           <div class="contentdetails">
