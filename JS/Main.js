@@ -111,27 +111,15 @@ async function GetPopularTMDbTitles() {
 GetPopularTMDbTitles()
 
 const givetrailer = []
-async function getvidtrailers(){
-  try{
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${1087192}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
-    const viddata = await response.json();
-    // console.log(viddata);
-    // console.log(viddata.results[0])
-    givetrailer.push(viddata)
-  }
-  catch (error){
-    console.log("An error has occoured" + error)
-  }
-}
 
-getvidtrailers()
+
 console.log(givetrailer)
 
 // TODO : succesfully exctrat the trailer key to use to get the fitting trailer + make it so the trailer is set dynamically through [index]
 
+const housinten = []
 
-
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function namedfunq() {
   let currentPopup = null;
   let popupRemovalTimeout = null;
 
@@ -154,14 +142,28 @@ document.addEventListener("DOMContentLoaded", () => {
       const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
       const movieTitle = returnvalues[index]?.title || "Untitled";
       // for(let i = 0; i < returnvalues.)
-      
+      const theintended = returnvalues[index].id
+      housinten.push(theintended)
 
-
-
+      async function getvidtrailers(){
+  await GetPopularTMDbTitles();
+  try{
+    const response = await fetch(`https://api.themoviedb.org/3/movie/${returnvalues[index].id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+    const viddata = await response.json();
+    // console.log(viddata);
+    // console.log(viddata.results[0])
+    givetrailer.push(viddata)
+    console.log(viddata)
+  }
+  catch (error){
+    console.log("An error has occoured" + error)
+  }
+}
+  getvidtrailers()
       popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
-        <iframe class="trailervidi" src="https://www.youtube.com/embed/G64TyjcQJB0?autoplay=1&mute=1" allowfullscreen ></iframe>
+        <iframe class="trailervidi" src="https://www.youtube.com/embed/${returnvalues[index].id}?autoplay=1&mute=1" allowfullscreen ></iframe>
           <img class="Cardposter_popular" src="${posterSrc}">
           </div>
           <div class="contentdetails">
