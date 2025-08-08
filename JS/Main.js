@@ -154,6 +154,12 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
     // console.log(viddata.results[0])
     givetrailer.push(viddata)
     console.log(viddata)
+    // console.log(viddata.results[0].key)
+    const embedkey = viddata.results[0].key
+    console.log(embedkey)
+    // document.getElementById("trailerpark").innerHTML.src = `https://youtu.be/WAXJrNeA6kU`
+    console.log(givetrailer[0].results[0].key)
+    console.log("+++++++++")
   }
   catch (error){
     console.log("An error has occoured" + error)
@@ -163,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
       popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
-        <iframe class="trailervidi" src="https://www.youtube.com/embed/${returnvalues[index].id}?autoplay=1&mute=1" allowfullscreen ></iframe>
+        <iframe class="trailervidi" id = "trailerpark" src="https://www.youtube.com/embed/${givetrailer[index].results[0].key}?autoplay=1&mute=1" allowfullscreen ></iframe>
           <img class="Cardposter_popular" src="${posterSrc}">
           </div>
           <div class="contentdetails">
