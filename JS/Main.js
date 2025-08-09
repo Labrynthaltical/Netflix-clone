@@ -31,22 +31,17 @@ toshow.addEventListener("blur", () => {
 });
 const lookouttable = {}
 
-  const genreval = []
+const genreval = []
 async function fetchGenres() {
-  const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US');
-  const genredata = await res.json();
-  genredata.genres.forEach(g => lookouttable[g.id] = g.name);
-  genreval.push(genredata)
-  console.log(genredata)
+    const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US');
+    const genredata = await res.json();
+    genredata.genres.forEach(g => lookouttable[g.id] = g.name);
+    genreval.push(genredata)
+    console.log(genredata)
 }
 fetchGenres()
-// console.log(genreval);
-
-
 
 const returnvalues = []
-
-
 
 async function GetPopularTMDbTitles() {
     try {
@@ -56,14 +51,13 @@ async function GetPopularTMDbTitles() {
         const data = await response.json();
         const movies = data.results;
         const ratings = movies[5].overview;
-        // const tooverview = movies.overview
-        // console.log(ratings)
-        // console.log(movies.id[0])
+
         console.log(ratings)
         console.log(ratings * 10)
         console.log(Math.floor(ratings * 10) + "%")
         console.log(movies)
         console.log(movies[1].title)
+
         const popupcover = document.getElementsByClassName("popup-div_popular");
         const popularposters = document.getElementsByClassName("Cardposter_popular");
         const popupbutton = document.getElementsByClassName("displaymore");
@@ -86,10 +80,6 @@ async function GetPopularTMDbTitles() {
                 : 'https://via.placeholder.com/300x450?text=No+Image';
 
             let showbuts = popupbutton[j];
-            // let titles = movies[j].title || movies[j].name;
-            // let thebowl = document.getElementById("popupcontain");
-            // console.log(titles)
-
             showbuts.addEventListener("click", (event) => {
             });
         }
@@ -101,7 +91,6 @@ async function GetPopularTMDbTitles() {
 
         document.getElementById("containall").style.backgroundImage = `url('${fullPosterUrl}')`;
         document.getElementById("thefirst_title").innerHTML = movies[0].title;
-        // document.getElementById("thefirst_describtion").innerHTML = movies[0].overview;
 
     } catch (error) {
         console.error('An error has occoured:', error);
@@ -111,65 +100,64 @@ async function GetPopularTMDbTitles() {
 GetPopularTMDbTitles()
 
 const givetrailer = []
-
-
 console.log(givetrailer)
 
-// TODO : succesfully exctrat the trailer key to use to get the fitting trailer + make it so the trailer is set dynamically through [index]
-
 const housinten = []
+const pushresult = []
 
 document.addEventListener("DOMContentLoaded", function namedfunq() {
-  let currentPopup = null;
-  let popupRemovalTimeout = null;
+    let currentPopup = null;
+    let popupRemovalTimeout = null;
 
-  document.querySelectorAll('.thecontent-popular').forEach((el, index) => {
-    el.addEventListener('focusin', () => {
-      if (popupRemovalTimeout) {
-        clearTimeout(popupRemovalTimeout);
-        popupRemovalTimeout = null;
-      }
+    document.querySelectorAll('.thecontent-popular').forEach((el, index) => {
+        el.addEventListener('focusin', () => {
+            if (popupRemovalTimeout) {
+                clearTimeout(popupRemovalTimeout);
+                popupRemovalTimeout = null;
+            }
 
-      if (currentPopup) {
-        currentPopup.remove();
-        currentPopup = null;
-      }
+            if (currentPopup) {
+                currentPopup.remove();
+                currentPopup = null;
+            }
 
-      const popup = document.createElement('div');
-      popup.classList.add('popup-sim');
-      popup.setAttribute('tabindex', '-1'); 
+            const popup = document.createElement('div');
+            popup.classList.add('popup-sim');
+            popup.setAttribute('tabindex', '-1');
 
-      const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
-      const movieTitle = returnvalues[index]?.title || "Untitled";
-      // for(let i = 0; i < returnvalues.)
-      const theintended = returnvalues[index].id
-      housinten.push(theintended)
+            const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
+            const movieTitle = returnvalues[index]?.title || "Untitled";
+            const theintended = returnvalues[index].id
+            housinten.push(theintended)
 
-      async function getvidtrailers(){
-  await GetPopularTMDbTitles();
-  try{
-    const response = await fetch(`https://api.themoviedb.org/3/movie/${returnvalues[index].id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
-    const viddata = await response.json();
-    // console.log(viddata);
-    // console.log(viddata.results[0])
-    givetrailer.push(viddata)
-    console.log(viddata)
-    // console.log(viddata.results[0].key)
-    const embedkey = viddata.results[0].key
-    console.log(embedkey)
-    // document.getElementById("trailerpark").innerHTML.src = `https://youtu.be/WAXJrNeA6kU`
-    console.log(givetrailer[0].results[0].key)
-    console.log("+++++++++")
-  }
-  catch (error){
-    console.log("An error has occoured" + error)
-  }
-}
-  getvidtrailers()
-      popup.innerHTML = `
+            async function getvidtrailers() {
+                await GetPopularTMDbTitles();
+                try {
+                    const response = await fetch(`https://api.themoviedb.org/3/movie/${returnvalues[index].id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+                    const viddata = await response.json();
+                    givetrailer.push(viddata);
+                    console.log(viddata);
+                    console.log(viddata.results[0]);
+                    console.log("+++++++++");
+
+                    setTimeout(() => {
+                        const embedkey = givetrailer[index]?.results?.[0]?.key;
+                        if (embedkey) {
+                            const iframe = popup.querySelector("#trailerpark");
+                            iframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1`;
+                        }
+                    }, 500);
+
+                } catch (error) {
+                    console.log("An error has occoured" + error)
+                }
+            }
+            getvidtrailers()
+
+            popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
-        <iframe class="trailervidi" id = "trailerpark" src="https://www.youtube.com/embed/${givetrailer[index].results[0].key}?autoplay=1&mute=1" allowfullscreen ></iframe>
+        <iframe class="trailervidi" id = "trailerpark" src="" allowfullscreen ></iframe>
           <img class="Cardposter_popular" src="${posterSrc}">
           </div>
           <div class="contentdetails">
@@ -186,70 +174,71 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             </div>
           </div>
         </div>`;
-      const thegenres = returnvalues[index].genre_ids
-      const namedgenres = thegenres.map(id => lookouttable[id]);
-      console.log(namedgenres)
-      document.body.appendChild(popup);
-      currentPopup = popup;
-      const thegenlist = document.querySelector(".contenttag_popularlist")
-      thegenlist.innerHTML = ""
-      namedgenres.forEach(hosting => {
-        const listing = document.createElement("li")
-        listing.innerHTML = hosting
-        thegenlist.appendChild(listing)
-      })
-      const rect = el.getBoundingClientRect();
-      popup.style.top = `${rect.top + window.scrollY}px`;
-      popup.style.left = `${rect.left + window.scrollX - 40}px`;
 
-      let problem = document.querySelectorAll(".popup-sim");
-      if (problem) {
-        problem.forEach(e => {
-          e.addEventListener("focusout", () => {
-            e.remove();
-          });
+            const thegenres = returnvalues[index].genre_ids
+            const namedgenres = thegenres.map(id => lookouttable[id]);
+            console.log(namedgenres)
+            document.body.appendChild(popup);
+            currentPopup = popup;
+            const thegenlist = document.querySelector(".contenttag_popularlist")
+            thegenlist.innerHTML = ""
+            namedgenres.forEach(hosting => {
+                const listing = document.createElement("li")
+                listing.innerHTML = hosting
+                thegenlist.appendChild(listing)
+            })
+            const rect = el.getBoundingClientRect();
+            popup.style.top = `${rect.top + window.scrollY}px`;
+            popup.style.left = `${rect.left + window.scrollX - 40}px`;
+
+            let problem = document.querySelectorAll(".popup-sim");
+            if (problem) {
+                problem.forEach(e => {
+                    e.addEventListener("focusout", () => {
+                        e.remove();
+                    });
+                });
+            }
+
+            const moreButton = popup.querySelector(".displaymore");
+            if (moreButton) {
+                moreButton.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    popup.style.top = "";
+                    popup.style.left = "";
+                    popup.style.position = "";
+                    popup.classList.remove("popup-sim");
+
+                    popup.classList.add("helphereplz");
+
+                    setTimeout(() => {
+                        popup.classList.add("deletmoi");
+                        document.body.classList.add('noscroll');
+
+                        popup.addEventListener("focusout", () => {
+                            document.body.classList.remove('noscroll');
+                            popup.remove();
+                        });
+                    }, 100);
+                });
+            }
         });
-      }
 
-      const moreButton = popup.querySelector(".displaymore");
-      if (moreButton) {
-        moreButton.addEventListener("click", (e) => {
-          e.preventDefault();
-          popup.style.top = "";
-          popup.style.left = "";
-          popup.style.position = "";
-          popup.classList.remove("popup-sim");
-
-          popup.classList.add("helphereplz");
-
-          setTimeout(() => {
-            popup.classList.add("deletmoi");
-            document.body.classList.add('noscroll');
-
-            popup.addEventListener("focusout", () => {
-              document.body.classList.remove('noscroll');
-              popup.remove();
+        document.getElementById("allbutpop").addEventListener("click", () => {
+            document.querySelectorAll(".deletmoi").forEach(e => {
+                e.remove();
+                document.body.classList.remove('noscroll');
             });
-          }, 100);
         });
-      }
-    });
 
-    document.getElementById("allbutpop").addEventListener("click", () => {
-      document.querySelectorAll(".deletmoi").forEach(e => {
-        e.remove();
-        document.body.classList.remove('noscroll');
-      });
+        el.addEventListener('focusout', (e) => {
+            popupRemovalTimeout = setTimeout(() => {
+                const focused = document.activeElement;
+                if (currentPopup && (!currentPopup.contains(focused))) {
+                    currentPopup.remove();
+                    currentPopup = null;
+                }
+            }, 150);
+        });
     });
-
-    el.addEventListener('focusout', (e) => {
-      popupRemovalTimeout = setTimeout(() => {
-        const focused = document.activeElement;
-        if (currentPopup && (!currentPopup.contains(focused))) {
-          currentPopup.remove();
-          currentPopup = null;
-        }
-      }, 150);
-    });
-  });
 });
