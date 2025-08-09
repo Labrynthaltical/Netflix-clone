@@ -142,10 +142,8 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
                     setTimeout(() => {
                         const embedkey = givetrailer[index]?.results?.[0]?.key;
-                        if (embedkey) {
                             const iframe = popup.querySelector("#trailerpark");
-                            iframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1`;
-                        }
+                            iframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1`
                     }, 500);
 
                 } catch (error) {
@@ -158,7 +156,6 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
         <iframe class="trailervidi" id = "trailerpark" src="" allowfullscreen ></iframe>
-          <img class="Cardposter_popular" src="${posterSrc}">
           </div>
           <div class="contentdetails">
             <div class="moviebuttons">
