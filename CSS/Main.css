@@ -22,6 +22,10 @@ color: white !important;
 .popup-sim .content_discribtion{
     display: none;
 }
+.popup-sim iframe{
+    outline: none;
+    border: none;
+}
 body{
     overflow-x: hidden;
     height: 100%;
@@ -497,6 +501,10 @@ margin-right: -2.5rem;
 }
 .helphereplz .Cardposter_popular{
     height: 40%;
+}
+.helphereplz iframe{
+    border: none;
+    outline: none;
 }
 .thecontent-popular:focus-within .torank{
     /* background-color: green !important; */
