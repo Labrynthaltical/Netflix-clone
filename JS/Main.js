@@ -29,19 +29,20 @@ showninput.addEventListener("click", () => {
 toshow.addEventListener("blur", () => {
     toshow.style.display = "none";
 });
-const lookouttable = {}
 
-const genreval = []
+const lookouttable = {};
+const genreval = [];
+
 async function fetchGenres() {
     const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US');
     const genredata = await res.json();
     genredata.genres.forEach(g => lookouttable[g.id] = g.name);
-    genreval.push(genredata)
-    console.log(genredata)
+    genreval.push(genredata);
+    console.log(genredata);
 }
-fetchGenres()
+fetchGenres();
 
-const returnvalues = []
+const returnvalues = [];
 
 async function GetPopularTMDbTitles() {
     try {
@@ -52,25 +53,26 @@ async function GetPopularTMDbTitles() {
         const movies = data.results;
         const ratings = movies[5].overview;
 
-        console.log(ratings)
-        console.log(ratings * 10)
-        console.log(Math.floor(ratings * 10) + "%")
-        console.log(movies)
-        console.log(movies[1].title)
+        console.log(ratings);
+        console.log(ratings * 10);
+        console.log(Math.floor(ratings * 10) + "%");
+        console.log(movies);
+        console.log(movies[1].title);
 
         const popupcover = document.getElementsByClassName("popup-div_popular");
         const popularposters = document.getElementsByClassName("Cardposter_popular");
         const popupbutton = document.getElementsByClassName("displaymore");
+
         for (let i = 0; i < movies.length && i < popularposters.length; i++) {
             const posterPath = movies[i].poster_path;
             const posterUrl = posterPath
                 ? `https://image.tmdb.org/t/p/original${posterPath}`
                 : 'https://via.placeholder.com/300x450?text=No+Image';
-
             popularposters[i].src = posterUrl;
         }
-        returnvalues.push(...movies)
-        const maincard = document.getElementsByClassName("thecontent-popular")
+
+        returnvalues.push(...movies);
+        const maincard = document.getElementsByClassName("thecontent-popular");
 
         for (let j = 0; j < popupbutton.length; j++) {
             const contento = movies[j];
@@ -80,8 +82,7 @@ async function GetPopularTMDbTitles() {
                 : 'https://via.placeholder.com/300x450?text=No+Image';
 
             let showbuts = popupbutton[j];
-            showbuts.addEventListener("click", (event) => {
-            });
+            showbuts.addEventListener("click", (event) => {});
         }
 
         const posterPath = movies[0].poster_path;
@@ -96,14 +97,13 @@ async function GetPopularTMDbTitles() {
         console.error('An error has occoured:', error);
     }
 }
+GetPopularTMDbTitles();
 
-GetPopularTMDbTitles()
+const givetrailer = [];
+console.log(givetrailer);
 
-const givetrailer = []
-console.log(givetrailer)
-
-const housinten = []
-const pushresult = []
+const housinten = [];
+const pushresult = [];
 
 document.addEventListener("DOMContentLoaded", function namedfunq() {
     let currentPopup = null;
@@ -127,8 +127,8 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
             const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
             const movieTitle = returnvalues[index]?.title || "Untitled";
-            const theintended = returnvalues[index].id
-            housinten.push(theintended)
+            const theintended = returnvalues[index].id;
+            housinten.push(theintended);
 
             async function getvidtrailers() {
                 await GetPopularTMDbTitles();
@@ -142,15 +142,15 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
                     setTimeout(() => {
                         const embedkey = givetrailer[index]?.results?.[0]?.key;
-                            const iframe = popup.querySelector("#trailerpark");
-                            iframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1`
+                        const iframe = popup.querySelector("#trailerpark");
+                        iframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1`;
                     }, 500);
 
                 } catch (error) {
-                    console.log("An error has occoured" + error)
+                    console.log("An error has occoured" + error);
                 }
             }
-            getvidtrailers()
+            getvidtrailers();
 
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
@@ -172,18 +172,21 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
           </div>
         </div>`;
 
-            const thegenres = returnvalues[index].genre_ids
+            const thegenres = returnvalues[index].genre_ids;
             const namedgenres = thegenres.map(id => lookouttable[id]);
-            console.log(namedgenres)
+            console.log(namedgenres);
+
             document.body.appendChild(popup);
             currentPopup = popup;
-            const thegenlist = document.querySelector(".contenttag_popularlist")
-            thegenlist.innerHTML = ""
+
+            const thegenlist = document.querySelector(".contenttag_popularlist");
+            thegenlist.innerHTML = "";
             namedgenres.forEach(hosting => {
-                const listing = document.createElement("li")
-                listing.innerHTML = hosting
-                thegenlist.appendChild(listing)
-            })
+                const listing = document.createElement("li");
+                listing.innerHTML = hosting;
+                thegenlist.appendChild(listing);
+            });
+
             const rect = el.getBoundingClientRect();
             popup.style.top = `${rect.top + window.scrollY}px`;
             popup.style.left = `${rect.left + window.scrollX - 40}px`;
@@ -205,7 +208,6 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                     popup.style.left = "";
                     popup.style.position = "";
                     popup.classList.remove("popup-sim");
-
                     popup.classList.add("helphereplz");
 
                     setTimeout(() => {
@@ -239,3 +241,48 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
         });
     });
 });
+
+
+
+async function gettingactioncontent() {
+    try{
+    const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
+    const Action_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=28,12`)
+    const Action_Shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=10759`)
+    
+    
+    
+    
+    // const Action_Shows_epi = 
+
+
+    const clearAction_Shows = await Action_Shows.json()
+
+    clearAction_Shows.results.forEach(e => {
+
+        async function trying() {
+          try{
+    const Action_Shows_epi = await fetch(`https://api.themoviedb.org/3/tv/${e.id}?api_key=${APIkey}`)
+    const ClearAction_Shows_epi = Action_Shows_epi.json()
+    console.log(ClearAction_Shows_epi)
+    //  console.log(Action_Shows_epi)   
+
+          }
+           catch (error) {
+        console.error('An error has occoured:', error);
+    }  
+        }
+        trying()
+    });
+
+    console.log(clearAction_Shows)
+
+
+
+
+}
+ catch (error) {
+        console.error('An error has occoured:', error);
+    }
+}
+gettingactioncontent()
