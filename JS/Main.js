@@ -263,8 +263,9 @@ async function gettingactioncontent() {
         async function trying() {
           try{
     const Action_Shows_epi = await fetch(`https://api.themoviedb.org/3/tv/${e.id}?api_key=${APIkey}`)
-    const ClearAction_Shows_epi = Action_Shows_epi.json()
-    console.log(ClearAction_Shows_epi)
+    const ClearAction_Shows_epi = await Action_Shows_epi.json()
+    console.log(ClearAction_Shows_epi.name)
+    
     //  console.log(Action_Shows_epi)   
 
           }
