@@ -244,19 +244,18 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
 
 
-async function gettingactioncontent() {
+async function Gettingactioncontent() {
     try{
     const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
     const Action_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=28,12`)
     const Action_Shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=10759`)
-    
-    
-    
-    
-    // const Action_Shows_epi = 
-
-
     const clearAction_Shows = await Action_Shows.json()
+    const clearAction_Movies = await Action_movies.json()
+    console.log(clearAction_Movies)
+    const tryingstuff = clearAction_Movies.results
+    console.log(tryingstuff)
+    const description_Action = tryingstuff[2].overview
+    console.log(description_Action)
 
     clearAction_Shows.results.forEach(e => {
 
@@ -264,10 +263,10 @@ async function gettingactioncontent() {
           try{
     const Action_Shows_epi = await fetch(`https://api.themoviedb.org/3/tv/${e.id}?api_key=${APIkey}`)
     const ClearAction_Shows_epi = await Action_Shows_epi.json()
-    console.log(ClearAction_Shows_epi.name)
+    // console.log(ClearAction_Shows_epi)
+    // console.log("++++++++++++++++++++++")
+    // console.log(ClearAction_Shows_epi.name)
     
-    //  console.log(Action_Shows_epi)   
-
           }
            catch (error) {
         console.error('An error has occoured:', error);
@@ -276,14 +275,10 @@ async function gettingactioncontent() {
         trying()
     });
 
-    console.log(clearAction_Shows)
-
-
-
 
 }
  catch (error) {
         console.error('An error has occoured:', error);
     }
 }
-gettingactioncontent()
+Gettingactioncontent()
