@@ -51,14 +51,6 @@ async function GetPopularTMDbTitles() {
         const response = await fetch(url);
         const data = await response.json();
         const movies = data.results;
-        const ratings = movies[5].overview;
-
-        console.log(ratings);
-        console.log(ratings * 10);
-        console.log(Math.floor(ratings * 10) + "%");
-        console.log(movies);
-        console.log(movies[1].title);
-
         const popupcover = document.getElementsByClassName("popup-div_popular");
         const popularposters = document.getElementsByClassName("Cardposter_popular");
         const popupbutton = document.getElementsByClassName("displaymore");
@@ -244,41 +236,81 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
 
 
+
+
+    const Export_fun_scoping = []
+    
+
 async function Gettingactioncontent() {
+
     try{
     const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
     const Action_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=28,12`)
     const Action_Shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=10759`)
     const clearAction_Shows = await Action_Shows.json()
     const clearAction_Movies = await Action_movies.json()
+    Export_fun_scoping.push(clearAction_Movies)
+    Export_fun_scoping.push(clearAction_Shows)
+    
+   
+    function shuffle(array) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+}
+     const mergedstuff = [...clearAction_Movies.results,...clearAction_Shows.results];
+     shuffle(mergedstuff)
+    console.log(mergedstuff)
     console.log(clearAction_Movies)
-    const tryingstuff = clearAction_Movies.results
-    console.log(tryingstuff)
-    const description_Action = tryingstuff[2].overview
+    const clearAction_Movies_results = clearAction_Movies.results
+    console.log(clearAction_Movies_results)
+    const description_Action = clearAction_Movies_results[2].overview
     console.log(description_Action)
 
-    clearAction_Shows.results.forEach(e => {
 
-        async function trying() {
-          try{
-    const Action_Shows_epi = await fetch(`https://api.themoviedb.org/3/tv/${e.id}?api_key=${APIkey}`)
-    const ClearAction_Shows_epi = await Action_Shows_epi.json()
-    // console.log(ClearAction_Shows_epi)
-    // console.log("++++++++++++++++++++++")
-    // console.log(ClearAction_Shows_epi.name)
-    
-          }
-           catch (error) {
-        console.error('An error has occoured:', error);
-    }  
-        }
-        trying()
-    });
-
-
+    console.log(clearAction_Movies_results[5].title)
+    console.log("HEHEHEHEHEHEHEHEHEHE")
+    console.log(Export_fun_scoping)
 }
  catch (error) {
         console.error('An error has occoured:', error);
     }
 }
 Gettingactioncontent()
+// Instead of fetching all data for all seasons and episodes of TV shows,fetch them only when they are needed to be displayed
+
+
+
+
+
+
+
+
+
+
+    // clearAction_Shows.results.forEach(e => {
+        // async function trying() {
+        //   try{
+    // const Action_Shows_epi = await fetch(`https://api.themoviedb.org/3/tv/${e.id}?api_key=${APIkey}`)
+    // const ClearAction_Shows_epi = await Action_Shows_epi.json()
+    // console.log(ClearAction_Shows_epi)
+    // console.log("++++++++++++++++++++++")
+    // console.log(ClearAction_Shows_epi.name)
+    // Export_fun_scoping.push(ClearAction_Shows_epi)
+        //   }
+        //    catch (error) {
+        // console.error('An error has occoured:', error);
+    // }  
+        // }
+        // trying()
+    // });
