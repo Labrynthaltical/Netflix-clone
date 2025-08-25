@@ -402,7 +402,7 @@ body{
   overflow-x: auto;
   overflow-y: hidden;
   position: relative;
-  gap: 1.2rem;
+  gap: 0.5rem;
   padding: 0.1rem 2rem;
   scroll-behavior: smooth;
   z-index: 5;
@@ -432,7 +432,7 @@ body{
 .thecontent-popular .contentdetails{}
 .torank{
     /* background-color: red; */
-    margin-right: 1rem;
+    margin-right: 0.5rem;
     display: flex;
     /* height: fit-content; */
     /* flex-direction: row; */
@@ -519,14 +519,6 @@ margin-right: -2.5rem;
   /* margin-top: 20px; */
   border-radius: 5px 5px 0px 0px;
    z-index: 10;
-}
-.Cardposter_popular {
-    display: flex;
-    justify-content: center;
-  width: 100%;
-  height: 10rem;
-  /* margin-top: 20px; */
-  border-radius: 5px 5px 0px 0px;
 }
 .Cardposter_popular-popup{
     height: 70%;
@@ -666,6 +658,15 @@ margin-right: -2.5rem;
  .thecontent-popular:hover .popup-div_popular{
     /* display: inline; */
  }
+ .Cardposter-action {
+    display: flex;
+    justify-content: center;
+  width: 15rem;
+  height: 10rem;
+  /* margin-top: 20px; */
+  border-radius: 5px 5px 0px 0px;
+   z-index: 10;
+}
 }
 @media(min-width : 760px){
     #Nav{

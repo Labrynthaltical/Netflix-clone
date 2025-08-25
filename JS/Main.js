@@ -281,6 +281,22 @@ async function Gettingactioncontent() {
     console.log(clearAction_Movies_results[5].title)
     console.log("HEHEHEHEHEHEHEHEHEHE")
     console.log(Export_fun_scoping)
+    console.log(mergedstuff)
+    console.log("==================")
+    console.log(mergedstuff)
+    const popupcover = document.getElementsByClassName("popup-div_popular");
+    const popularposters = document.getElementsByClassName("Cardposter-action");
+    const popupbutton = document.getElementsByClassName("displaymore");
+
+         for (let i = 0; i < mergedstuff.length && i < popularposters.length; i++) {
+             const posterPath = mergedstuff[i].poster_path;
+             const posterUrl = posterPath
+                 ? `https://image.tmdb.org/t/p/original${posterPath}`
+                 : 'https://via.placeholder.com/300x450?text=No+Image';
+             popularposters[i].src = posterUrl;
+         }
+
+
 }
  catch (error) {
         console.error('An error has occoured:', error);
