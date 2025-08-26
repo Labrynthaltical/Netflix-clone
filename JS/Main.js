@@ -127,17 +127,21 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                 try {
                     const response = await fetch(`https://api.themoviedb.org/3/movie/${returnvalues[index].id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
                     const viddata = await response.json();
-                    givetrailer.push(viddata);
-                    console.log(viddata);
-                    console.log(viddata.results[0]);
-                    console.log("+++++++++");
-
-                    setTimeout(() => {
-                        const embedkey = givetrailer[index]?.results?.[0]?.key;
-                        const iframe = popup.querySelector("#trailerpark");
-                        iframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1`;
-                    }, 500);
-
+                    console.log(viddata)
+                    console.log(viddata.results[0].key)
+                    console.log("5555555555555555555555")
+   
+                    let thekeyed = viddata.results[0].key
+                    console.log(thekeyed)
+                    const embedkey = viddata.results[0].key
+                    console.log(embedkey)
+                    const theiframe = document.querySelector("iframe")
+                    const available = viddata.results.find(v => v.site === "YouTube" && v.type === "Trailer");
+                    if (available) {
+                        theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1`;
+                    } else {
+                        console.log(" No YouTube trailer found");
+                    }
                 } catch (error) {
                     console.log("An error has occoured" + error);
                 }
@@ -283,7 +287,7 @@ async function Gettingactioncontent() {
     console.log(Export_fun_scoping)
     console.log(mergedstuff)
     console.log("==================")
-    console.log(mergedstuff)
+    // console.log(mergedstuff[2].first_air_date)
     const popupcover = document.getElementsByClassName("popup-div_popular");
     const popularposters = document.getElementsByClassName("Cardposter-action");
     const popupbutton = document.getElementsByClassName("displaymore");
