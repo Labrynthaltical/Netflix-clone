@@ -72,9 +72,6 @@ async function GetPopularTMDbTitles() {
             const posterUrl1 = PosterPath1
                 ? `https://image.tmdb.org/t/p/original${PosterPath1}`
                 : 'https://via.placeholder.com/300x450?text=No+Image';
-
-            let showbuts = popupbutton[j];
-            showbuts.addEventListener("click", (event) => {});
         }
 
         const posterPath = movies[0].poster_path;
@@ -307,6 +304,152 @@ async function Gettingactioncontent() {
     }
 }
 Gettingactioncontent()
+
+document.addEventListener("DOMContentLoaded", function namedfunq() {
+    let currentPopup = null;
+    let popupRemovalTimeout = null;
+
+    document.querySelectorAll('.thecontent-action').forEach((el, index) => {
+        el.addEventListener('focusin', () => {
+            if (popupRemovalTimeout) {
+                clearTimeout(popupRemovalTimeout);
+                popupRemovalTimeout = null;
+            }
+
+            if (currentPopup) {
+                currentPopup.remove();
+                currentPopup = null;
+            }
+
+            const popup = document.createElement('div');
+            popup.classList.add('popup-sim');
+            popup.setAttribute('tabindex', '-1');
+
+            const posterSrc = el.querySelector(".Cardposter_action")?.src || '../Images/placeholder.jpg';
+            const movieTitle = Export_fun_scoping[index]?.title || "Untitled";
+            // const theintended = Export_fun_scoping[index].id;
+            // housinten.push(theintended);
+
+            // async function getvidtrailers() {
+            //     await GetPopularTMDbTitles();
+            //     try {
+            //         const response = await fetch(`https://api.themoviedb.org/3/movie/${Export_fun_scoping[index].id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+            //         const viddata = await response.json();
+            //         console.log(viddata)
+            //         console.log(viddata.results[0].key)
+            //         console.log("5555555555555555555555")
+   
+            //         let thekeyed = viddata.results[0].key
+            //         console.log(thekeyed)
+            //         const embedkey = viddata.results[0].key
+            //         console.log(embedkey)
+            //         const theiframe = document.querySelector("iframe")
+            //         const available = viddata.results.find(v => v.site === "YouTube" && v.type === "Trailer");
+            //         if (available) {
+            //             theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1`;
+            //         } else {
+            //             console.log(" No YouTube trailer found");
+            //         }
+            //     } catch (error) {
+            //         console.log("An error has occoured" + error);
+            //     }
+            // }
+            // getvidtrailers();
+
+            popup.innerHTML = `
+        <div class="thecontent" tabindex="0">
+        <div class= "containpost">
+        <iframe class="trailervidi" id = "trailerpark" src="" allowfullscreen ></iframe>
+          </div>
+          <div class="contentdetails">
+            <div class="moviebuttons">
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
+              <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
+            </div>
+            <div class="contentstats">
+              <p class="contentname">${movieTitle}</p>
+              <ul class="contenttag_popularlist"></ul>
+            <p class="content_discribtion">${Export_fun_scoping[index]?.overview || "No description available"}</p>
+            </div>
+          </div>
+        </div>`;
+
+            // const thegenres = Export_fun_scoping[index].genre_ids;
+            // const namedgenres = thegenres.map(id => lookouttable[id]);
+            // console.log(namedgenres);
+
+            document.body.appendChild(popup);
+            currentPopup = popup;
+
+            const thegenlist = document.querySelector(".contenttag_popularlist");
+            thegenlist.innerHTML = "";
+            // namedgenres.forEach(hosting => {
+                // const listing = document.createElement("li");
+                // listing.innerHTML = hosting;
+                // thegenlist.appendChild(listing);
+            // });
+
+            const rect = el.getBoundingClientRect();
+            popup.style.top = `${rect.top + window.scrollY}px`;
+            popup.style.left = `${rect.left + window.scrollX - 40}px`;
+
+            let problem = document.querySelectorAll(".popup-sim");
+            if (problem) {
+                problem.forEach(e => {
+                    e.addEventListener("focusout", () => {
+                        e.remove();
+                    });
+                });
+            }
+
+            const moreButton = popup.querySelector(".displaymore");
+            if (moreButton) {
+                moreButton.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    popup.style.top = "";
+                    popup.style.left = "";
+                    popup.style.position = "";
+                    popup.classList.remove("popup-sim");
+                    popup.classList.add("helphereplz");
+
+                    setTimeout(() => {
+                        popup.classList.add("deletmoi");
+                        document.body.classList.add('noscroll');
+
+                        popup.addEventListener("focusout", () => {
+                            document.body.classList.remove('noscroll');
+                            popup.remove();
+                        });
+                    }, 100);
+                });
+            }
+        });
+
+        document.getElementById("allbutpop").addEventListener("click", () => {
+            document.querySelectorAll(".deletmoi").forEach(e => {
+                e.remove();
+                document.body.classList.remove('noscroll');
+            });
+        });
+
+        el.addEventListener('focusout', (e) => {
+            popupRemovalTimeout = setTimeout(() => {
+                const focused = document.activeElement;
+                if (currentPopup && (!currentPopup.contains(focused))) {
+                    currentPopup.remove();
+                    currentPopup = null;
+                }
+            }, 150);
+        });
+    });
+});
+
+
+
+
+
 // Instead of fetching all data for all seasons and episodes of TV shows,fetch them only when they are needed to be displayed
 
 
