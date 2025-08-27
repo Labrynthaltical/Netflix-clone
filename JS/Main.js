@@ -34,10 +34,12 @@ const lookouttable = {};
 const genreval = [];
 
 async function fetchGenres() {
-    const res = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US');
-    const genredata = await res.json();
-    genredata.genres.forEach(g => lookouttable[g.id] = g.name);
-    genreval.push(genredata);
+    const res_movies = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US');
+    const genredata = await res_movies.json();
+    const res_shows = await fetch(`https://api.themoviedb.org/3/genre/tv/list?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+    const genrodata = await res_shows.json();
+    [...genredata.genres,...genrodata.genres].forEach(g => lookouttable[g.id] = g.name);
+    genreval.push(genredata.genres,genrodata.genres);
     console.log(genredata);
 }
 fetchGenres();
@@ -240,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
 
     const Export_fun_scoping = []
-    
+    const pushmerge = []
 
 async function Gettingactioncontent() {
 
@@ -277,8 +279,7 @@ async function Gettingactioncontent() {
     console.log(clearAction_Movies_results)
     const description_Action = clearAction_Movies_results[2].overview
     console.log(description_Action)
-
-
+    pushmerge.push(mergedstuff)
     console.log(clearAction_Movies_results[5].title)
     console.log("HEHEHEHEHEHEHEHEHEHE")
     console.log(Export_fun_scoping)
@@ -326,7 +327,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             popup.setAttribute('tabindex', '-1');
 
             const posterSrc = el.querySelector(".Cardposter_action")?.src || '../Images/placeholder.jpg';
-            const movieTitle = Export_fun_scoping[index]?.title || "Untitled";
+            const movieTitle = pushmerge[0][index]?.title || pushmerge[0][index]?.name|| "Untitled";
             // const theintended = Export_fun_scoping[index].id;
             // housinten.push(theintended);
 
@@ -355,6 +356,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             //     }
             // }
             // getvidtrailers();
+    console.log(pushmerge[0][0])
 
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
@@ -371,25 +373,25 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             <div class="contentstats">
               <p class="contentname">${movieTitle}</p>
               <ul class="contenttag_popularlist"></ul>
-            <p class="content_discribtion">${Export_fun_scoping[index]?.overview || "No description available"}</p>
+            <p class="content_discribtion">${pushmerge[0][index].overview || "No description available"}</p>
             </div>
           </div>
         </div>`;
 
-            // const thegenres = Export_fun_scoping[index].genre_ids;
-            // const namedgenres = thegenres.map(id => lookouttable[id]);
-            // console.log(namedgenres);
+            const thegenres = pushmerge[0][index].genre_ids;
+            const namedgenres = thegenres.map(id => lookouttable[id]);
+            console.log(namedgenres);
 
             document.body.appendChild(popup);
             currentPopup = popup;
 
             const thegenlist = document.querySelector(".contenttag_popularlist");
             thegenlist.innerHTML = "";
-            // namedgenres.forEach(hosting => {
-                // const listing = document.createElement("li");
-                // listing.innerHTML = hosting;
-                // thegenlist.appendChild(listing);
-            // });
+            namedgenres.forEach(hosting => {
+                const listing = document.createElement("li");
+                listing.innerHTML = hosting;
+                thegenlist.appendChild(listing);
+            });
 
             const rect = el.getBoundingClientRect();
             popup.style.top = `${rect.top + window.scrollY}px`;
