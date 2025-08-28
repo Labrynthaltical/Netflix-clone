@@ -243,7 +243,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
     const Export_fun_scoping = []
     const pushmerge = []
-
+    const Trailer_action = []
 async function Gettingactioncontent() {
 
     try{
@@ -272,7 +272,6 @@ async function Gettingactioncontent() {
   }
 }
      const mergedstuff = [...clearAction_Movies.results,...clearAction_Shows.results];
-     shuffle(mergedstuff)
     console.log(mergedstuff)
     console.log(clearAction_Movies)
     const clearAction_Movies_results = clearAction_Movies.results
@@ -331,31 +330,33 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             // const theintended = Export_fun_scoping[index].id;
             // housinten.push(theintended);
 
-            // async function getvidtrailers() {
-            //     await GetPopularTMDbTitles();
-            //     try {
-            //         const response = await fetch(`https://api.themoviedb.org/3/movie/${Export_fun_scoping[index].id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
-            //         const viddata = await response.json();
-            //         console.log(viddata)
-            //         console.log(viddata.results[0].key)
-            //         console.log("5555555555555555555555")
+            async function getvidtrailers_action() {
+                await Gettingactioncontent();
+                try {
+                    const theitem = pushmerge[0][index]
+                    const type = theitem.title ? "movie" : "tv";
+                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+                    const viddata_action = await response.json();
+                    console.log(viddata_action)
+                    console.log(viddata_action.results[0].key)
+                    console.log("5555555555555555555555")
    
-            //         let thekeyed = viddata.results[0].key
-            //         console.log(thekeyed)
-            //         const embedkey = viddata.results[0].key
-            //         console.log(embedkey)
-            //         const theiframe = document.querySelector("iframe")
-            //         const available = viddata.results.find(v => v.site === "YouTube" && v.type === "Trailer");
-            //         if (available) {
-            //             theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1`;
-            //         } else {
-            //             console.log(" No YouTube trailer found");
-            //         }
-            //     } catch (error) {
-            //         console.log("An error has occoured" + error);
-            //     }
-            // }
-            // getvidtrailers();
+                    let thekeyed = viddata_action.results[0].key
+                    console.log(thekeyed)
+                    const embedkey = viddata_action.results[0].key
+                    console.log(embedkey)
+                    const theiframe = document.querySelector("iframe")
+                    const available = viddata_action.results.find(v => v.site === "YouTube" && v.type === "Trailer");
+                    if (available) {
+                        theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1`;
+                    } else {
+                        console.log(" No YouTube trailer found");
+                    }
+                } catch (error) {
+                    console.error('An error has occoured:', error);
+                }
+            }
+            getvidtrailers_action();
     console.log(pushmerge[0][0])
 
             popup.innerHTML = `
@@ -372,7 +373,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             </div>
             <div class="contentstats">
               <p class="contentname">${movieTitle}</p>
-              <ul class="contenttag_popularlist"></ul>
+              <ul class="contenttag_action"></ul>
             <p class="content_discribtion">${pushmerge[0][index].overview || "No description available"}</p>
             </div>
           </div>
@@ -385,7 +386,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             document.body.appendChild(popup);
             currentPopup = popup;
 
-            const thegenlist = document.querySelector(".contenttag_popularlist");
+            const thegenlist = document.querySelector(".contenttag_action");
             thegenlist.innerHTML = "";
             namedgenres.forEach(hosting => {
                 const listing = document.createElement("li");
@@ -447,6 +448,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
         });
     });
 });
+     shuffle(mergedstuff)
 
 
 

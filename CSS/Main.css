@@ -667,6 +667,25 @@ margin-right: -2.5rem;
   border-radius: 5px 5px 0px 0px;
    z-index: 10;
 }
+.contenttag_action{
+    padding-inline-start: 10px;
+    list-style: disc;
+    margin-left: 0px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+    color: rgba(235, 235, 235, 0.822);
+}
+.contenttag_action li{
+    color: white;
+    /* display: inline-block; */
+    margin-right: 20px;
+    /* color: blue; */
+    list-style-type: disc !important;
+}
+.contenttag_action li:nth-child(1){
+    list-style-type: none !important;
+}
 }
 @media(min-width : 760px){
     #Nav{
