@@ -272,6 +272,7 @@ async function Gettingactioncontent() {
   }
 }
      const mergedstuff = [...clearAction_Movies.results,...clearAction_Shows.results];
+shuffle(mergedstuff)
     console.log(mergedstuff)
     console.log(clearAction_Movies)
     const clearAction_Movies_results = clearAction_Movies.results
@@ -331,7 +332,6 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             // housinten.push(theintended);
 
             async function getvidtrailers_action() {
-                await Gettingactioncontent();
                 try {
                     const theitem = pushmerge[0][index]
                     const type = theitem.title ? "movie" : "tv";
@@ -358,7 +358,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             }
             getvidtrailers_action();
     console.log(pushmerge[0][0])
-
+            // if(){}
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
@@ -436,7 +436,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                 document.body.classList.remove('noscroll');
             });
         });
-
+        
         el.addEventListener('focusout', (e) => {
             popupRemovalTimeout = setTimeout(() => {
                 const focused = document.activeElement;
@@ -446,11 +446,12 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                 }
             }, 150);
         });
+
     });
 });
-     shuffle(mergedstuff)
 
 
+   
 
 
 
@@ -481,3 +482,20 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
         // }
         // trying()
     // });
+     async function GettingHiddengemcontent() {
+        try{
+        const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
+        const Hiddengem_content = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&sort_by=vote_average.desc&vote_count.lte=500`);
+        const Clear_Hiddengem_content = await  Hiddengem_content.json()
+        console.log(Clear_Hiddengem_content)
+
+
+        }
+        catch (error) {
+        console.error('An error has occoured:', error);
+    }
+    }
+    GettingHiddengemcontent()
+    console.log("GORP")
+    console.log("========================================================================================")
+// Make the episode list and work on adding more genres
