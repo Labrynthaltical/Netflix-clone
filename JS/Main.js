@@ -1,3 +1,14 @@
+  const currentUser = document.getElementById("wantedone");
+  const userOptions = document.querySelectorAll("#droplo .userli");
+
+  userOptions.forEach(option => {
+    option.addEventListener("click", () => {
+      currentUser.innerHTML = option.innerHTML;  // replace summary content
+      document.getElementById("helse").open = false; // close dropdown
+    });
+  });
+
+
 const totoggle = document.getElementById("helsen");
 const affected = document.getElementById("droplol");
 
@@ -327,7 +338,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             popup.setAttribute('tabindex', '-1');
 
             const posterSrc = el.querySelector(".Cardposter_action")?.src || '../Images/placeholder.jpg';
-            const movieTitle = pushmerge[0][index]?.title || pushmerge[0][index]?.name|| "Untitled";
+            const movieTitle = pushmerge[0][index].title || pushmerge[0][index].name|| "Untitled";
             // const theintended = Export_fun_scoping[index].id;
             // housinten.push(theintended);
 
@@ -358,7 +369,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             }
             getvidtrailers_action();
     console.log(pushmerge[0][0])
-            // if(){}
+            if(!pushmerge[0][index].original_name){
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
@@ -378,7 +389,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             </div>
           </div>
         </div>`;
-
+            }
             const thegenres = pushmerge[0][index].genre_ids;
             const namedgenres = thegenres.map(id => lookouttable[id]);
             console.log(namedgenres);
