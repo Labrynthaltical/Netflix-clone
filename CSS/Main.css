@@ -222,6 +222,7 @@ body{
     } */
     summary{
         list-style-type: none;
+        cursor: pointer;
     }
     summary:after {
     font-family: "Font Awesome 6 Free";
@@ -235,6 +236,7 @@ body{
         /* background-color: red !important; */
         /* margin-top: -10px; */
         /* width: 10rem; */
+        cursor: pointer;
     }
     #helse summary li{
         display: inline;
@@ -259,6 +261,7 @@ body{
         display: flex;
         flex-direction: row;
         justify-content: baseline;
+        cursor: pointer;
     }
     li{
         /* display: none; */

@@ -1,9 +1,9 @@
   const currentUser = document.getElementById("wantedone");
   const userOptions = document.querySelectorAll("#droplo .userli");
 
-  userOptions.forEach(option => {
-    option.addEventListener("click", () => {
-      currentUser.innerHTML = option.innerHTML;  // replace summary content
+  userOptions.forEach(e => {
+    e.addEventListener("click", () => {
+      currentUser.innerHTML = e.innerHTML;  // replace summary content
       document.getElementById("helse").open = false; // close dropdown
     });
   });
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             popup.setAttribute('tabindex', '-1');
 
             const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
-            const movieTitle = returnvalues[index]?.title || "Untitled";
+            const content_title = returnvalues[index]?.title || "Untitled";
             const theintended = returnvalues[index].id;
             housinten.push(theintended);
 
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                     const theiframe = document.querySelector("iframe")
                     const available = viddata.results.find(v => v.site === "YouTube" && v.type === "Trailer");
                     if (available) {
-                        theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1`;
+                        theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1&showinfo=0`;
                     } else {
                         console.log(" No YouTube trailer found");
                     }
@@ -161,7 +161,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
-        <iframe class="trailervidi" id = "trailerpark" src="" allowfullscreen ></iframe>
+        <iframe class="trailervidi" id = "trailerpark"   controls=0" src="" allowfullscreen ></iframe>
           </div>
           <div class="contentdetails">
             <div class="moviebuttons">
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
               <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
             </div>
             <div class="contentstats">
-              <p class="contentname">${movieTitle}</p>
+              <p class="contentname">${content_title}</p>
               <ul class="contenttag_popularlist"></ul>
             <p class="content_discribtion">${returnvalues[index]?.overview || "No description available"}</p>
             </div>
@@ -262,7 +262,14 @@ async function Gettingactioncontent() {
     const Action_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=28,12`)
     const Action_Shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=10759`)
     const clearAction_Shows = await Action_Shows.json()
+    const seasoned = await fetch(`https://api.themoviedb.org/3/tv/${clearAction_Shows.results[2].id}?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`)
+    const clearer = await seasoned.json()
     const clearAction_Movies = await Action_movies.json()
+    console.log(clearAction_Shows)
+    console.log(clearAction_Shows.results[0].id)
+        console.log(clearer)
+
+
     Export_fun_scoping.push(clearAction_Movies)
     Export_fun_scoping.push(clearAction_Shows)
     
@@ -338,7 +345,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             popup.setAttribute('tabindex', '-1');
 
             const posterSrc = el.querySelector(".Cardposter_action")?.src || '../Images/placeholder.jpg';
-            const movieTitle = pushmerge[0][index].title || pushmerge[0][index].name|| "Untitled";
+            const content_title = pushmerge[0][index].title || pushmerge[0][index].name|| "Untitled";
             // const theintended = Export_fun_scoping[index].id;
             // housinten.push(theintended);
 
@@ -357,12 +364,16 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                     const embedkey = viddata_action.results[0].key
                     console.log(embedkey)
                     const theiframe = document.querySelector("iframe")
-                    const available = viddata_action.results.find(v => v.site === "YouTube" && v.type === "Trailer");
-                    if (available) {
-                        theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1`;
-                    } else {
-                        console.log(" No YouTube trailer found");
-                    }
+                const available = viddata_action.results.find(
+                    v => v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser")
+                );
+
+                if (available) {
+                    theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1`;
+                } else {
+                    console.log("No valid YouTube trailer/teaser found");
+                    theiframe.src = ""; // or show a fallback image
+                }
                 } catch (error) {
                     console.error('An error has occoured:', error);
                 }
@@ -373,7 +384,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
-        <iframe class="trailervidi" id = "trailerpark" src="" allowfullscreen ></iframe>
+        <iframe class="trailervidi" id = "trailerpark"   controls=0" src="" allowfullscreen ></iframe>
           </div>
           <div class="contentdetails">
             <div class="moviebuttons">
@@ -383,12 +394,33 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
               <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
             </div>
             <div class="contentstats">
-              <p class="contentname">${movieTitle}</p>
+              <p class="contentname">${content_title}</p>
               <ul class="contenttag_action"></ul>
             <p class="content_discribtion">${pushmerge[0][index].overview || "No description available"}</p>
             </div>
           </div>
         </div>`;
+            }
+            else{
+            popup.innerHTML = `
+        <div class="thecontent" tabindex="0">
+        <div class= "containpost">
+        <iframe class="trailervidi" id = "trailerpark"   controls=0" src="" allowfullscreen ></iframe>
+          </div>
+          <div class="contentdetails">
+            <div class="moviebuttons">
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
+              <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
+            </div>
+            <div class="contentstats">
+              <p class="contentname">${content_title}</p>
+              <ul class="contenttag_action"></ul>
+            <p class="content_discribtion">${pushmerge[0][index].overview || "No description available"}</p>
+            </div>
+          </div>
+        </div>`;  
             }
             const thegenres = pushmerge[0][index].genre_ids;
             const namedgenres = thegenres.map(id => lookouttable[id]);
