@@ -689,6 +689,24 @@ margin-right: -2.5rem;
 .contenttag_action li:nth-child(1){
     list-style-type: none !important;
 }
+.containpost{
+  position: relative;
+  display: inline-block;
+}
+.nohover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent; /* invisible shield */
+  pointer-events: auto; /* this blocks hover */
+}
+.iframe-wrapper iframe{
+  width: 100%;
+  height: 100%;
+  border: none;
+}
 }
 @media(min-width : 760px){
     #Nav{

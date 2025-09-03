@@ -1,3 +1,4 @@
+
   const currentUser = document.getElementById("wantedone");
   const userOptions = document.querySelectorAll("#droplo .userli");
 
@@ -252,6 +253,10 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
 
 
+
+
+
+
     const Export_fun_scoping = []
     const pushmerge = []
     const Trailer_action = []
@@ -262,12 +267,8 @@ async function Gettingactioncontent() {
     const Action_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=28,12`)
     const Action_Shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=10759`)
     const clearAction_Shows = await Action_Shows.json()
-    const seasoned = await fetch(`https://api.themoviedb.org/3/tv/${clearAction_Shows.results[2].id}?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`)
-    const clearer = await seasoned.json()
     const clearAction_Movies = await Action_movies.json()
-    console.log(clearAction_Shows)
-    console.log(clearAction_Shows.results[0].id)
-        console.log(clearer)
+
 
 
     Export_fun_scoping.push(clearAction_Movies)
@@ -291,19 +292,9 @@ async function Gettingactioncontent() {
 }
      const mergedstuff = [...clearAction_Movies.results,...clearAction_Shows.results];
 shuffle(mergedstuff)
-    console.log(mergedstuff)
-    console.log(clearAction_Movies)
     const clearAction_Movies_results = clearAction_Movies.results
-    console.log(clearAction_Movies_results)
     const description_Action = clearAction_Movies_results[2].overview
-    console.log(description_Action)
     pushmerge.push(mergedstuff)
-    console.log(clearAction_Movies_results[5].title)
-    console.log("HEHEHEHEHEHEHEHEHEHE")
-    console.log(Export_fun_scoping)
-    console.log(mergedstuff)
-    console.log("==================")
-    // console.log(mergedstuff[2].first_air_date)
     const popupcover = document.getElementsByClassName("popup-div_popular");
     const popularposters = document.getElementsByClassName("Cardposter-action");
     const popupbutton = document.getElementsByClassName("displaymore");
@@ -349,42 +340,36 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             // const theintended = Export_fun_scoping[index].id;
             // housinten.push(theintended);
 
-            async function getvidtrailers_action() {
-                try {
-                    const theitem = pushmerge[0][index]
-                    const type = theitem.title ? "movie" : "tv";
-                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
-                    const viddata_action = await response.json();
-                    console.log(viddata_action)
-                    console.log(viddata_action.results[0].key)
-                    console.log("5555555555555555555555")
-   
-                    let thekeyed = viddata_action.results[0].key
-                    console.log(thekeyed)
-                    const embedkey = viddata_action.results[0].key
-                    console.log(embedkey)
-                    const theiframe = document.querySelector("iframe")
-                const available = viddata_action.results.find(
-                    v => v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser")
-                );
+           async function getvidtrailers_action() {
+    try {
+        const theitem = pushmerge[0][index];
+        const response = await fetch(
+            `https://api.themoviedb.org/3/${theitem.title || theitem.name}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`
+        );
+        const viddata_action = await response.json();
+        console.log(viddata_action);
+        console.log(viddata_action.results[0].key);
+        console.log("5555555555555555555555");
 
-                if (available) {
-                    theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1`;
-                } else {
-                    console.log("No valid YouTube trailer/teaser found");
-                    theiframe.src = ""; // or show a fallback image
-                }
-                } catch (error) {
-                    console.error('An error has occoured:', error);
-                }
-            }
-            getvidtrailers_action();
+        let thekeyed = viddata_action.results[0].key;
+        console.log(thekeyed);
+        const embedkey = viddata_action.results[0].key;
+        console.log(embedkey);
+
+        const theiframe = document.querySelector("iframe");
+        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1`;
+    } catch (error) {
+        console.error("An error has occoured:", error);
+    }
+}
+getvidtrailers_action();
+
     console.log(pushmerge[0][0])
             if(!pushmerge[0][index].original_name){
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
-        <iframe class="trailervidi" id = "trailerpark"   controls=0" src="" allowfullscreen ></iframe>
+        <iframe class="trailervidi" id = "trailerpark" src="" allowfullscreen ></iframe>
           </div>
           <div class="contentdetails">
             <div class="moviebuttons">
@@ -405,7 +390,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
-        <iframe class="trailervidi" id = "trailerpark"   controls=0" src="" allowfullscreen ></iframe>
+        <iframe class="trailervidi" id = "trailerpark" src="" allowfullscreen ></iframe>
           </div>
           <div class="contentdetails">
             <div class="moviebuttons">
