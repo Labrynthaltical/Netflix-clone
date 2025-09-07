@@ -127,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             const popup = document.createElement('div');
             popup.classList.add('popup-sim');
             popup.setAttribute('tabindex', '-1');
-
             const posterSrc = el.querySelector(".Cardposter_popular")?.src || '../Images/placeholder.jpg';
             const content_title = returnvalues[index]?.title || "Untitled";
             const theintended = returnvalues[index].id;
@@ -147,12 +146,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                     const embedkey = viddata.results[0].key
                     console.log(embedkey)
                     const theiframe = document.querySelector("iframe")
-                    const available = viddata.results.find(v => v.site === "YouTube" && v.type === "Trailer");
-                    if (available) {
-                        theiframe.src = `https://www.youtube.com/embed/${available.key}?autoplay=1&mute=1&showinfo=0`;
-                    } else {
-                        console.log(" No YouTube trailer found");
-                    }
+                    theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
                 } catch (error) {
                     console.log("An error has occoured" + error);
                 }
@@ -196,7 +190,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
             const rect = el.getBoundingClientRect();
             popup.style.top = `${rect.top + window.scrollY}px`;
-            popup.style.left = `${rect.left + window.scrollX - 40}px`;
+            popup.style.left = `${rect.left + window.scrollX}px`;
 
             let problem = document.querySelectorAll(".popup-sim");
             if (problem) {
@@ -343,9 +337,8 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
            async function getvidtrailers_action() {
     try {
         const theitem = pushmerge[0][index];
-        const response = await fetch(
-            `https://api.themoviedb.org/3/${theitem.title || theitem.name}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`
-        );
+            const type = theitem.title ? "movie" : "tv"
+        const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
         const viddata_action = await response.json();
         console.log(viddata_action);
         console.log(viddata_action.results[0].key);
@@ -357,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
         console.log(embedkey);
 
         const theiframe = document.querySelector("iframe");
-        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1`;
+        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
     } catch (error) {
         console.error("An error has occoured:", error);
     }
@@ -423,8 +416,9 @@ getvidtrailers_action();
             });
 
             const rect = el.getBoundingClientRect();
+            console.log(rect)
             popup.style.top = `${rect.top + window.scrollY}px`;
-            popup.style.left = `${rect.left + window.scrollX - 40}px`;
+            popup.style.left = `${rect.left + window.scrollX }px`;
 
             let problem = document.querySelectorAll(".popup-sim");
             if (problem) {
