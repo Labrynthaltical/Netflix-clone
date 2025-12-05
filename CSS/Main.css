@@ -2,32 +2,62 @@
     height: 100%;
     /* overflow-y: auto; */
 } 
-#trailerpark{
+.trailervidi{
     pointer-events: none;
     position: relative;
+    /* background-color: red; */
+    position: relative;
+    z-index: 10;
+    /* height: 10000px; */
+      /* opacity: 1; */
+  /* transition: opacity 5s ease-in-out; */
+    animation-delay: 0.5s;
+    animation-name: show;
+    animation-duration: 1s;
+    animation-fill-mode:forwards;
 }
  #whiten{
 color: white !important;
  }
 .popup-sim {
+    overflow: hidden;
     position: absolute;
     /* top: 110px; */
     width: 300px;
-    height: 300px;
+    height: fit-content;
     background-color: rgb(24, 24, 24);
     z-index: 99999;
     border-radius: 5px; 
     display: block; 
 }
 .popup-sim img{
-    display: none;
+    width: 300px;
+    height: 200px;
 }
 .popup-sim .content_discribtion{
     display: none;
 }
 .popup-sim iframe{
-    outline: none;
-    border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+}
+.popup-sim.centered{
+    /* position: absolute; */
+    /* left: 50; */
+    /* top: 100; */
+}
+#tryme {
+    animation-delay: 2s;
+    animation-name: fade;
+    animation-duration: 1s;
+    animation-fill-mode:forwards;
+    position: relative;
+    z-index: 5;
 }
 body{
     overflow-x: hidden;
@@ -695,6 +725,9 @@ margin-right: -2.5rem;
 .containpost{
   position: relative;
   display: inline-block;
+    width: 100%;
+  height: 200px; /* match your poster/iframe height */
+  overflow: hidden;
 }
 .nohover {
   position: absolute;
@@ -789,5 +822,21 @@ margin-right: -2.5rem;
     to {
         left: 40%;
         top: 40%;
+    }
+}
+@keyframes fade {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+@keyframes show {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
     }
 }

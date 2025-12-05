@@ -111,7 +111,7 @@ const pushresult = [];
 document.addEventListener("DOMContentLoaded", function namedfunq() {
     let currentPopup = null;
     let popupRemovalTimeout = null;
-
+    displayit = null
     document.querySelectorAll('.thecontent-popular').forEach((el, index) => {
         el.addEventListener('focusin', () => {
             if (popupRemovalTimeout) {
@@ -152,11 +152,11 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                 }
             }
             getvidtrailers();
-
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
-        <div class= "containpost">
-        <iframe class="trailervidi" id = "trailerpark"   controls=0" src="" allowfullscreen ></iframe>
+        <div id = "postedon" class= "containpost">
+        <img id = "tryme" src = "${posterSrc}">
+            <iframe class="trailervidi" id = "trailerpark"   controls=0" src="" allowfullscreen ></iframe>
           </div>
           <div class="contentdetails">
             <div class="moviebuttons">
@@ -191,7 +191,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             const rect = el.getBoundingClientRect();
             popup.style.top = `${rect.top + window.scrollY}px`;
             popup.style.left = `${rect.left + window.scrollX}px`;
-
+            // Make an animation and apply it here with ${} for bounding client
             let problem = document.querySelectorAll(".popup-sim");
             if (problem) {
                 problem.forEach(e => {
@@ -294,7 +294,7 @@ shuffle(mergedstuff)
     const popupbutton = document.getElementsByClassName("displaymore");
 
          for (let i = 0; i < mergedstuff.length && i < popularposters.length; i++) {
-             const posterPath = mergedstuff[i].poster_path;
+             const posterPath = mergedstuff[i].poster_path || mergedstuff[i].backdrop_path;
              const posterUrl = posterPath
                  ? `https://image.tmdb.org/t/p/original${posterPath}`
                  : 'https://via.placeholder.com/300x450?text=No+Image';
@@ -329,7 +329,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             popup.classList.add('popup-sim');
             popup.setAttribute('tabindex', '-1');
 
-            const posterSrc = el.querySelector(".Cardposter_action")?.src || '../Images/placeholder.jpg';
+            const posterSrc = el.querySelector(".Cardposter-action")?.src || '../Images/placeholder.jpg';
             const content_title = pushmerge[0][index].title || pushmerge[0][index].name|| "Untitled";
             // const theintended = Export_fun_scoping[index].id;
             // housinten.push(theintended);
@@ -358,10 +358,13 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 getvidtrailers_action();
 
     console.log(pushmerge[0][0])
+    console.log("item:", index, pushmerge[0][index]);
+
             if(!pushmerge[0][index].original_name){
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
+        <img id = "tryme" src = "${posterSrc}">
         <iframe class="trailervidi" id = "trailerpark" src="" allowfullscreen ></iframe>
           </div>
           <div class="contentdetails">
@@ -383,6 +386,7 @@ getvidtrailers_action();
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
         <div class= "containpost">
+        <img id = "tryme" src = "${posterSrc}">
         <iframe class="trailervidi" id = "trailerpark" src="" allowfullscreen ></iframe>
           </div>
           <div class="contentdetails">
@@ -419,7 +423,8 @@ getvidtrailers_action();
             console.log(rect)
             popup.style.top = `${rect.top + window.scrollY}px`;
             popup.style.left = `${rect.left + window.scrollX }px`;
-
+            // Create a <style> element
+const style = document.createElement("style");
             let problem = document.querySelectorAll(".popup-sim");
             if (problem) {
                 problem.forEach(e => {
