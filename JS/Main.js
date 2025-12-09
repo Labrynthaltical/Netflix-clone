@@ -187,10 +187,25 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                 listing.innerHTML = hosting;
                 thegenlist.appendChild(listing);
             });
-
+                const style = document.createElement("style");
             const rect = el.getBoundingClientRect();
-            popup.style.top = `${rect.top + window.scrollY}px`;
-            popup.style.left = `${rect.left + window.scrollX}px`;
+
+            style.textContent = `@keyframes movePopup_${Date.now()} {
+        from {
+            top: ${rect.top }px;
+            left: ${rect.left + window.scrollX}px;
+        }
+        to {
+            top: ${35}%;
+            left: ${35}%;
+ 
+        }
+    }`
+    document.head.appendChild(style);
+    popup.style.position = "fixed";
+    popup.style.animation = `movePopup_${Date.now()} 0.35s ease-out forwards`;
+            // popup.style.top = `${rect.top + window.scrollY}px`;
+            // popup.style.left = `${rect.left + window.scrollX}px`;
             // Make an animation and apply it here with ${} for bounding client
             let problem = document.querySelectorAll(".popup-sim");
             if (problem) {

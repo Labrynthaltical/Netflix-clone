@@ -13,7 +13,7 @@
   /* transition: opacity 5s ease-in-out; */
     animation-delay: 0.5s;
     animation-name: show;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-fill-mode:forwards;
 }
  #whiten{
@@ -52,9 +52,9 @@ color: white !important;
     /* top: 100; */
 }
 #tryme {
-    animation-delay: 2s;
+    animation-delay: 0.5s;
     animation-name: fade;
-    animation-duration: 1s;
+    animation-duration: 0.5s;
     animation-fill-mode:forwards;
     position: relative;
     z-index: 5;
