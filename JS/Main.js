@@ -305,15 +305,15 @@ shuffle(mergedstuff)
     const description_Action = clearAction_Movies_results[2].overview
     pushmerge.push(mergedstuff)
     const popupcover = document.getElementsByClassName("popup-div_popular");
-    const popularposters = document.getElementsByClassName("Cardposter-action");
+    const actionposters = document.getElementsByClassName("Cardposter-action");
     const popupbutton = document.getElementsByClassName("displaymore");
 
-         for (let i = 0; i < mergedstuff.length && i < popularposters.length; i++) {
+         for (let i = 0; i < mergedstuff.length && i < actionposters.length; i++) {
              const posterPath = mergedstuff[i].poster_path || mergedstuff[i].backdrop_path;
              const posterUrl = posterPath
                  ? `https://image.tmdb.org/t/p/original${posterPath}`
                  : 'https://via.placeholder.com/300x450?text=No+Image';
-             popularposters[i].src = posterUrl;
+             actionposters[i].src = posterUrl;
          }
 
 
@@ -503,20 +503,7 @@ getvidtrailers_action();
     });
 });
 
-
-   
-
-
-
 // Instead of fetching all data for all seasons and episodes of TV shows,fetch them only when they are needed to be displayed
-
-
-
-
-
-
-
-
 
 
     // clearAction_Shows.results.forEach(e => {
@@ -535,12 +522,41 @@ getvidtrailers_action();
         // }
         // trying()
     // });
+    const merge_gem_content = []
      async function GettingHiddengemcontent() {
         try{
         const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
-        const Hiddengem_content = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&sort_by=vote_average.desc&vote_count.lte=500`);
-        const Clear_Hiddengem_content = await  Hiddengem_content.json()
-        console.log(Clear_Hiddengem_content)
+        const Hiddengem_content_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&sort_by=vote_average.desc&vote_count.lte=500`);
+        const Clear_Hiddengem_content_movies = await  Hiddengem_content_movies.json()
+        console.log(Clear_Hiddengem_content_movies)
+        const Hiddengem_content_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&sort_by=vote_average.desc&vote_count.lte=500`);
+        const Clear_Hiddengem_content_shows = await  Hiddengem_content_shows.json()
+        console.log(Clear_Hiddengem_content_shows)
+        merge_gem_content.push(Clear_Hiddengem_content_movies)
+        merge_gem_content.push(Clear_Hiddengem_content_shows)
+        console.log(merge_gem_content)
+        console.log(merge_gem_content[0])
+        const merged_content_gem = [...Clear_Hiddengem_content_movies.results,Clear_Hiddengem_content_shows.results]
+        console.log(merged_content_gem)
+
+            function shuffle(array) {
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+}
+    shuffle(merged_content_gem)
+    console.log(merged_content_gem)
+    
 
 
         }
