@@ -187,9 +187,9 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                 listing.innerHTML = hosting;
                 thegenlist.appendChild(listing);
             });
-                const style = document.createElement("style");
+               
             const rect = el.getBoundingClientRect();
-
+ const style = document.createElement("style");
             style.textContent = `@keyframes movePopup_${Date.now()} {
         from {
             top: ${rect.top }px;
@@ -436,10 +436,21 @@ getvidtrailers_action();
 
             const rect = el.getBoundingClientRect();
             console.log(rect)
-            popup.style.top = `${rect.top + window.scrollY}px`;
-            popup.style.left = `${rect.left + window.scrollX }px`;
-            // Create a <style> element
-const style = document.createElement("style");
+           const style = document.createElement("style");
+            style.textContent = `@keyframes movePopup_${Date.now()} {
+        from {
+            top: ${rect.top }px;
+            left: ${rect.left + window.scrollX}px;
+        }
+        to {
+            top: ${35}%;
+            left: ${35}%;
+ 
+        }
+    }`
+    document.head.appendChild(style);
+    popup.style.position = "fixed";
+    popup.style.animation = `movePopup_${Date.now()} 0.35s ease-out forwards`;
             let problem = document.querySelectorAll(".popup-sim");
             if (problem) {
                 problem.forEach(e => {
