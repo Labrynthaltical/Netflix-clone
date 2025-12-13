@@ -529,7 +529,7 @@ margin-right: -2.5rem;
   appearance: none; 
 }
 .helphereplz .thecontent{
-    background-color: green !important;
+    background-color: rgb(128, 0, 0) !important;
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -703,6 +703,15 @@ margin-right: -2.5rem;
   border-radius: 5px 5px 0px 0px;
    z-index: 10;
 }
+.Cardposter-gems {
+    display: flex;
+    justify-content: center;
+    width: 15rem;
+    height: 10rem;
+    border-radius: 5px 5px 0px 0px;
+    z-index: 10;
+}
+
 .contenttag_action{
     padding-inline-start: 10px;
     list-style: disc;
@@ -712,6 +721,16 @@ margin-right: -2.5rem;
     flex-direction: row;
     color: rgba(235, 235, 235, 0.822);
 }
+.contenttag_gems {
+    padding-inline-start: 10px;
+    list-style: disc;
+    margin-left: 0px;
+    font-size: 13px;
+    display: flex;
+    flex-direction: row;
+    color: rgba(235, 235, 235, 0.822);
+}
+
 .contenttag_action li{
     color: white;
     /* display: inline-block; */
@@ -719,7 +738,16 @@ margin-right: -2.5rem;
     /* color: blue; */
     list-style-type: disc !important;
 }
+.contenttag_gems li {
+    color: white;
+    margin-right: 20px;
+    list-style-type: disc !important;
+}
+
 .contenttag_action li:nth-child(1){
+    list-style-type: none !important;
+}
+.contenttag_gems li:nth-child(1){
     list-style-type: none !important;
 }
 .containpost{

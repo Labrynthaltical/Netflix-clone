@@ -522,49 +522,196 @@ getvidtrailers_action();
         // }
         // trying()
     // });
-    const merge_gem_content = []
-     async function GettingHiddengemcontent() {
-        try{
+const Export_fun_gems = []
+const pushmerge_gems = []
+const Trailer_gems = []
+
+async function GettingHiddengemcontent() {
+    try {
         const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
-        const Hiddengem_content_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&sort_by=vote_average.desc&vote_count.lte=500`);
-        const Clear_Hiddengem_content_movies = await  Hiddengem_content_movies.json()
-        console.log(Clear_Hiddengem_content_movies)
-        const Hiddengem_content_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&sort_by=vote_average.desc&vote_count.lte=500`);
-        const Clear_Hiddengem_content_shows = await  Hiddengem_content_shows.json()
-        console.log(Clear_Hiddengem_content_shows)
-        merge_gem_content.push(Clear_Hiddengem_content_movies)
-        merge_gem_content.push(Clear_Hiddengem_content_shows)
-        console.log(merge_gem_content)
-        console.log(merge_gem_content[0])
-        const merged_content_gem = [...Clear_Hiddengem_content_movies.results,Clear_Hiddengem_content_shows.results]
-        console.log(merged_content_gem)
+        const Hiddengem_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&sort_by=vote_average.desc&vote_count.lte=500`)
+        const Hiddengem_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&sort_by=vote_average.desc&vote_count.lte=500`)
+        const Clear_Hiddengem_movies = await Hiddengem_movies.json()
+        const Clear_Hiddengem_shows = await Hiddengem_shows.json()
 
-            function shuffle(array) {
-  let currentIndex = array.length;
+        Export_fun_gems.push(Clear_Hiddengem_movies)
+        Export_fun_gems.push(Clear_Hiddengem_shows)
 
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
+        const merged_gems = [...Clear_Hiddengem_movies.results, ...Clear_Hiddengem_shows.results]
 
-    // Pick a remaining element...
-    let randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
-}
-    shuffle(merged_content_gem)
-    console.log(merged_content_gem)
-    
-
-
+        function shuffle(array) {
+            let currentIndex = array.length;
+            while (currentIndex != 0) {
+                let randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+            }
         }
-        catch (error) {
+        shuffle(merged_gems)
+
+        pushmerge_gems.push(merged_gems)
+
+        const gemposters = document.getElementsByClassName("Cardposter-gems")
+
+        for (let i = 0; i < merged_gems.length && i < gemposters.length; i++) {
+            const posterPath = merged_gems[i].poster_path || merged_gems[i].backdrop_path;
+            const posterUrl = posterPath
+                ? `https://image.tmdb.org/t/p/original${posterPath}`
+                : 'https://via.placeholder.com/300x450?text=No+Image';
+            gemposters[i].src = posterUrl;
+        }
+
+    } catch (error) {
         console.error('An error has occoured:', error);
     }
-    }
-    GettingHiddengemcontent()
+}
+GettingHiddengemcontent()
+document.addEventListener("DOMContentLoaded", function namedfunq() {
+    let currentPopup = null;
+    let popupRemovalTimeout = null;
+
+    document.querySelectorAll('.thecontent-gems').forEach((el, index) => {
+        el.addEventListener('focusin', () => {
+
+            if (popupRemovalTimeout) {
+                clearTimeout(popupRemovalTimeout);
+                popupRemovalTimeout = null;
+            }
+
+            if (currentPopup) {
+                currentPopup.remove();
+                currentPopup = null;
+            }
+
+            const popup = document.createElement('div');
+            popup.classList.add('popup-sim');
+            popup.setAttribute('tabindex', '-1');
+
+            const posterSrc = el.querySelector(".Cardposter-gems")?.src || '../Images/placeholder.jpg';
+            const content_title = pushmerge_gems[0][index].title || pushmerge_gems[0][index].name || "Untitled";
+
+            async function getvidtrailers_gems() {
+                try {
+                    const item = pushmerge_gems[0][index]
+                    const type = item.title ? "movie" : "tv"
+
+                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`)
+                    const viddata = await response.json()
+
+                    const embedkey = viddata.results[0]?.key
+                    if (embedkey) {
+                        const theiframe = document.querySelector("iframe")
+                        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+                    }
+                } catch (error) {
+                    console.error("An error has occoured:", error);
+                }
+            }
+            getvidtrailers_gems()
+
+            popup.innerHTML = `
+            <div class="thecontent" tabindex="0">
+                <div class="containpost">
+                    <img id="tryme" src="${posterSrc}">
+                    <iframe class="trailervidi" id="trailerpark" src="" allowfullscreen></iframe>
+                </div>
+                <div class="contentdetails">
+                    <div class="moviebuttons">
+                        <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
+                        <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
+                        <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
+                        <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
+                    </div>
+                    <div class="contentstats">
+                        <p class="contentname">${content_title}</p>
+                        <ul class="contenttag_gems"></ul>
+                        <p class="content_discribtion">${pushmerge_gems[0][index].overview || "No description available"}</p>
+                    </div>
+                </div>
+            </div>`;
+
+            const thegenres = pushmerge_gems[0][index].genre_ids;
+            const namedgenres = thegenres.map(id => lookouttable[id]);
+
+            document.body.appendChild(popup);
+            currentPopup = popup;
+
+            const thegenlist = document.querySelector(".contenttag_gems");
+            thegenlist.innerHTML = "";
+            namedgenres.forEach(hosting => {
+                const listing = document.createElement("li");
+                listing.innerHTML = hosting;
+                thegenlist.appendChild(listing);
+            });
+
+            const rect = el.getBoundingClientRect();
+            const style = document.createElement("style");
+            style.textContent = `@keyframes movePopup_${Date.now()} {
+                from {
+                    top: ${rect.top}px;
+                    left: ${rect.left + window.scrollX}px;
+                }
+                to {
+                    top: ${35}%;
+                    left: ${35}%;
+                }
+            }`
+            document.head.appendChild(style);
+            popup.style.position = "fixed";
+            popup.style.animation = `movePopup_${Date.now()} 0.35s ease-out forwards`;
+
+            let problem = document.querySelectorAll(".popup-sim");
+            if (problem) {
+                problem.forEach(e => {
+                    e.addEventListener("focusout", () => {
+                        e.remove();
+                    });
+                });
+            }
+
+            const moreButton = popup.querySelector(".displaymore");
+            if (moreButton) {
+                moreButton.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    popup.style.top = "";
+                    popup.style.left = "";
+                    popup.style.position = "";
+                    popup.classList.remove("popup-sim");
+                    popup.classList.add("helphereplz");
+
+                    setTimeout(() => {
+                        popup.classList.add("deletmoi");
+                        document.body.classList.add('noscroll');
+
+                        popup.addEventListener("focusout", () => {
+                            document.body.classList.remove('noscroll');
+                            popup.remove();
+                        });
+                    }, 100);
+                });
+            }
+        });
+
+        document.getElementById("allbutpop").addEventListener("click", () => {
+            document.querySelectorAll(".deletmoi").forEach(e => {
+                e.remove();
+                document.body.classList.remove('noscroll');
+            });
+        });
+
+        el.addEventListener('focusout', () => {
+            popupRemovalTimeout = setTimeout(() => {
+                const focused = document.activeElement;
+                if (currentPopup && (!currentPopup.contains(focused))) {
+                    currentPopup.remove();
+                    currentPopup = null;
+                }
+            }, 150);
+        });
+    });
+});
+
     console.log("GORP")
     console.log("========================================================================================")
 // Make the episode list and work on adding more genres
