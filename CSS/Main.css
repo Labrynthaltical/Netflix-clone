@@ -515,8 +515,8 @@ margin-right: -2.5rem;
 } */
 .helphereplz{
   position: absolute;
-  top: 110%;
-  left: 51%;
+  /* top: 110%; */
+  /* left: 51%; */
   transform: translate(-50%, -50%);
   z-index: 9999;
  max-height: 90vh;

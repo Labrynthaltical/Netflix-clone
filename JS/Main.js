@@ -225,10 +225,11 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                     popup.style.position = "";
                     popup.classList.remove("popup-sim");
                     popup.classList.add("helphereplz");
+// const isMobileMQ = window.matchMedia("(max-width: 760px)");
 
                     setTimeout(() => {
                         popup.classList.add("deletmoi");
-                        document.body.classList.add('noscroll');
+                        // document.body.classList.add('noscroll');
 
                         popup.addEventListener("focusout", () => {
                             document.body.classList.remove('noscroll');
