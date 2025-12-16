@@ -104,17 +104,12 @@ async function GetPopularTMDbTitles() {
         const countryName = getCountryName(regionCode); // "United States"
 
         console.log(regionCode, countryName);
-
-        const moviesRes = await fetch(
-            `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`
-        );
-        const showsRes = await fetch(
-            `https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`
-        );
-
+        console.log( countryName);
+        document.getElementById("setit").innerHTML = `Top 10 movies in the country of ${countryName} today!`
+        const moviesRes = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`);
+        const showsRes = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`);
         const moviesData = await moviesRes.json();
         const showsData = await showsRes.json();
-
         const mergedContent = [
             ...moviesData.results,
             ...showsData.results
@@ -146,8 +141,7 @@ async function GetPopularTMDbTitles() {
         document.getElementById("containall").style.backgroundImage =
             `url('https://image.tmdb.org/t/p/original${heroPath}')`;
 
-        document.getElementById("thefirst_title").innerHTML =
-            `Popular in ${countryName}`;
+        document.getElementById("thefirst_title").innerHTML = mergedContent[0].title;
 
     } catch (error) {
         console.error("An error has occurred:", error);
