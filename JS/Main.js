@@ -105,11 +105,14 @@ async function GetPopularTMDbTitles() {
 
         console.log(regionCode, countryName);
         console.log( countryName);
-        document.getElementById("setit").innerHTML = `Top 10 movies in the country of ${countryName} today!`
-        const moviesRes = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`);
+        document.getElementById("setit").innerHTML = `${countryName}'s Top 10 movies today!`
+        const moviesRes = await fetch(
+            `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`);
         const showsRes = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`);
+
         const moviesData = await moviesRes.json();
         const showsData = await showsRes.json();
+
         const mergedContent = [
             ...moviesData.results,
             ...showsData.results
@@ -141,7 +144,8 @@ async function GetPopularTMDbTitles() {
         document.getElementById("containall").style.backgroundImage =
             `url('https://image.tmdb.org/t/p/original${heroPath}')`;
 
-        document.getElementById("thefirst_title").innerHTML = mergedContent[0].title;
+        document.getElementById("thefirst_title").innerHTML =
+            `Popular in ${countryName}`;
 
     } catch (error) {
         console.error("An error has occurred:", error);
@@ -561,9 +565,9 @@ getvidtrailers_action();
         // }
         // trying()
     // });
-const Export_fun_gems = []
-const pushmerge_gems = []
-const Trailer_gems = []
+const Export_fun_Horror = []
+const pushmerge_Horror = []
+const Trailer_Horror = []
 
 async function GettingHiddengemcontent() {
     try {
@@ -573,10 +577,10 @@ async function GettingHiddengemcontent() {
         const Clear_Hiddengem_movies = await Hiddengem_movies.json()
         const Clear_Hiddengem_shows = await Hiddengem_shows.json()
 
-        Export_fun_gems.push(Clear_Hiddengem_movies)
-        Export_fun_gems.push(Clear_Hiddengem_shows)
+        Export_fun_Horror.push(Clear_Hiddengem_movies)
+        Export_fun_Horror.push(Clear_Hiddengem_shows)
 
-        const merged_gems = [...Clear_Hiddengem_movies.results, ...Clear_Hiddengem_shows.results]
+        const merged_Horror = [...Clear_Hiddengem_movies.results, ...Clear_Hiddengem_shows.results]
 
         function shuffle(array) {
             let currentIndex = array.length;
@@ -587,14 +591,14 @@ async function GettingHiddengemcontent() {
                     array[randomIndex], array[currentIndex]];
             }
         }
-        shuffle(merged_gems)
+        shuffle(merged_Horror)
 
-        pushmerge_gems.push(merged_gems)
+        pushmerge_Horror.push(merged_Horror)
 
         const gemposters = document.getElementsByClassName("Cardposter-horror")
 
-        for (let i = 0; i < merged_gems.length && i < gemposters.length; i++) {
-            const posterPath = merged_gems[i].poster_path || merged_gems[i].backdrop_path;
+        for (let i = 0; i < merged_Horror.length && i < gemposters.length; i++) {
+            const posterPath = merged_Horror[i].poster_path || merged_Horror[i].backdrop_path;
             const posterUrl = posterPath
                 ? `https://image.tmdb.org/t/p/original${posterPath}`
                 : 'https://via.placeholder.com/300x450?text=No+Image';
@@ -629,11 +633,11 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             popup.setAttribute('tabindex', '-1');
 
             const posterSrc = el.querySelector(".Cardposter-horror")?.src || '../Images/placeholder.jpg';
-            const content_title = pushmerge_gems[0][index].title || pushmerge_gems[0][index].name || "Untitled";
+            const content_title = pushmerge_Horror[0][index].title || pushmerge_Horror[0][index].name || "Untitled";
 
-            async function getvidtrailers_gems() {
+            async function getvidtrailers_Horror() {
                 try {
-                    const item = pushmerge_gems[0][index]
+                    const item = pushmerge_Horror[0][index]
                     const type = item.title ? "movie" : "tv"
 
                     const response = await fetch(`https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`)
@@ -648,7 +652,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                     console.error("An error has occoured:", error);
                 }
             }
-            getvidtrailers_gems()
+            getvidtrailers_Horror()
 
             popup.innerHTML = `
             <div class="thecontent" tabindex="0">
@@ -665,19 +669,19 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                     </div>
                     <div class="contentstats">
                         <p class="contentname">${content_title}</p>
-                        <ul class="contenttag_gems"></ul>
-                        <p class="content_discribtion">${pushmerge_gems[0][index].overview || "No description available"}</p>
+                        <ul class="contenttag_Horror"></ul>
+                        <p class="content_discribtion">${pushmerge_Horror[0][index].overview || "No description available"}</p>
                     </div>
                 </div>
             </div>`;
 
-            const thegenres = pushmerge_gems[0][index].genre_ids;
+            const thegenres = pushmerge_Horror[0][index].genre_ids;
             const namedgenres = thegenres.map(id => lookouttable[id]);
 
             document.body.appendChild(popup);
             currentPopup = popup;
 
-            const thegenlist = document.querySelector(".contenttag_gems");
+            const thegenlist = document.querySelector(".contenttag_Horror");
             thegenlist.innerHTML = "";
             namedgenres.forEach(hosting => {
                 const listing = document.createElement("li");
@@ -751,103 +755,69 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
         });
     });
 });
-const Export_fun_Recent = []
-const pushmerge_Recent = []
-const Trailer_Recent = []
+const returnvalues_toprated = []
 
-async function GettingHiddenRecentcontent() {
+async function GetTopRatedTMDbTitles() {
     try {
-        const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
-        const RecentMoviesRes1 = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&sort_by=release_date.desc&page=1`);
-        const RecentMoviesRes2 = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&sort_by=release_date.desc&page=2`);
-        const RecentShowsRes1 = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&sort_by=first_air_date.desc&page=1`);
-        const RecentShowsRes2 = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&sort_by=first_air_date.desc&page=2`);
-        const Clear_HiddenRecent_movies1 = await RecentMoviesRes1.json()
-        const Clear_HiddenRecent_movies2 = await RecentMoviesRes2.json()
-        const Clear_HiddenRecent_shows1 = await RecentShowsRes1.json()
-        const Clear_HiddenRecent_shows2 = await RecentShowsRes2.json()
+        const apiKey = "185134e7391a581ac86e9efd4a3a4bb3"
 
-        Export_fun_Recent.push(Clear_HiddenRecent_movies1)
-        Export_fun_Recent.push(Clear_HiddenRecent_movies2)
-        Export_fun_Recent.push(Clear_HiddenRecent_shows1)
-        Export_fun_Recent.push(Clear_HiddenRecent_shows2)
+        const movieRes = await fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}&language=en-US&page=1`)
+        const tvRes = await fetch(`https://api.themoviedb.org/3/tv/top_rated?api_key=${apiKey}&language=en-US&page=1`)
 
-        const combinedResults = [...Clear_HiddenRecent_movies1.results, ...Clear_HiddenRecent_movies2.results, ...Clear_HiddenRecent_shows1.results, ...Clear_HiddenRecent_shows2.results]
+        const movieData = await movieRes.json()
+        const tvData = await tvRes.json()
 
-        async function filterWithTrailer(items) {
-            const resultsWithTrailer = []
-            for (let item of items) {
-                if (!(item.poster_path || item.backdrop_path)) continue
-                const type = item.title ? "movie" : "tv"
-                try {
-                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=${APIkey}&language=en-US`)
-                    const viddata = await response.json()
-                    const trailer = viddata.results.find(v => v.site === "YouTube" && (v.type === "Trailer" || v.type === "Teaser"))
-                    if (trailer) {
-                        item._trailerKey = trailer.key
-                        resultsWithTrailer.push(item)
-                    }
-                } catch (e) {
-                    continue
-                }
-            }
-            return resultsWithTrailer
-        }
-
-        const merged_Recent = await filterWithTrailer(combinedResults)
+        const mergedContent = [...movieData.results, ...tvData.results].filter(i => i.poster_path || i.backdrop_path)
 
         function shuffle(array) {
-            let currentIndex = array.length;
+            let currentIndex = array.length
             while (currentIndex != 0) {
-                let randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex--;
-                [array[currentIndex], array[randomIndex]] = [
-                    array[randomIndex], array[currentIndex]];
+                let randomIndex = Math.floor(Math.random() * currentIndex)
+                currentIndex--
+                ;[array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]]
             }
         }
-        shuffle(merged_Recent)
+        shuffle(mergedContent)
 
-        pushmerge_Recent.push(merged_Recent)
+        returnvalues_toprated.push(...mergedContent)
 
-        const gemposters = document.getElementsByClassName("Cardposter-Recent")
+        const posters = document.getElementsByClassName("Cardposter-toprated")
 
-        for (let i = 0; i < merged_Recent.length && i < gemposters.length; i++) {
-            const posterPath = merged_Recent[i].poster_path || merged_Recent[i].backdrop_path;
-            const posterUrl = posterPath
-                ? `https://image.tmdb.org/t/p/original${posterPath}`
-                : '../Images/Red_Demo_redemotion.jfif';
-            gemposters[i].src = posterUrl;
+        for (let i = 0; i < posters.length && i < mergedContent.length; i++) {
+            const posterPath = mergedContent[i].poster_path || mergedContent[i].backdrop_path
+            posters[i].src = `https://image.tmdb.org/t/p/original${posterPath}`
         }
 
     } catch (error) {
-        console.error('An error has occoured:', error);
+        console.error("An error has occoured:", error)
     }
 }
-GettingHiddenRecentcontent()
+GetTopRatedTMDbTitles()
 
-document.addEventListener("DOMContentLoaded", function namedfunq() {
-    let currentPopup = null;
-    let popupRemovalTimeout = null;
+document.addEventListener("DOMContentLoaded", function () {
+    let currentPopup = null
+    let popupRemovalTimeout = null
 
-    document.querySelectorAll('.thecontent-Recent').forEach((el, index) => {
-        el.addEventListener('focusin', () => {
+    document.querySelectorAll(".thecontent-toprated").forEach((el, index) => {
+        el.addEventListener("focusin", () => {
 
             if (popupRemovalTimeout) {
-                clearTimeout(popupRemovalTimeout);
-                popupRemovalTimeout = null;
+                clearTimeout(popupRemovalTimeout)
+                popupRemovalTimeout = null
             }
 
             if (currentPopup) {
-                currentPopup.remove();
-                currentPopup = null;
+                currentPopup.remove()
+                currentPopup = null
             }
 
-            const popup = document.createElement('div');
-            popup.classList.add('popup-sim');
-            popup.setAttribute('tabindex', '-1');
+            const popup = document.createElement("div")
+            popup.classList.add("popup-sim")
+            popup.setAttribute("tabindex", "-1")
 
-            const posterSrc = el.querySelector(".Cardposter-Recent")?.src || '../Images/placeholder.jpg';
-            const content_title = pushmerge_Recent[0][index].title || pushmerge_Recent[0][index].name || "Untitled";
+            const posterSrc = el.querySelector(".Cardposter-toprated")?.src || "../Images/placeholder.jpg"
+            const content_title = returnvalues_toprated[index]?.title || returnvalues_toprated[index]?.name || "Untitled"
+            const itemId = returnvalues_toprated[index].id
 
             popup.innerHTML = `
             <div class="thecontent" tabindex="0">
@@ -864,95 +834,70 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
                     </div>
                     <div class="contentstats">
                         <p class="contentname">${content_title}</p>
-                        <ul class="contenttag_Recent"></ul>
-                        <p class="content_discribtion">${pushmerge_Recent[0][index].overview || "No description available"}</p>
+                        <ul class="contenttag_toprated"></ul>
+                        <p class="content_discribtion">${returnvalues_toprated[index]?.overview || "No description available"}</p>
                     </div>
                 </div>
-            </div>`;
+            </div>`
 
-            const theiframe = popup.querySelector(".trailervidi");
-            theiframe.src = `https://www.youtube.com/embed/${pushmerge_Recent[0][index]._trailerKey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+            async function getTrailer() {
+                try {
+                    const type = returnvalues_toprated[index].title ? "movie" : "tv"
+                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${itemId}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`)
+                    const data = await response.json()
 
-            const thegenres = pushmerge_Recent[0][index].genre_ids;
-            const namedgenres = thegenres.map(id => lookouttable[id]);
+                    const trailer = data.results.find(v => v.site === "YouTube" && v.type === "Trailer")
+                    if (trailer) {
+                        popup.querySelector("iframe").src =
+                            `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`
+                    }
+                } catch (error) {}
+            }
+            getTrailer()
 
-            document.body.appendChild(popup);
-            currentPopup = popup;
+            const genres = returnvalues_toprated[index].genre_ids
+            const namedgenres = genres.map(id => lookouttable[id])
 
-            const thegenlist = document.querySelector(".contenttag_Recent");
-            thegenlist.innerHTML = "";
-            namedgenres.forEach(hosting => {
-                const listing = document.createElement("li");
-                listing.innerHTML = hosting;
-                thegenlist.appendChild(listing);
-            });
+            document.body.appendChild(popup)
+            currentPopup = popup
 
-            const rect = el.getBoundingClientRect();
-            const style = document.createElement("style");
+            const genlist = popup.querySelector(".contenttag_toprated")
+            genlist.innerHTML = ""
+            namedgenres.forEach(g => {
+                const li = document.createElement("li")
+                li.innerHTML = g
+                genlist.appendChild(li)
+            })
+
+            const rect = el.getBoundingClientRect()
+            const style = document.createElement("style")
             style.textContent = `@keyframes movePopup_${Date.now()} {
-                from {
-                    top: ${rect.top}px;
-                    left: ${rect.left + window.scrollX}px;
-                }
-                to {
-                    top: ${35}%;
-                    left: ${35}%;
-                }
+                from { top: ${rect.top}px; left: ${rect.left + window.scrollX}px; }
+                to { top: ${35}%; left: ${35}%; }
             }`
-            document.head.appendChild(style);
-            popup.style.position = "fixed";
-            popup.style.animation = `movePopup_${Date.now()} 0.35s ease-out forwards`;
+            document.head.appendChild(style)
 
-            let problem = document.querySelectorAll(".popup-sim");
-            if (problem) {
-                problem.forEach(e => {
-                    e.addEventListener("focusout", () => {
-                        e.remove();
-                    });
-                });
-            }
+            popup.style.position = "fixed"
+            popup.style.animation = `movePopup_${Date.now()} 0.35s ease-out forwards`
 
-            const moreButton = popup.querySelector(".displaymore");
-            if (moreButton) {
-                moreButton.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    popup.style.top = "";
-                    popup.style.left = "";
-                    popup.style.position = "";
-                    popup.classList.remove("popup-sim");
-                    popup.classList.add("helphereplz");
+            popup.querySelector(".displaymore")?.addEventListener("click", e => {
+                e.preventDefault()
+                popup.classList.remove("popup-sim")
+                popup.classList.add("helphereplz")
+            })
+        })
 
-                    setTimeout(() => {
-                        popup.classList.add("deletmoi");
-                        document.body.classList.add('noscroll');
-
-                        popup.addEventListener("focusout", () => {
-                            document.body.classList.remove('noscroll');
-                            popup.remove();
-                        });
-                    }, 100);
-                });
-            }
-        });
-
-        document.getElementById("allbutpop").addEventListener("click", () => {
-            document.querySelectorAll(".deletmoi").forEach(e => {
-                e.remove();
-                document.body.classList.remove('noscroll');
-            });
-        });
-
-        el.addEventListener('focusout', () => {
+        el.addEventListener("focusout", () => {
             popupRemovalTimeout = setTimeout(() => {
-                const focused = document.activeElement;
-                if (currentPopup && (!currentPopup.contains(focused))) {
-                    currentPopup.remove();
-                    currentPopup = null;
+                if (currentPopup && !currentPopup.contains(document.activeElement)) {
+                    currentPopup.remove()
+                    currentPopup = null
                 }
-            }, 150);
-        });
-    });
-});
+            }, 150)
+        })
+    })
+})
+
 
 
 

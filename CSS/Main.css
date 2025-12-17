@@ -703,7 +703,7 @@ margin-right: -2.5rem;
   border-radius: 5px 5px 0px 0px;
    z-index: 10;
 }
- .Cardposter-Recent {
+ .Cardposter-toprated {
     display: flex;
     justify-content: center;
   width: 15rem;
@@ -730,7 +730,7 @@ margin-right: -2.5rem;
     flex-direction: row;
     color: rgba(235, 235, 235, 0.822);
 }
-.contenttag_gems {
+.contenttag_Horror {
     padding-inline-start: 10px;
     list-style: disc;
     margin-left: 0px;
@@ -747,7 +747,7 @@ margin-right: -2.5rem;
     /* color: blue; */
     list-style-type: disc !important;
 }
-.contenttag_gems li {
+.contenttag_Horror li {
     color: white;
     margin-right: 20px;
     list-style-type: disc !important;
@@ -756,7 +756,7 @@ margin-right: -2.5rem;
 .contenttag_action li:nth-child(1){
     list-style-type: none !important;
 }
-.contenttag_gems li:nth-child(1){
+.contenttag_Horror li:nth-child(1){
     list-style-type: none !important;
 }
 .containpost{
