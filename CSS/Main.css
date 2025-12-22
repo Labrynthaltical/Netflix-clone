@@ -94,26 +94,14 @@ body{
 }
 
 #hero-trailer {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-
-    width: 120vw;
-    height: 67.5vw; /* 16:9 ratio */
-
-    min-width: 100%;
-    min-height: 100%;
-
-    transform: translate(-50%, -50%);
-    border: none;
-
-    opacity: 0;
-    z-index: 1;
+    position: relative;
+    height: 100%;
+    /* top: 50%; */
+    /* left: 50%; */
+    width: auto;
     pointer-events: none;
     transition: opacity 0.8s ease;
 }
-
-
     #contain{
         /* background-color: rgb(0, 0, 0); */
         width: 100%;
@@ -317,9 +305,9 @@ body{
         margin-left: 0px;
         margin-top: 10px;
     }
-    #first_movie{
+    .first_movie{
         height: 90%;
-        margin-top: 25%;
+        /* margin-top: 25%; */
         /* margin-left: 1rem; */
         /* margin-bottom: auto; */
         display: flex;
@@ -328,13 +316,13 @@ body{
         /* text-align: center; */
         /* margin-left: auto; */
         /* margin-right: auto; */
-        width: 80%;
+        /* width: 80%; */
         font-weight:500;
         /* justify-content: space-around; */
         font-size: .9rem;
         /* align-self: flex-end; */
     }
-    #first_movie h1{
+    .first_movie h1{
         font-size: 2.2rem;
         text-align: center;
     }

@@ -143,8 +143,8 @@ async function GetPopularTMDbTitles() {
  const heroItem = mergedContent[0];
 
 const heroPath = heroItem.backdrop_path || heroItem.poster_path;
-document.getElementById("containall").style.backgroundImage =
-    `url('https://image.tmdb.org/t/p/original${heroPath}')`;
+// document.getElementById("containall").style.backgroundImage =
+    // `url('https://image.tmdb.org/t/p/original${heroPath}')`;
 
 document.getElementById("thefirst_title").innerHTML =
     heroItem.title || heroItem.original_name;
@@ -167,11 +167,10 @@ document.getElementById("thefirst_title").innerHTML =
         const iframe = document.getElementById("hero-trailer");
 
         // Netflix-like delay
-        setTimeout(() => {
+        
             iframe.src =
                 `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&rel=0&modestbranding=1`;
             iframe.style.opacity = "1";
-        }, 1200);
 
     } catch (e) {
         console.log("Hero trailer unavailable");
