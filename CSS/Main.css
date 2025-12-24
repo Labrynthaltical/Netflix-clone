@@ -65,7 +65,7 @@ body{
     height: 100%;
     margin: 0px;
     font-family: " Sans", Helvetica, Arial, sans-serif;
-    background-color: rgb(29, 29, 29);
+    background-color: rgba(0, 0, 0, 0.918);
 }
 .noscroll {
   overflow: hidden;
@@ -89,29 +89,57 @@ body{
 
 @media(min-width : 200px){
 #containall {
-    position: relative;   /* ⭐ REQUIRED */
+    position: relative;   
     display: flex;
     flex-direction: column;
     width: 100%;
     height: 30rem;
     overflow: hidden;
+    z-index: 1;
 }
-
-
-#hero-trailer {
+.taper_fade {
     position: absolute;
-    inset: 0;               /* fills the container */
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    margin-bottom: -1rem;
+    height: 40%; /* controls fade size */
+    pointer-events: none;
+    z-index: 2;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        rgba(20, 20, 20, 0.7) 60%,
+        rgba(20, 20, 20, 1) 100%
+    );
+}
+.hero-video {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    z-index: 0;
+}
+.video_overlay{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100vw;
+    height: 56.25vw; /* 16:9 */
+    min-height: 100vh;
+    min-width: 177.77vh;
+    transform: translate(-50%, -50%);
+}
+#hero-trailer {
     width: 100%;
     height: 100%;
-
     border: none;
-    z-index: 0;             /* BACKGROUND */
-    pointer-events: none;   /* ⭐ prevents blocking buttons */
+    pointer-events: none;
 }
 #Nav,
 .first_movie {
     position: relative;
-    z-index: 2;             /* ABOVE iframe */
+    z-index: 2;             
 }
     #contain{
         /* background-color: rgb(0, 0, 0); */
@@ -325,6 +353,10 @@ body{
         display: flex;
         flex-direction: column;
         color: white;
+        justify-content:end;
+        align-items: start;
+        margin-left: 5rem;
+        gap: 1rem;
         /* text-align: center; */
         /* margin-left: auto; */
         /* margin-right: auto; */
@@ -334,6 +366,7 @@ body{
         font-size: .9rem;
         /* align-self: flex-end; */
     }
+    
     .first_movie h1{
         font-size: 2.2rem;
         text-align: center;
@@ -435,7 +468,11 @@ body{
     /* height: 1000px; */
   /* margin-top: 2rem; */
 }
-
+.housedcontent:nth-child(1) {
+  position: relative;
+  z-index: 3;
+  margin-top: -1rem;
+}
 .classification {
   color: white;
   margin-left: 3rem;
