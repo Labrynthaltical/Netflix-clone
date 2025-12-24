@@ -146,7 +146,7 @@ const heroPath = heroItem.backdrop_path || heroItem.poster_path;
 // document.getElementById("containall").style.backgroundImage =
     // `url('https://image.tmdb.org/t/p/original${heroPath}')`;
 
-document.getElementById("thefirst_title").innerHTML =
+document.getElementsByClassName("thefirst_title").innerHTML =
     heroItem.title || heroItem.original_name;
 
     async function loadHeroTrailer(item) {
