@@ -141,7 +141,7 @@ async function GetPopularTMDbTitles() {
         }
 
  const heroItem = mergedContent[0];
-
+console.log(heroItem);
 const heroPath = heroItem.backdrop_path || heroItem.poster_path;
 // document.getElementById("containall").style.backgroundImage =
     // `url('https://image.tmdb.org/t/p/original${heroPath}')`;
