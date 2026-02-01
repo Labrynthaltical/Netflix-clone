@@ -688,7 +688,7 @@ async function GettingHiddengemcontent() {
         for (let i = 0; i < merged_Horror.length && i < gemposters.length; i++) {
             const posterPath = merged_Horror[i].poster_path || merged_Horror[i].backdrop_path;
             const posterUrl = posterPath
-                ? `https://image.tmdb.org/t/p/original${posterPath}`
+                ? `https://image.tmdb.org/t/p/w500${posterPath}`
                 : 'https://via.placeholder.com/300x450?text=No+Image';
             gemposters[i].src = posterUrl;
         }
@@ -873,7 +873,7 @@ async function GetTopRatedTMDbTitles() {
 
         for (let i = 0; i < posters.length && i < mergedContent.length; i++) {
             const posterPath = mergedContent[i].poster_path || mergedContent[i].backdrop_path
-            posters[i].src = `https://image.tmdb.org/t/p/original${posterPath}`
+            posters[i].src = `https://image.tmdb.org/t/p/w500${posterPath}`
         }
 
     } catch (error) {
