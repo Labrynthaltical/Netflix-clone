@@ -61,6 +61,40 @@ const returnvalues = [];
 let cachedRegion = null;
 let cachedCountryName = null;
 
+
+async function fetchSeasonsAndEpisodes(tvId) {
+    const apiKey = "185134e7391a581ac86e9efd4a3a4bb3";
+
+    const showRes = await fetch(
+        `https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}&language=en-US`
+    );
+    const showData = await showRes.json();
+
+    const seasons = showData.seasons || [];
+
+    const seasonsWithEpisodes = [];
+
+    for (const season of seasons) {
+        if (season.season_number === 0) continue; // skip specials
+
+        const seasonRes = await fetch(
+            `https://api.themoviedb.org/3/tv/${tvId}/season/${season.season_number}?api_key=${apiKey}&language=en-US`
+        );
+        const seasonData = await seasonRes.json();
+
+        seasonsWithEpisodes.push({
+            season_number: season.season_number,
+            name: season.name,
+            episodes: seasonData.episodes || []
+        });
+    }
+
+    return seasonsWithEpisodes;
+}
+
+// task : integrate the season function into the popup display for TV shows only when needed
+
+
 async function getUserRegion() {
     if (cachedRegion) return cachedRegion;
 
