@@ -71,7 +71,9 @@ async function fetchSeasonsAndEpisodes(tvId) {
     const showData = await showRes.json();
 
     const seasons = showData.seasons || [];
-
+    console.log(seasons);
+    console.log("===================");
+    
     const seasonsWithEpisodes = [];
 
     for (const season of seasons) {
@@ -87,6 +89,7 @@ async function fetchSeasonsAndEpisodes(tvId) {
             name: season.name,
             episodes: seasonData.episodes || []
         });
+        console.log(seasonsWithEpisodes[0].episodes[0]);
     }
 
     return seasonsWithEpisodes;
@@ -175,7 +178,7 @@ async function GetPopularTMDbTitles() {
         }
 
  const heroItem = mergedContent[0];
-console.log(heroItem);
+// console.log(heroItem);
 const heroPath = heroItem.backdrop_path || heroItem.poster_path;
 // document.getElementById("containall").style.backgroundImage =
     // `url('https://image.tmdb.org/t/p/original${heroPath}')`;
@@ -449,6 +452,8 @@ shuffle(mergedstuff)
          }
 
 
+
+
 }
  catch (error) {
         console.error('An error has occoured:', error);
@@ -495,6 +500,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
         console.log(thekeyed);
         const embedkey = viddata_action.results[0].key;
         console.log(embedkey);
+        
         const theiframe = popup.querySelector("iframe");
         theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
     } catch (error) {
@@ -505,6 +511,15 @@ getvidtrailers_action();
 
     console.log(pushmerge[0][0])
     console.log("item:", index, pushmerge[0][index]);
+
+    const theitem = pushmerge[0][index];
+if (theitem.original_name) {
+            console.log("this is a show");
+             fetchSeasonsAndEpisodes(theitem.id);
+        }
+        else{
+            console.log("this is a movie");
+        }
 
             if(!pushmerge[0][index].original_name){
             popup.innerHTML = `
