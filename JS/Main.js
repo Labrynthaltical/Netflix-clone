@@ -69,9 +69,11 @@ async function fetchSeasonsAndEpisodes(tvId) {
         `https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}&language=en-US`
     );
     const showData = await showRes.json();
-
+    console.log(showData);
+    console.log("++++++++++++++++++++++");
     const seasons = showData.seasons || [];
-    console.log(seasons);
+    console.log(seasons); 
+    // This one shows the seasons
     console.log("===================");
     
     const seasonsWithEpisodes = [];
@@ -83,13 +85,14 @@ async function fetchSeasonsAndEpisodes(tvId) {
             `https://api.themoviedb.org/3/tv/${tvId}/season/${season.season_number}?api_key=${apiKey}&language=en-US`
         );
         const seasonData = await seasonRes.json();
-
+        console.log(seasonData);
         seasonsWithEpisodes.push({
             season_number: season.season_number,
             name: season.name,
             episodes: seasonData.episodes || []
         });
-        console.log(seasonsWithEpisodes[0].episodes[0]);
+        // console.log(seasonsWithEpisodes[0].episodes[[1]]);
+
     }
 
     return seasonsWithEpisodes;
@@ -141,7 +144,7 @@ async function GetPopularTMDbTitles() {
         const countryName = getCountryName(regionCode); // "United States"
 
         console.log(regionCode, countryName);
-        console.log( countryName);
+        // console.log( countryName);
         document.getElementById("setit").innerHTML = `${countryName}'s Top 10 movies today!`
         const moviesRes = await fetch(
             `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`);
@@ -223,28 +226,28 @@ loadHeroTrailer(heroItem);
 GetPopularTMDbTitles();
 let actioned = document.getElementsByClassName("thecontent-action");
 for (let i = 0; i < actioned.length; i++) {
-    console.log("this is the number of action content cards");
+    // console.log("this is the number of action content cards");
   
 }
 let horrored = document.getElementsByClassName("thecontent-horror");
 for (let i = 0; i < horrored.length; i++) {
-    console.log("this is the number of horror content cards");
+    // console.log("this is the number of horror content cards");
 }
 let toprated = document.getElementsByClassName("thecontent-toprated");
 for (let i = 0; i < toprated.length; i++) {
-    console.log("this is the number of top rated content cards");
+    // console.log("this is the number of top rated content cards");
 }
 let comed = document.getElementsByClassName("thecontent-comedy");
 for (let i = 0; i < comed.length; i++) {
-    console.log("this is the number of comedy content cards");
+    // console.log("this is the number of comedy content cards");
 }
 let Romance = document.getElementsByClassName("thecontent-Romance");
 for (let i = 0; i < Romance.length; i++) {
-    console.log("this is the number of Romance content cards");
+    // console.log("this is the number of Romance content cards");
 }
 let upcoming = document.getElementsByClassName("thecontent-upcoming");
 for (let i = 0; i < upcoming.length; i++) {
-    console.log("this is the number of upcoming content cards");
+    // console.log("this is the number of upcoming content cards");
 }
 const housinten = [];
 
@@ -492,14 +495,14 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             const type = theitem.title ? "movie" : "tv"
         const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
         const viddata_action = await response.json();
-        console.log(viddata_action);
-        console.log(viddata_action.results[0].key);
-        console.log("5555555555555555555555");
+        // console.log(viddata_action);
+        // console.log(viddata_action.results[0].key);
+        // console.log("5555555555555555555555");
 
         let thekeyed = viddata_action.results[0].key;
-        console.log(thekeyed);
+        // console.log(thekeyed);
         const embedkey = viddata_action.results[0].key;
-        console.log(embedkey);
+        // console.log(embedkey);
         
         const theiframe = popup.querySelector("iframe");
         theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
@@ -509,8 +512,8 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 }
 getvidtrailers_action();
 
-    console.log(pushmerge[0][0])
-    console.log("item:", index, pushmerge[0][index]);
+    // console.log(pushmerge[0][0])
+    // console.log("item:", index, pushmerge[0][index]);
 
     const theitem = pushmerge[0][index];
 if (theitem.original_name) {
@@ -555,6 +558,13 @@ if (theitem.original_name) {
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
+              <div class = "seasonser">  <label for="cars">Seasons:</label>
+                        <select name="cars" id="cars">
+                            <option value="volvo">Volvo</option>
+                            <option value="saab">Saab</option>
+                            <option value="opel">Opel</option>
+                            <option value="audi">Audi</option>
+                        </select></div>
               <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
             </div>
             <div class="contentstats">
@@ -567,7 +577,7 @@ if (theitem.original_name) {
             }
             const thegenres = pushmerge[0][index].genre_ids;
             const namedgenres = thegenres.map(id => lookouttable[id]);
-            console.log(namedgenres);
+            // console.log(namedgenres);
 
             document.body.appendChild(popup);
             currentPopup = popup;
@@ -581,7 +591,7 @@ if (theitem.original_name) {
             });
 
             const rect = el.getBoundingClientRect();
-            console.log(rect)
+            // console.log(rect)
            const style = document.createElement("style");
             style.textContent = `@keyframes movePopup_${Date.now()} {
         from {
@@ -1000,6 +1010,9 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     })
 })
+
+
+
 const Trending_scope = [];
 const Trending_merge = [];
 
@@ -2002,14 +2015,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
-
-
-
-
-
-
-
-
     console.log("GORP")
     console.log("========================================================================================")
 // Make the episode list and work on adding more genres
@@ -2025,3 +2030,4 @@ function getUserCountry() {
     
 }
 getUserCountry()
+{/* <div class = "seasonser"></div> */}
