@@ -600,7 +600,7 @@ margin-right: -2.5rem;
   appearance: none; 
 }
 .helphereplz .thecontent{
-    background-color: rgb(128, 0, 0) !important;
+    background-color: rgb(22, 22, 22) !important;
     display: flex;
     flex-direction: column;
     height: fit-content;
@@ -609,6 +609,18 @@ margin-right: -2.5rem;
 .helphereplz .Cardposter_popular{
     height: 40%;
 }
+
+.helphereplz .contentdetails{
+    background-color: green;
+}
+
+.helphereplz .moviebuttons{
+    background-color: blue;
+    position: relative;
+    margin-top: -5rem;
+}
+
+
 .helphereplz iframe{
     border: none;
     outline: none;
@@ -662,7 +674,7 @@ margin-right: -2.5rem;
   padding-bottom: 20px;
   height: fit-content;
   padding-top: 10px;
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
   z-index: 99999999999;
 }

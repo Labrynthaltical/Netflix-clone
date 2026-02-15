@@ -99,8 +99,11 @@ async function fetchSeasonsAndEpisodes(tvId) {
 }
 
 // task : integrate the season function into the popup display for TV shows only when needed
-
-
+// task : fix the popup-maybe use the same getboundingclient to position it in the center of the screen instead of top left corner
+// task : add a loading animation for the trailer while fetching it, and only display the iframe once the trailer is ready to play
+// task : add error handling for the trailer fetch, and display a user-friendly message if the trailer is unavailable or fails to load
+// task : optimize the trailer fetch by caching results for previously viewed content, so that if a user clicks on the same show/movie again, the trailer can be displayed instantly without needing to fetch it again from the API
+// task :Fix the "displaymore" button to expand the popup to show more details about the content, such as genres, release date, rating, etc. This should only be triggered when the user clicks the button, and not when they click on the content card itself.
 async function getUserRegion() {
     if (cachedRegion) return cachedRegion;
 
@@ -611,7 +614,7 @@ if (theitem.original_name) {
             if (problem) {
                 problem.forEach(e => {
                     e.addEventListener("focusout", () => {
-                        e.remove();
+                        // e.remove();
                     });
                 });
             }
@@ -632,7 +635,7 @@ if (theitem.original_name) {
 
                         popup.addEventListener("focusout", () => {
                             document.body.classList.remove('noscroll');
-                            popup.remove();
+                            // popup.remove();
                         });
                     }, 100);
                 });
@@ -641,7 +644,7 @@ if (theitem.original_name) {
 
         document.getElementById("allbutpop").addEventListener("click", () => {
             document.querySelectorAll(".deletmoi").forEach(e => {
-                e.remove();
+                // e.remove();
                 document.body.classList.remove('noscroll');
             });
         });
@@ -650,8 +653,8 @@ if (theitem.original_name) {
             popupRemovalTimeout = setTimeout(() => {
                 const focused = document.activeElement;
                 if (currentPopup && (!currentPopup.contains(focused))) {
-                    currentPopup.remove();
-                    currentPopup = null;
+                    // currentPopup.remove();
+                    // currentPopup = null;
                 }
             }, 150);
         });
