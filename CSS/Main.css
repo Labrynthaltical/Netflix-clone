@@ -611,7 +611,7 @@ margin-right: -2.5rem;
 }
 
 .helphereplz .contentdetails{
-    background-color: green;
+    /* background-color: green; */
 }
 
 .helphereplz .moviebuttons{
@@ -633,6 +633,22 @@ margin-right: -2.5rem;
   height: 100%;
   border: none;
   outline: none;
+}
+.helphereplz .containbutton{
+    width: 5rem;
+      /* font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  content: " Play";
+  color: red; */
+}
+.helphereplz #letstry:nth-child(1){
+    color: green !important;
+    background-color: red !important;
+    width: 5rem;
+}
+.helphereplz .fa-solid.fa-play{
+    /* display: none; */
+    color: green;
 }
 .thecontent-popular:focus-within .torank{
     /* background-color: green !important; */
