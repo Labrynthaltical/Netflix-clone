@@ -558,7 +558,7 @@ if (theitem.original_name) {
           </div>
           <div class="contentdetails">
             <div class="moviebuttons">
-              <div class="containbutton id = "tryit"><button class="buttoncontent" id = "letstry"><i class="fa-solid fa-play"></i><p>Play</p></button></div>
+              <div class="containbutton id = "tryit"><button class="buttoncontent" id = "letstry"><i class="fa-solid fa-play"></i><p class = "playmeplz">Play</p></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
               <div class = "seasonser">  <label for="cars">Seasons:</label>

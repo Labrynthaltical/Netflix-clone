@@ -644,14 +644,20 @@ margin-right: -2.5rem;
 .helphereplz #letstry{
     color: green !important;
     /* background-color: rgb(255, 0, 128) !important; */
-    width: 5rem;
+    width: 6rem;
     border-radius: 5px;
     border: none;
-    content: "Play";
 }
 .helphereplz #letstry i{
     color: pink;
     /* display: none; */
+}
+.playmeplz{
+    display: none;
+}
+.helphereplz .playmeplz{
+    display: inline;
+    color: green;
 }
 .helphereplz .fa-solid.fa-play{
     /* display: none; */
