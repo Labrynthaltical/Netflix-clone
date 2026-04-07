@@ -561,13 +561,7 @@ if (theitem.original_name) {
               <div class="containbutton id = "tryit"><button class="buttoncontent" id = "letstry"><i class="fa-solid fa-play"></i><p class = "playmeplz">Play</p></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
-              <div class = "seasonser">  <label for="cars">Seasons:</label>
-                        <select name="cars" id="cars">
-                            <option value="volvo">Volvo</option>
-                            <option value="saab">Saab</option>
-                            <option value="opel">Opel</option>
-                            <option value="audi">Audi</option>
-                        </select></div>
+
               <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
             </div>
             <div class="contentstats">

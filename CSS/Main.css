@@ -615,15 +615,22 @@ margin-right: -2.5rem;
 }
 
 .helphereplz .moviebuttons{
-    background-color: blue;
+    background-color: rgba(0, 0, 250, 0);
     position: relative;
     margin-top: -5rem;
+    display: flex;
 }
 
 
 .helphereplz iframe{
     border: none;
     outline: none;
+}
+.helphereplz .buttoncontent{
+    border: none;
+    outline: none;
+    background-color: green;
+    color: white;
 }
 .helphereplz iframe{
   position: absolute;
@@ -635,7 +642,7 @@ margin-right: -2.5rem;
   outline: none;
 }
 .helphereplz .containbutton{
-    width: 5rem;
+    /* width: 5rem; */
       /* font-family: "Font Awesome 6 Free";
   font-weight: 900;
   content: " Play";
@@ -644,12 +651,17 @@ margin-right: -2.5rem;
 .helphereplz #letstry{
     color: green !important;
     /* background-color: rgb(255, 0, 128) !important; */
-    width: 6rem;
+    width: fit-content;
+    display: flex;
     border-radius: 5px;
     border: none;
+    align-items: baseline;
 }
 .helphereplz #letstry i{
     color: pink;
+    margin-bottom: 0px;
+    /* height: 1px; */
+    font-size: larger;
     /* display: none; */
 }
 .playmeplz{
@@ -657,7 +669,7 @@ margin-right: -2.5rem;
 }
 .helphereplz .playmeplz{
     display: inline;
-    color: green;
+    color: rgb(128, 0, 0);
 }
 .helphereplz .fa-solid.fa-play{
     /* display: none; */
@@ -713,7 +725,7 @@ margin-right: -2.5rem;
   display: flex;
   width: 100%;
   justify-content:start;
-  gap: 2%;
+  /* gap: 2%; */
   flex-direction: row;
 }
 .moviebuttons :nth-child(4){
@@ -753,7 +765,8 @@ margin-right: -2.5rem;
 }
 .containbutton:nth-child(1) .buttoncontent{
     border: none ;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
+    height: fit-content;
 }
 .containbutton:nth-child(1) i{
     color: black !important;
