@@ -627,9 +627,9 @@ margin-right: -2.5rem;
     outline: none;
 }
 .helphereplz .buttoncontent{
-    border: none;
+    /* border: none; */
     outline: none;
-    background-color: green;
+    /* background-color: green; */
     color: white;
 }
 .helphereplz iframe{
@@ -651,7 +651,7 @@ margin-right: -2.5rem;
 .helphereplz #letstry{
     color: green !important;
     /* background-color: rgb(255, 0, 128) !important; */
-    width: fit-content;
+    width: 6rem;
     display: flex;
     border-radius: 5px;
     border: none;
@@ -669,7 +669,7 @@ margin-right: -2.5rem;
 }
 .helphereplz .playmeplz{
     display: inline;
-    color: rgb(128, 0, 0);
+    color: rgb(0, 0, 0);
 }
 .helphereplz .fa-solid.fa-play{
     /* display: none; */
@@ -739,6 +739,7 @@ margin-right: -2.5rem;
     background-color: blue;
 }
 .containbutton {
+    height: fit-content;
   /* display: flex; */
   /* flex-direction: column; */
   /* margin-top: 1rem; */
@@ -764,6 +765,11 @@ margin-right: -2.5rem;
   cursor: pointer;   
 }
 .containbutton:nth-child(1) .buttoncontent{
+    border: none ;
+    background-color: rgb(255, 255, 255);
+    /* height: fit-content; */
+}
+.helphereplz .containbutton:nth-child(1) .buttoncontent{
     border: none ;
     background-color: rgb(255, 255, 255);
     height: fit-content;
