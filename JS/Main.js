@@ -2032,3 +2032,5 @@ function getUserCountry() {
 }
 getUserCountry()
 {/* <div class = "seasonser"></div> */}
+
+// next goal : Make that fading effect for the popup and add it to the hero section as well

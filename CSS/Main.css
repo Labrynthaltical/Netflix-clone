@@ -653,15 +653,18 @@ margin-right: -2.5rem;
     /* background-color: rgb(255, 0, 128) !important; */
     width: 6rem;
     display: flex;
+    flex-direction: row;
     border-radius: 5px;
     border: none;
-    align-items: baseline;
+    align-items: center;
+    padding-left: 20%;
 }
 .helphereplz #letstry i{
-    color: pink;
+    /* color: rgb(255, 0, 43) !important; */
+
     margin-bottom: 0px;
     /* height: 1px; */
-    font-size: larger;
+    font-size: 1.2rem;
     /* display: none; */
 }
 .playmeplz{
@@ -669,6 +672,10 @@ margin-right: -2.5rem;
 }
 .helphereplz .playmeplz{
     display: inline;
+    /* align-self: baseline; */
+    margin: 0px;
+    padding: 0px;
+    margin-left: 10px;
     color: rgb(0, 0, 0);
 }
 .helphereplz .fa-solid.fa-play{
@@ -725,7 +732,7 @@ margin-right: -2.5rem;
   display: flex;
   width: 100%;
   justify-content:start;
-  /* gap: 2%; */
+  gap: 2%;
   flex-direction: row;
 }
 .moviebuttons :nth-child(4){
@@ -772,7 +779,7 @@ margin-right: -2.5rem;
 .helphereplz .containbutton:nth-child(1) .buttoncontent{
     border: none ;
     background-color: rgb(255, 255, 255);
-    height: fit-content;
+    /* height: fit-content; */
 }
 .containbutton:nth-child(1) i{
     color: black !important;
