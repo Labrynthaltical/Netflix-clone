@@ -572,13 +572,14 @@ if (theitem.original_name) {
           </div>
         </div>`;  
             }
-            async function changemeplz() {
-                let thewantedbutton = popup.querySelector("#letstry");
-                // thewantedbutton.innerHTML = `<i class="fa-solid fa-play"></i> Play S1E1`;
-            }
+            // async function changemeplz() {
+            //     let thewantedbutton = popup.querySelector("#letstry");
+            //     thewantedbutton.innerHTML = `<i class="fa-solid fa-play"></i> Play S1E1`;
+            // }
+            // changemeplz()
             const thegenres = pushmerge[0][index].genre_ids;
             const namedgenres = thegenres.map(id => lookouttable[id]);
-            // console.log(namedgenres);
+            console.log(namedgenres);
 
             document.body.appendChild(popup);
             currentPopup = popup;
@@ -592,7 +593,7 @@ if (theitem.original_name) {
             });
 
             const rect = el.getBoundingClientRect();
-            // console.log(rect)
+            console.log(rect)
            const style = document.createElement("style");
             style.textContent = `@keyframes movePopup_${Date.now()} {
         from {
@@ -659,7 +660,6 @@ if (theitem.original_name) {
 
     });
 });
-
 // Instead of fetching all data for all seasons and episodes of TV shows,fetch them only when they are needed to be displayed
 
 
@@ -683,19 +683,24 @@ const Export_fun_Horror = []
 const pushmerge_Horror = []
 const Trailer_Horror = []
 
-async function GettingHiddengemcontent() {
+async function GettingHorrorcontent() {
     try {
         const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
-        const Hiddengem_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=27`)
-        const Hiddengem_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=27`)
-        const Clear_Hiddengem_movies = await Hiddengem_movies.json()
-        const Clear_Hiddengem_shows = await Hiddengem_shows.json()
+        const Horror_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=27`)
+        const Horror_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=10765`)
+        const Clear_Horror_movies = await Horror_movies.json()
+        console.log(Clear_Horror_movies)
+        const Clear_Horror_shows = await Horror_shows.json()
+        console.log(Clear_Horror_shows)
+        Export_fun_Horror.push(Clear_Horror_movies)
+        Export_fun_Horror.push(Clear_Horror_shows)
 
-        Export_fun_Horror.push(Clear_Hiddengem_movies)
-        Export_fun_Horror.push(Clear_Hiddengem_shows)
-
-        const merged_Horror = [...Clear_Hiddengem_movies.results, ...Clear_Hiddengem_shows.results]
-
+        const merged_Horror = [...Clear_Horror_movies.results, ...Clear_Horror_shows.results]
+        console.log(Clear_Horror_shows.results)
+//         console.log("Movies:", Clear_Horror_movies.results.length);
+// console.log("TV:", Clear_Horror_shows.results.length);
+        console.log("+++++++++++++++++++++++++++++==")
+        console.log(merged_Horror)
         function shuffle(array) {
             let currentIndex = array.length;
             while (currentIndex != 0) {
@@ -723,7 +728,7 @@ async function GettingHiddengemcontent() {
         console.error('An error has occoured:', error);
     }
 }
-GettingHiddengemcontent()
+GettingHorrorcontent()
 
 document.addEventListener("DOMContentLoaded", function namedfunq() {
     let currentPopup = null;
@@ -1028,10 +1033,12 @@ async function GettingTrendingContent() {
 
         Trending_scope.push(TrendingData);
 
+// console.log(Trending_scope)
+
         const filtered = TrendingData.results.filter(
             item => item.poster_path || item.backdrop_path
         );
-
+        // console.log(filtered)
         function shuffle(array) {
             let currentIndex = array.length;
             while (currentIndex !== 0) {
