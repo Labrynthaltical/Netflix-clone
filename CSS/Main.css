@@ -592,7 +592,7 @@ margin-right: -2.5rem;
   z-index: 9999;
  max-height: 90vh;
   overflow-y: auto;
-  width: 300px;
+  width: 600px;
   height: fit-content;
 }
 .helphereplz::-webkit-scrollbar {
@@ -610,7 +610,7 @@ margin-right: -2.5rem;
     height: 40%;
 }
 .helphereplz .contentstats{
-    background: linear-gradient(#000000ad, #000000);}
+    background: linear-gradient(#0000001e, #000000);}
 .helphereplz .contentdetails{
     /* background-color: green; */
 }
@@ -957,9 +957,8 @@ margin-right: -2.5rem;
 .containpost{
   position: relative;
   display: inline-block;
-    width: 100%;
-  height: 200px; /* match your poster/iframe height */
   overflow: hidden;
+  aspect-ratio: 16 / 9;
 }
 .nohover {
   position: absolute;
