@@ -498,7 +498,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             const type = theitem.title ? "movie" : "tv"
         const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
         const viddata_action = await response.json();
-        // console.log(viddata_action);
+        console.log(viddata_action);
         // console.log(viddata_action.results[0].key);
         // console.log("5555555555555555555555");
 
