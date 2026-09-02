@@ -492,13 +492,16 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             // const theintended = Export_fun_scoping[index].id;
             // housinten.push(theintended);
 
-           async function getvidtrailers_action() {
+ async function getvidtrailers_action() {
     try {
         const theitem = pushmerge[0][index];
             const type = theitem.title ? "movie" : "tv"
         const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
         const viddata_action = await response.json();
         console.log(viddata_action);
+        console.log(viddata_action.results)
+        const trailered = viddata_action.results.filter((trail) => trail.type === "Trailer")
+        console.log(trailered)
         // console.log(viddata_action.results[0].key);
         // console.log("5555555555555555555555");
 

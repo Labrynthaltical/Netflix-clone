@@ -367,7 +367,7 @@ body{
         margin-top: 10px;
     }
     .first_movie{
-        height: 90%;
+        height: 100%;
         /* margin-top: 25%; */
         /* margin-left: 1rem; */
         /* margin-bottom: auto; */
@@ -499,16 +499,16 @@ body{
 }
 #thefirsthouse{
     /* background-color: transparent; */
-    /* margin-top: -1rem; */
+    margin-top: -2rem;
     /* margin-bottom: 10rem; */
-    
+    /* opacity: 0; */
 }
 
 .classification {
   color: white;
   margin-left: 3rem;
   margin-bottom: 0px;
-  /* margin-top: 0px; */
+  margin-top: 0px;
   z-index: 1;
   padding-bottom: 20px;
   position: relative;
