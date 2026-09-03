@@ -507,7 +507,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
         let thekeyed = viddata_action.results[0].key;
         // console.log(thekeyed);
-        const embedkey = viddata_action.results[0].key;
+        const embedkey = trailered[0].key;
         // console.log(embedkey);
         
         const theiframe = popup.querySelector("iframe");
