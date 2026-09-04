@@ -138,7 +138,7 @@ function getCountryName(code) {
 
     return cachedCountryName;
 }
-
+const trailerpush = []
 async function GetPopularTMDbTitles() {
     try {
         const apiKey = '185134e7391a581ac86e9efd4a3a4bb3';
@@ -173,7 +173,8 @@ async function GetPopularTMDbTitles() {
 
         shuffle(mergedContent);
         returnvalues.push(...mergedContent);
-
+        trailerpush.push(mergedContent)
+        console.log(trailerpush)
         const popularposters = document.getElementsByClassName("Cardposter_popular");
 
         for (let i = 0; i < mergedContent.length && i < popularposters.length; i++) {
@@ -227,31 +228,6 @@ loadHeroTrailer(heroItem);
     }
 }
 GetPopularTMDbTitles();
-let actioned = document.getElementsByClassName("thecontent-action");
-for (let i = 0; i < actioned.length; i++) {
-    // console.log("this is the number of action content cards");
-  
-}
-let horrored = document.getElementsByClassName("thecontent-horror");
-for (let i = 0; i < horrored.length; i++) {
-    // console.log("this is the number of horror content cards");
-}
-let toprated = document.getElementsByClassName("thecontent-toprated");
-for (let i = 0; i < toprated.length; i++) {
-    // console.log("this is the number of top rated content cards");
-}
-let comed = document.getElementsByClassName("thecontent-comedy");
-for (let i = 0; i < comed.length; i++) {
-    // console.log("this is the number of comedy content cards");
-}
-let Romance = document.getElementsByClassName("thecontent-Romance");
-for (let i = 0; i < Romance.length; i++) {
-    // console.log("this is the number of Romance content cards");
-}
-let upcoming = document.getElementsByClassName("thecontent-upcoming");
-for (let i = 0; i < upcoming.length; i++) {
-    // console.log("this is the number of upcoming content cards");
-}
 const housinten = [];
 
 document.addEventListener("DOMContentLoaded", function namedfunq() {
@@ -280,22 +256,31 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             const itemId = returnvalues[index].id;
             housinten.push(itemId);
 
-            async function getvidtrailers() {
-                try {
-                    const type = returnvalues[index].title ? "movie" : "tv";
-                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${itemId}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
-                    const viddata = await response.json();
+async function getvidtrailers() {
+    try {
+        const theitem = trailerpush[0][index];
+            const type = theitem.title ? "movie" : "tv"
+        const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+        const viddata = await response.json();
+        console.log(viddata);
+        console.log(viddata.results)
+        const trailered = viddata.results.filter((trail) => trail.type === "Trailer")
+        console.log(trailered)
+        // console.log(viddata_action.results[0].key);
+        // console.log("5555555555555555555555");
 
-                    const trailer = viddata.results.find(v => v.site === "YouTube" && v.type === "Trailer");
-                    if (trailer) {
-                        const theiframe = popup.querySelector("iframe");
-                        theiframe.src = `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
-                    }
-                } catch (error) {
-                    console.log("An error has occoured" + error);
-                }
-            }
-            getvidtrailers();
+        let thekeyed = viddata.results[0].key;
+        // console.log(thekeyed);
+        const embedkey = trailered[0].key;
+        // console.log(embedkey);
+        
+        const theiframe = popup.querySelector("iframe");
+        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+    } catch (error) {
+        console.error("An error has occoured:", error);
+    }
+}
+getvidtrailers();
 
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
@@ -682,201 +667,8 @@ if (theitem.original_name) {
         // }
         // trying()
     // });
-const Export_fun_Horror = []
-const pushmerge_Horror = []
-const Trailer_Horror = []
 
-async function GettingHorrorcontent() {
-    try {
-        const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
-        const Horror_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=27`)
-        const Horror_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=10765`)
-        const Clear_Horror_movies = await Horror_movies.json()
-        console.log(Clear_Horror_movies)
-        const Clear_Horror_shows = await Horror_shows.json()
-        console.log(Clear_Horror_shows)
-        Export_fun_Horror.push(Clear_Horror_movies)
-        Export_fun_Horror.push(Clear_Horror_shows)
 
-        const merged_Horror = [...Clear_Horror_movies.results, ...Clear_Horror_shows.results]
-        console.log(Clear_Horror_shows.results)
-//         console.log("Movies:", Clear_Horror_movies.results.length);
-// console.log("TV:", Clear_Horror_shows.results.length);
-        console.log("+++++++++++++++++++++++++++++==")
-        console.log(merged_Horror)
-        function shuffle(array) {
-            let currentIndex = array.length;
-            while (currentIndex != 0) {
-                let randomIndex = Math.floor(Math.random() * currentIndex);
-                currentIndex--;
-                [array[currentIndex], array[randomIndex]] = [
-                    array[randomIndex], array[currentIndex]];
-            }
-        }
-        shuffle(merged_Horror)
-
-        pushmerge_Horror.push(merged_Horror)
-
-        const gemposters = document.getElementsByClassName("Cardposter-horror")
-
-        for (let i = 0; i < merged_Horror.length && i < gemposters.length; i++) {
-            const posterPath = merged_Horror[i].poster_path || merged_Horror[i].backdrop_path;
-            const posterUrl = posterPath
-                ? `https://image.tmdb.org/t/p/w500${posterPath}`
-                : 'https://via.placeholder.com/300x450?text=No+Image';
-            gemposters[i].src = posterUrl;
-        }
-
-    } catch (error) {
-        console.error('An error has occoured:', error);
-    }
-}
-GettingHorrorcontent()
-
-document.addEventListener("DOMContentLoaded", function namedfunq() {
-    let currentPopup = null;
-    let popupRemovalTimeout = null;
-
-    document.querySelectorAll('.thecontent-horror').forEach((el, index) => {
-        el.addEventListener('focusin', () => {
-
-            if (popupRemovalTimeout) {
-                clearTimeout(popupRemovalTimeout);
-                popupRemovalTimeout = null;
-            }
-
-            if (currentPopup) {
-                currentPopup.remove();
-                currentPopup = null;
-            }
-
-            const popup = document.createElement('div');
-            popup.classList.add('popup-sim');
-            popup.setAttribute('tabindex', '-1');
-
-            const posterSrc = el.querySelector(".Cardposter-horror")?.src || '../Images/placeholder.jpg';
-            const content_title = pushmerge_Horror[0][index].title || pushmerge_Horror[0][index].name || "Untitled";
-
-            async function getvidtrailers_Horror() {
-                try {
-                    const item = pushmerge_Horror[0][index]
-                    const type = item.title ? "movie" : "tv"
-
-                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`)
-                    const viddata = await response.json()
-
-                    const embedkey = viddata.results[0]?.key
-                    if (embedkey) {
-                       const theiframe = popup.querySelector("iframe"); 
-                        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
-                    }
-                } catch (error) {
-                    console.error("An error has occoured:", error);
-                }
-            }
-            getvidtrailers_Horror()
-
-            popup.innerHTML = `
-            <div class="thecontent" tabindex="0">
-                <div class="containpost">
-                    <img id="tryme" src="${posterSrc}">
-                    <iframe class="trailervidi" id="trailerpark" src="" allowfullscreen></iframe>
-                </div>
-                <div class="contentdetails">
-                    <div class="moviebuttons">
-                        <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
-                        <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
-                        <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
-                        <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
-                    </div>
-                    <div class="contentstats">
-                        <p class="contentname">${content_title}</p>
-                        <ul class="contenttag_Horror"></ul>
-                        <p class="content_discribtion">${pushmerge_Horror[0][index].overview || "No description available"}</p>
-                    </div>
-                </div>
-            </div>`;
-
-            const thegenres = pushmerge_Horror[0][index].genre_ids;
-            const namedgenres = thegenres.map(id => lookouttable[id]);
-
-            document.body.appendChild(popup);
-            currentPopup = popup;
-
-            const thegenlist = document.querySelector(".contenttag_Horror");
-            thegenlist.innerHTML = "";
-            namedgenres.forEach(hosting => {
-                const listing = document.createElement("li");
-                listing.innerHTML = hosting;
-                thegenlist.appendChild(listing);
-            });
-
-            const rect = el.getBoundingClientRect();
-            const style = document.createElement("style");
-            style.textContent = `@keyframes movePopup_${Date.now()} {
-                from {
-                    top: ${rect.top}px;
-                    left: ${rect.left + window.scrollX}px;
-                }
-                to {
-                    top: ${35}%;
-                    left: ${35}%;
-                }
-            }`
-            document.head.appendChild(style);
-            popup.style.position = "fixed";
-            popup.style.animation = `movePopup_${Date.now()} 0.35s ease-out forwards`;
-
-            let problem = document.querySelectorAll(".popup-sim");
-            if (problem) {
-                problem.forEach(e => {
-                    e.addEventListener("focusout", () => {
-                        e.remove();
-                    });
-                });
-            }
-
-            const moreButton = popup.querySelector(".displaymore");
-            if (moreButton) {
-                moreButton.addEventListener("click", (e) => {
-                    e.preventDefault();
-                    popup.style.top = "";
-                    popup.style.left = "";
-                    popup.style.position = "";
-                    popup.classList.remove("popup-sim");
-                    popup.classList.add("helphereplz");
-
-                    setTimeout(() => {
-                        popup.classList.add("deletmoi");
-                        document.body.classList.add('noscroll');
-
-                        popup.addEventListener("focusout", () => {
-                            document.body.classList.remove('noscroll');
-                            popup.remove();
-                        });
-                    }, 100);
-                });
-            }
-        });
-
-        document.getElementById("allbutpop").addEventListener("click", () => {
-            document.querySelectorAll(".deletmoi").forEach(e => {
-                e.remove();
-                document.body.classList.remove('noscroll');
-            });
-        });
-
-        el.addEventListener('focusout', () => {
-            popupRemovalTimeout = setTimeout(() => {
-                const focused = document.activeElement;
-                if (currentPopup && (!currentPopup.contains(focused))) {
-                    currentPopup.remove();
-                    currentPopup = null;
-                }
-            }, 150);
-        });
-    });
-});
 const returnvalues_toprated = []
 
 async function GetTopRatedTMDbTitles() {
@@ -1019,6 +811,209 @@ document.addEventListener("DOMContentLoaded", function () {
         })
     })
 })
+
+
+
+const Export_fun_Horror = []
+const pushmerge_Horror = []
+const Trailer_Horror = []
+
+async function GettingHorrorcontent() {
+    try {
+        const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
+        const Horror_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=27`)
+        const Horror_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=10765`)
+        const Clear_Horror_movies = await Horror_movies.json()
+        console.log(Clear_Horror_movies)
+        const Clear_Horror_shows = await Horror_shows.json()
+        console.log(Clear_Horror_shows)
+        Export_fun_Horror.push(Clear_Horror_movies)
+        Export_fun_Horror.push(Clear_Horror_shows)
+
+        const merged_Horror = [...Clear_Horror_movies.results, ...Clear_Horror_shows.results]
+        console.log(Clear_Horror_shows.results)
+//         console.log("Movies:", Clear_Horror_movies.results.length);
+// console.log("TV:", Clear_Horror_shows.results.length);
+        console.log("+++++++++++++++++++++++++++++==")
+        console.log(merged_Horror)
+        function shuffle(array) {
+            let currentIndex = array.length;
+            while (currentIndex != 0) {
+                let randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [
+                    array[randomIndex], array[currentIndex]];
+            }
+        }
+        shuffle(merged_Horror)
+
+        pushmerge_Horror.push(merged_Horror)
+
+        const gemposters = document.getElementsByClassName("Cardposter-horror")
+
+        for (let i = 0; i < merged_Horror.length && i < gemposters.length; i++) {
+            const posterPath = merged_Horror[i].poster_path || merged_Horror[i].backdrop_path;
+            const posterUrl = posterPath
+                ? `https://image.tmdb.org/t/p/w500${posterPath}`
+                : 'https://via.placeholder.com/300x450?text=No+Image';
+            gemposters[i].src = posterUrl;
+        }
+
+    } catch (error) {
+        console.error('An error has occoured:', error);
+    }
+}
+GettingHorrorcontent()
+
+document.addEventListener("DOMContentLoaded", function namedfunq() {
+    let currentPopup = null;
+    let popupRemovalTimeout = null;
+
+    document.querySelectorAll('.thecontent-horror').forEach((el, index) => {
+        el.addEventListener('focusin', () => {
+
+            if (popupRemovalTimeout) {
+                clearTimeout(popupRemovalTimeout);
+                popupRemovalTimeout = null;
+            }
+
+            if (currentPopup) {
+                currentPopup.remove();
+                currentPopup = null;
+            }
+
+            const popup = document.createElement('div');
+            popup.classList.add('popup-sim');
+            popup.setAttribute('tabindex', '-1');
+
+            const posterSrc = el.querySelector(".Cardposter-horror")?.src || '../Images/placeholder.jpg';
+            const content_title = pushmerge_Horror[0][index].title || pushmerge_Horror[0][index].name || "Untitled";
+
+            async function getvidtrailers_Horror() {
+                try {
+                    const item = pushmerge_Horror[0][index]
+                    const type = item.title ? "movie" : "tv"
+
+                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`)
+                    const viddata = await response.json()
+                    const trailered = viddata.results.filter((trail) => trail.type === "Trailer")
+                    console.log(trailered)
+                    const embedkey = trailered[0]?.key
+                    console.log(viddata)
+                    console.log("MeeeeeeeeeeeM")
+                    console.log(embedkey)
+                    if (embedkey) {
+                       const theiframe = popup.querySelector("iframe"); 
+                        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+                    }
+                } catch (error) {
+                    console.error("An error has occoured:", error);
+                }
+                console.log("MeeeeeeeeM")
+            }
+            getvidtrailers_Horror()
+
+            popup.innerHTML = `
+            <div class="thecontent" tabindex="0">
+                <div class="containpost">
+                    <img id="tryme" src="${posterSrc}">
+                    <iframe class="trailervidi" id="trailerpark" src="" allowfullscreen></iframe>
+                </div>
+                <div class="contentdetails">
+                    <div class="moviebuttons">
+                        <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
+                        <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
+                        <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
+                        <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
+                    </div>
+                    <div class="contentstats">
+                        <p class="contentname">${content_title}</p>
+                        <ul class="contenttag_Horror"></ul>
+                        <p class="content_discribtion">${pushmerge_Horror[0][index].overview || "No description available"}</p>
+                    </div>
+                </div>
+            </div>`;
+
+            const thegenres = pushmerge_Horror[0][index].genre_ids;
+            const namedgenres = thegenres.map(id => lookouttable[id]);
+
+            document.body.appendChild(popup);
+            currentPopup = popup;
+
+            const thegenlist = document.querySelector(".contenttag_Horror");
+            thegenlist.innerHTML = "";
+            namedgenres.forEach(hosting => {
+                const listing = document.createElement("li");
+                listing.innerHTML = hosting;
+                thegenlist.appendChild(listing);
+            });
+
+            const rect = el.getBoundingClientRect();
+            const style = document.createElement("style");
+            style.textContent = `@keyframes movePopup_${Date.now()} {
+                from {
+                    top: ${rect.top}px;
+                    left: ${rect.left + window.scrollX}px;
+                }
+                to {
+                    top: ${35}%;
+                    left: ${35}%;
+                }
+            }`
+            document.head.appendChild(style);
+            popup.style.position = "fixed";
+            popup.style.animation = `movePopup_${Date.now()} 0.35s ease-out forwards`;
+
+            let problem = document.querySelectorAll(".popup-sim");
+            if (problem) {
+                problem.forEach(e => {
+                    e.addEventListener("focusout", () => {
+                        e.remove();
+                    });
+                });
+            }
+
+            const moreButton = popup.querySelector(".displaymore");
+            if (moreButton) {
+                moreButton.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    popup.style.top = "";
+                    popup.style.left = "";
+                    popup.style.position = "";
+                    popup.classList.remove("popup-sim");
+                    popup.classList.add("helphereplz");
+
+                    setTimeout(() => {
+                        popup.classList.add("deletmoi");
+                        document.body.classList.add('noscroll');
+
+                        popup.addEventListener("focusout", () => {
+                            document.body.classList.remove('noscroll');
+                            popup.remove();
+                        });
+                    }, 100);
+                });
+            }
+        });
+
+        document.getElementById("allbutpop").addEventListener("click", () => {
+            document.querySelectorAll(".deletmoi").forEach(e => {
+                e.remove();
+                document.body.classList.remove('noscroll');
+            });
+        });
+
+        el.addEventListener('focusout', () => {
+            popupRemovalTimeout = setTimeout(() => {
+                const focused = document.activeElement;
+                if (currentPopup && (!currentPopup.contains(focused))) {
+                    currentPopup.remove();
+                    currentPopup = null;
+                }
+            }, 150);
+        });
+    });
+});
 
 
 
