@@ -258,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
 async function getvidtrailers() {
     try {
-        const theitem = trailerpush[0][index];
+        const theitem = mergedContent[0][index];
             const type = theitem.title ? "movie" : "tv"
         const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
         const viddata = await response.json();
@@ -755,18 +755,29 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>`
 
             async function getTrailer() {
-                try {
-                    const type = returnvalues_toprated[index].title ? "movie" : "tv"
-                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${itemId}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`)
-                    const data = await response.json()
+            try {
+                const theitem = returnvalues_toprated[index];
+                    const type = theitem.title ? "movie" : "tv"
+                const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+                const viddata_toprated = await response.json();
+                console.log(viddata_toprated);
+                console.log(viddata_toprated.results)
+                const trailered = viddata_toprated.results.filter((trail) => trail.type === "Trailer")
+                console.log(trailered)
+                // console.log(viddata_action.results[0].key);
+                // console.log("5555555555555555555555");
 
-                    const trailer = data.results.find(v => v.site === "YouTube" && v.type === "Trailer")
-                    if (trailer) {
-                        popup.querySelector("iframe").src =
-                            `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`
-                    }
-                } catch (error) {}
+                let thekeyed = viddata_toprated.results[0].key;
+                // console.log(thekeyed);
+                const embedkey = trailered[0].key;
+                // console.log(embedkey);
+                
+                const theiframe = popup.querySelector("iframe");
+                theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+            } catch (error) {
+                console.error("An error has occoured:", error);
             }
+        }
             getTrailer()
 
             const genres = returnvalues_toprated[index].genre_ids
@@ -1099,26 +1110,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 item.title || item.name || "Untitled";
 
             async function getTrendingTrailer() {
-                try {
-                    const type = item.title ? "movie" : "tv";
-                    const res = await fetch(
-                        `https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`
-                    );
-                    const data = await res.json();
+            try {
+                const theitem = Trending_merge[0][index];
+                    const type = theitem.title ? "movie" : "tv"
+                const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+                const viddata_trending = await response.json();
+                console.log(viddata_trending);
+                console.log(viddata_trending.results)
+                const trailered = viddata_trending.results.filter((trail) => trail.type === "Trailer")
+                console.log(trailered)
+                // console.log(viddata_action.results[0].key);
+                // console.log("5555555555555555555555");
 
-                    const trailer = data.results.find(
-                        v => v.site === "YouTube" && v.type === "Trailer"
-                    );
-
-                    if (trailer) {
-                        popup.querySelector("iframe").src =
-                            `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0`;
-                    }
-                } catch (err) {
-                    console.error(err);
-                }
+                let thekeyed = viddata_trending.results[0].key;
+                // console.log(thekeyed);
+                const embedkey = trailered[0].key;
+                // console.log(embedkey);
+                
+                const theiframe = popup.querySelector("iframe");
+                theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+            } catch (error) {
+                console.error("An error has occoured:", error);
             }
-
+        }
+            getTrendingTrailer();
             popup.innerHTML = `
                 <div class="thecontent" tabindex="0">
                     <div class="containpost">
@@ -1143,8 +1158,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.body.appendChild(popup);
             currentPopup = popup;
-
-            getTrendingTrailer();
 
             const genres = item.genre_ids || [];
             const namedgenres = genres.map(id => lookouttable[id]);
