@@ -139,7 +139,7 @@ function getCountryName(code) {
     return cachedCountryName;
 }
 const trailerpush = []
-async function GetPopularTMDbTitles() {
+async function GetTopMovies() {
     try {
         const apiKey = '185134e7391a581ac86e9efd4a3a4bb3';
 
@@ -227,7 +227,7 @@ loadHeroTrailer(heroItem);
         console.error("An error has occurred:", error);
     }
 }
-GetPopularTMDbTitles();
+GetTopMovies();
 const housinten = [];
 
 document.addEventListener("DOMContentLoaded", function namedfunq() {
@@ -256,7 +256,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             const itemId = returnvalues[index].id;
             housinten.push(itemId);
 
-async function getvidtrailers() {
+async function GetTrailer_TopMovie() {
     try {
         const theitem = mergedContent[0][index];
             const type = theitem.title ? "movie" : "tv"
@@ -280,7 +280,7 @@ async function getvidtrailers() {
         console.error("An error has occoured:", error);
     }
 }
-getvidtrailers();
+GetTrailer_TopMovie();
 
             popup.innerHTML = `
         <div class="thecontent" tabindex="0">
@@ -477,7 +477,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             // const theintended = Export_fun_scoping[index].id;
             // housinten.push(theintended);
 
- async function getvidtrailers_action() {
+ async function GetTrailer_Action() {
     try {
         const theitem = pushmerge[0][index];
             const type = theitem.title ? "movie" : "tv"
@@ -501,7 +501,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
         console.error("An error has occoured:", error);
     }
 }
-getvidtrailers_action();
+GetTrailer_Action();
 
     // console.log(pushmerge[0][0])
     // console.log("item:", index, pushmerge[0][index]);
@@ -754,7 +754,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 </div>
             </div>`
 
-            async function getTrailer() {
+            async function GetTrailer_Toprated() {
             try {
                 const theitem = returnvalues_toprated[index];
                     const type = theitem.title ? "movie" : "tv"
@@ -778,7 +778,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.error("An error has occoured:", error);
             }
         }
-            getTrailer()
+            GetTrailer_Toprated()
 
             const genres = returnvalues_toprated[index].genre_ids
             const namedgenres = genres.map(id => lookouttable[id])
@@ -833,7 +833,7 @@ async function GettingHorrorcontent() {
     try {
         const APIkey = "185134e7391a581ac86e9efd4a3a4bb3"
         const Horror_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=27`)
-        const Horror_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=10765`)
+        const Horror_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=9648`)
         const Clear_Horror_movies = await Horror_movies.json()
         console.log(Clear_Horror_movies)
         const Clear_Horror_shows = await Horror_shows.json()
@@ -900,29 +900,31 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             const posterSrc = el.querySelector(".Cardposter-horror")?.src || '../Images/placeholder.jpg';
             const content_title = pushmerge_Horror[0][index].title || pushmerge_Horror[0][index].name || "Untitled";
 
-            async function getvidtrailers_Horror() {
-                try {
-                    const item = pushmerge_Horror[0][index]
-                    const type = item.title ? "movie" : "tv"
+            async function GetTrailer_Horror() {
+    try {
+        const theitem = pushmerge_Horror[0][index];
+            const type = theitem.title ? "movie" : "tv"
+        const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+        const viddata_Horror = await response.json();
+        console.log(viddata_Horror);
+        console.log(viddata_Horror.results)
+        const trailered = viddata_Horror.results.filter((trail) => trail.type === "Trailer")
+        console.log(trailered)
+        // console.log(viddata_Horror.results[0].key);
+        // console.log("5555555555555555555555");
 
-                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`)
-                    const viddata = await response.json()
-                    const trailered = viddata.results.filter((trail) => trail.type === "Trailer")
-                    console.log(trailered)
-                    const embedkey = trailered[0]?.key
-                    console.log(viddata)
-                    console.log("MeeeeeeeeeeeM")
-                    console.log(embedkey)
-                    if (embedkey) {
-                       const theiframe = popup.querySelector("iframe"); 
-                        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
-                    }
-                } catch (error) {
-                    console.error("An error has occoured:", error);
-                }
-                console.log("MeeeeeeeeM")
-            }
-            getvidtrailers_Horror()
+        let thekeyed = viddata_Horror.results[0].key;
+        // console.log(thekeyed);
+        const embedkey = trailered[0].key;
+        // console.log(embedkey);
+        
+        const theiframe = popup.querySelector("iframe");
+        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+    } catch (error) {
+        console.error("An error has occoured:", error);
+    }
+}
+            GetTrailer_Horror()
 
             popup.innerHTML = `
             <div class="thecontent" tabindex="0">
@@ -1304,16 +1306,32 @@ document.addEventListener("DOMContentLoaded", () => {
                 genreList.appendChild(li);
             });
 
-            const type = item.title ? "movie" : "tv";
-            fetch(`https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3`)
-                .then(r => r.json())
-                .then(v => {
-                    const trailer = v.results.find(x => x.site === "YouTube" && x.type === "Trailer");
-                    if (trailer) {
-                        popup.querySelector("iframe").src =
-                            `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&rel=0`;
+                async function GetTrailer_Comedy(){
+                    try {
+                        const theitem = Comedy_merge[index];
+                        const type = theitem.title ? "movie" : "tv"
+                        const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+                        const viddata_Comedy = await response.json();
+                        console.log(viddata_Comedy);
+                        console.log(viddata_Comedy.results)
+                        const trailered = viddata_Comedy.results.filter((trail) => trail.type === "Trailer")
+                        console.log(trailered)
+                        // console.log(viddata_Comedy.results[0].key);
+                        // console.log("5555555555555555555555");
+
+                        let thekeyed = viddata_Comedy.results[0].key;
+                        // console.log(thekeyed);
+                        const embedkey = trailered[0].key;
+                        // console.log(embedkey);
+                        
+                        const theiframe = popup.querySelector("iframe");
+                        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+                    } catch (error) {
+                        console.error("An error has occoured:", error);
                     }
-                });
+                }
+                GetTrailer_Comedy();
+
 
             const rect = el.getBoundingClientRect();
             const anim = `moveComedy_${Date.now()}`;
@@ -1456,22 +1474,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            async function getUpcomingTrailer() {
+            async function GetTrailer_Upcoming(){
                 try {
-                    const res = await fetch(
-                        `https://api.themoviedb.org/3/movie/${item.id}/videos?api_key=${APIkey}&language=en-US`
-                    );
-                    const data = await res.json();
-                    if (!data.results.length) return;
+        const theitem = pushmerge_upcoming[0][index];
+            const type = theitem.title ? "movie" : "tv"
+        const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+        const viddata_horror = await response.json();
+        console.log(viddata_Upcoming);
+        console.log(viddata_Upcoming.results)
+        const trailered = viddata_Upcoming.results.filter((trail) => trail.type === "Trailer")
+        console.log(trailered)
+        // console.log(viddata_Upcoming.results[0].key);
+        // console.log("5555555555555555555555");
 
-                    popup.querySelector("iframe").src =
-                        `https://www.youtube.com/embed/${data.results[0].key}?autoplay=1&mute=1&controls=0&rel=0`;
-                } catch (error) {
-                    console.error(error);
-                }
-            }
-
-            getUpcomingTrailer();
+        let thekeyed = viddata_Upcoming.results[0].key;
+        // console.log(thekeyed);
+        const embedkey = trailered[0].key;
+        // console.log(embedkey);
+        
+        const theiframe = popup.querySelector("iframe");
+        theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+    } catch (error) {
+        console.error("An error has occoured:", error);
+    }
+}
+            GetTrailer_Upcoming();
 
             const rect = el.getBoundingClientRect();
             const animName = `movePopup_${Date.now()}`;
@@ -1593,7 +1620,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const posterSrc = el.querySelector(".Cardposter-Romance")?.src
             const content_title = pushmerge_romance[0][index].title || pushmerge_romance[0][index].name || "Untitled"
 
-            async function getvidtrailers_romance() {
+            async function GetTrailer_Romance() {
                 try {
                     const theitem = pushmerge_romance[0][index]
                     const type = theitem.title ? "movie" : "tv"
@@ -1631,7 +1658,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             document.body.appendChild(popup)
             currentPopup = popup
-            getvidtrailers_romance()
+            GetTrailer_Romance()
 
             const thegenres = pushmerge_romance[0][index].genre_ids || []
             const namedgenres = thegenres.map(id => lookouttable[id])
@@ -1753,23 +1780,31 @@ document.addEventListener("DOMContentLoaded", function () {
             const posterSrc = el.querySelector(".Cardposter-Sci")?.src
             const title = item.title || item.name || "Untitled"
 
-            async function getTrailer() {
+            async function GetTrailer_Sci() {
                 try {
-                    const type = item.title ? "movie" : "tv"
-                    const response = await fetch(
-                        `https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3`
-                    )
-                    const data = await response.json()
-                    const trailer = data.results.find(
-                        v => v.site === "YouTube" && v.type === "Trailer"
-                    )
-                    if (trailer) {
-                        popup.querySelector("iframe").src =
-                            `https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1&controls=0&rel=0`
-                    }
-                } catch {}
-            }
+                    const theitem = Sci_merge[0][index];
+                        const type = theitem.title ? "movie" : "tv"
+                    const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+                    const viddata_Sci = await response.json();
+                    console.log(viddata_Sci);
+                    console.log(viddata_Sci.results)
+                    const trailered = viddata_Sci.results.filter((trail) => trail.type === "Trailer")
+                    console.log(trailered)
+                    // console.log(viddata_Sci.results[0].key);
+                    // console.log("5555555555555555555555");
 
+                    let thekeyed = viddata_Sci.results[0].key;
+                    // console.log(thekeyed);
+                    const embedkey = trailered[0].key;
+                    // console.log(embedkey);
+                    
+                    const theiframe = popup.querySelector("iframe");
+                    theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+                } catch (error) {
+                    console.error("An error has occoured:", error);
+                }
+            }
+            GetTrailer_Sci()
             popup.innerHTML = `
             <div class="thecontent" tabindex="0">
                 <div class="containpost">
@@ -1818,7 +1853,7 @@ document.addEventListener("DOMContentLoaded", function () {
             popup.style.position = "fixed"
             popup.style.animation = `${animName} 0.35s ease-out forwards`
 
-            getTrailer()
+
 
             popup.addEventListener("focusout", () => popup.remove())
 
@@ -1965,20 +2000,31 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             });
 
-            async function getTrailer() {
-                try {
-                    const type = item.title ? "movie" : "tv";
-                    const res = await fetch(
-                        `https://api.themoviedb.org/3/${type}/${item.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3`
-                    );
-                    const data = await res.json();
-                    if (!data.results.length) return;
-                    popup.querySelector("iframe").src =
-                        `https://www.youtube.com/embed/${data.results[0].key}?autoplay=1&mute=1&controls=0&rel=0`;
-                } catch {}
-            }
+            async function GetTrailer_Thriller() {
+            try {
+                const theitem = Thriller_merge[0][index];
+                    const type = theitem.title ? "movie" : "tv"
+                const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
+                const viddata_Thriller = await response.json();
+                console.log(viddata_Thriller);
+                console.log(viddata_Thriller.results)
+                const trailered = viddata_Thriller.results.filter((trail) => trail.type === "Trailer")
+                console.log(trailered)
+                // console.log(viddata_Horror.results[0].key);
+                // console.log("5555555555555555555555");
 
-            getTrailer();
+                let thekeyed = viddata_Thriller.results[0].key;
+                // console.log(thekeyed);
+                const embedkey = trailered[0].key;
+                // console.log(embedkey);
+                
+                const theiframe = popup.querySelector("iframe");
+                theiframe.src = `https://www.youtube.com/embed/${embedkey}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&iv_load_policy=3`;
+            } catch (error) {
+                console.error("An error has occoured:", error);
+            }
+        }
+            GetTrailer_Thriller();
 
             const rect = el.getBoundingClientRect();
             const animName = `movePopup_${Date.now()}`;
