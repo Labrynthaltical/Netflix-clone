@@ -724,7 +724,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentPopup.remove()
                 currentPopup = null
             }
-
+                const theitem = pushmerge[0][index];
+if (theitem.original_name) {
+            console.log("this is a show");
+             fetchSeasonsAndEpisodes(theitem.id);
+        }
+        else{
+            console.log("this is a movie");
+        }
             const popup = document.createElement("div")
             popup.classList.add("popup-sim")
             popup.setAttribute("tabindex", "-1")
@@ -732,7 +739,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const posterSrc = el.querySelector(".Cardposter-toprated")?.src || "../Images/placeholder.jpg"
             const content_title = returnvalues_toprated[index]?.title || returnvalues_toprated[index]?.name || "Untitled"
             const itemId = returnvalues_toprated[index].id
-
+            
             popup.innerHTML = `
             <div class="thecontent" tabindex="0">
                 <div class="containpost">
@@ -900,6 +907,15 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             const posterSrc = el.querySelector(".Cardposter-horror")?.src || '../Images/placeholder.jpg';
             const content_title = pushmerge_Horror[0][index].title || pushmerge_Horror[0][index].name || "Untitled";
 
+                const theitem = pushmerge[0][index];
+if (theitem.original_name) {
+            console.log("this is a show");
+             fetchSeasonsAndEpisodes(theitem.id);
+        }
+        else{
+            console.log("this is a movie");
+        }
+            
             async function GetTrailer_Horror() {
     try {
         const theitem = pushmerge_Horror[0][index];
@@ -1136,6 +1152,16 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         }
             getTrendingTrailer();
+
+                const theitem = pushmerge[0][index];
+if (theitem.original_name) {
+            console.log("this is a show");
+             fetchSeasonsAndEpisodes(theitem.id);
+        }
+        else{
+            console.log("this is a movie");
+        }
+
             popup.innerHTML = `
                 <div class="thecontent" tabindex="0">
                     <div class="containpost">
@@ -1273,6 +1299,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const posterSrc = el.querySelector(".Cardposter-comedy")?.src;
             const title = item.title || item.name || "Untitled";
+
+                const theitem = pushmerge[0][index];
+if (theitem.original_name) {
+            console.log("this is a show");
+             fetchSeasonsAndEpisodes(theitem.id);
+        }
+        else{
+            console.log("this is a movie");
+        }
 
             popup.innerHTML = `
                 <div class="thecontent" tabindex="0">
@@ -1437,7 +1472,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 "../Images/placeholder.jpg";
 
             const title = item.title || "Untitled";
-
+                const theitem = pushmerge[0][index];
+if (theitem.original_name) {
+            console.log("this is a show");
+             fetchSeasonsAndEpisodes(theitem.id);
+        }
+        else{
+            console.log("this is a movie");
+        }
             popup.innerHTML = `
                 <div class="thecontent" tabindex="0">
                     <div class="containpost">
@@ -1479,7 +1521,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const theitem = pushmerge_upcoming[0][index];
             const type = theitem.title ? "movie" : "tv"
         const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
-        const viddata_horror = await response.json();
+        const viddata_Upcoming = await response.json();
         console.log(viddata_Upcoming);
         console.log(viddata_Upcoming.results)
         const trailered = viddata_Upcoming.results.filter((trail) => trail.type === "Trailer")
@@ -1633,7 +1675,14 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 } catch (error) {}
             }
-
+                const theitem = pushmerge[0][index];
+if (theitem.original_name) {
+            console.log("this is a show");
+             fetchSeasonsAndEpisodes(theitem.id);
+        }
+        else{
+            console.log("this is a movie");
+        }
             popup.innerHTML = `
                 <div class="thecontent" tabindex="0">
                     <div class="containpost">
@@ -1805,6 +1854,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
             GetTrailer_Sci()
+                const theitem = pushmerge[0][index];
+if (theitem.original_name) {
+            console.log("this is a show");
+             fetchSeasonsAndEpisodes(theitem.id);
+        }
+        else{
+            console.log("this is a movie");
+        }
             popup.innerHTML = `
             <div class="thecontent" tabindex="0">
                 <div class="containpost">
@@ -1963,7 +2020,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 "../Images/placeholder.jpg";
 
             const title = item.title || item.name || "Untitled";
-
+                const theitem = pushmerge[0][index];
+if (theitem.original_name) {
+            console.log("this is a show");
+             fetchSeasonsAndEpisodes(theitem.id);
+        }
+        else{
+            console.log("this is a movie");
+        }
             popup.innerHTML = `
                 <div class="thecontent" tabindex="0">
                     <div class="containpost">
