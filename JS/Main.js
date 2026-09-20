@@ -8,18 +8,6 @@
       document.getElementById("helse").open = false; // close dropdown
     });
   });
-
-
-const totoggle = document.getElementById("helsen");
-const affected = document.getElementById("droplol");
-
-function toggleani() {
-    affected.classList.remove("animatedrop");
-    void affected.offsetWidth;
-    affected.classList.add("animatedrop");
-}
-totoggle.addEventListener("click", toggleani);
-
 const totoggle1 = document.getElementById("helse");
 const affected1 = document.getElementById("droplo");
 
