@@ -1,10 +1,21 @@
 
   const currentUser = document.getElementById("wantedone");
   const userOptions = document.querySelectorAll("#droplo .userli");
+    
+   currentUser.childNodes.forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE) {
+        node.remove();
+    }
+});
 
   userOptions.forEach(e => {
     e.addEventListener("click", () => {
       currentUser.innerHTML = e.innerHTML;  // replace summary content
+         currentUser.childNodes.forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE) {
+        node.remove();
+    }
+});
       document.getElementById("helse").open = false; // close dropdown
     });
   });
