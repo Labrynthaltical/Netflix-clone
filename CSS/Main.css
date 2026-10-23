@@ -910,7 +910,7 @@ margin-right: -2.5rem;
  .Cardposter-action {
     display: flex;
     justify-content: center;
-  width: 21rem;
+  width:20rem;
   height: 10rem;
   /* margin-top: 20px; */
   border-radius: 5px 5px 0px 0px;
@@ -919,7 +919,7 @@ margin-right: -2.5rem;
  .Cardposter-toprated {
     display: flex;
     justify-content: center;
-  width: 21rem;
+  width:20rem;
   height: 10rem;
   /* margin-top: 20px; */
   border-radius: 5px 5px 0px 0px;
@@ -928,7 +928,7 @@ margin-right: -2.5rem;
 .Cardposter-horror {
     display: flex;
     justify-content: center;
-    width: 21rem;
+    width:20rem;
     height: 10rem;
     border-radius: 5px 5px 0px 0px;
     z-index: 10;
@@ -936,7 +936,7 @@ margin-right: -2.5rem;
 .Cardposter-trending {
     display: flex;
     justify-content: center;
-    width: 21rem;
+    width:20rem;
     height: 10rem;
     border-radius: 5px 5px 0px 0px;
     z-index: 10;
@@ -944,7 +944,7 @@ margin-right: -2.5rem;
 .Cardposter-comedy {
     display: flex;
     justify-content: center;
-    width: 21rem;
+    width:20rem;
     height: 10rem;
     border-radius: 5px 5px 0px 0px;
     z-index: 10;
@@ -952,7 +952,7 @@ margin-right: -2.5rem;
 .Cardposter-upcoming {
     display: flex;
     justify-content: center;
-    width: 21rem;
+    width:20rem;
     height: 10rem;
     border-radius: 5px 5px 0px 0px;
     z-index: 10;
@@ -960,7 +960,7 @@ margin-right: -2.5rem;
 .Cardposter-Romance {
     display: flex;
     justify-content: center;
-    width: 21rem;
+    width:20rem;
     height: 10rem;
     border-radius: 5px 5px 0px 0px;
     z-index: 10;
@@ -968,7 +968,7 @@ margin-right: -2.5rem;
 .Cardposter-Sci {
     display: flex;
     justify-content: center;
-    width: 21rem;
+    width:20rem;
     height: 10rem;
     border-radius: 5px 5px 0px 0px;
     z-index: 10;
@@ -976,7 +976,7 @@ margin-right: -2.5rem;
 .Cardposter-Thriller {
     display: flex;
     justify-content: center;
-    width: 21rem;
+    width:20rem;
     height: 10rem;
     border-radius: 5px 5px 0px 0px;
     z-index: 10;
