@@ -148,17 +148,10 @@ async function GetTopMovies() {
         console.log(regionCode, countryName);
         // console.log( countryName);
         document.getElementById("setit").innerHTML = `${countryName}'s Top 10 movies today!`
-        const moviesRes = await fetch(
-            `https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`);
-        const showsRes = await fetch(`https://api.themoviedb.org/3/tv/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`);
+        const moviesRes = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${apiKey}&language=en-US&page=1&region=${regionCode}`);
 
         const moviesData = await moviesRes.json();
-        const showsData = await showsRes.json();
-
-        const mergedContent = [
-            ...moviesData.results,
-            ...showsData.results
-        ].filter(item => item.poster_path || item.backdrop_path);
+        const mergedContent = [...moviesData.results,].filter(item => item.poster_path || item.backdrop_path);
 
         function shuffle(array) {
             let currentIndex = array.length;
@@ -257,7 +250,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
 
 async function GetTrailer_TopMovie() {
     try {
-        const theitem = mergedContent[0][index];
+        const theitem = trailerpush[0][index];
             const type = theitem.title ? "movie" : "tv"
         const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
         const viddata = await response.json();
