@@ -60,7 +60,7 @@ const returnvalues = [];
 let cachedRegion = null;
 let cachedCountryName = null;
 
-
+const pushthemseasons = []
 async function fetchSeasonsAndEpisodes(tvId) {
     const apiKey = "185134e7391a581ac86e9efd4a3a4bb3";
 
@@ -79,22 +79,23 @@ async function fetchSeasonsAndEpisodes(tvId) {
 
     for (const season of seasons) {
         if (season.season_number === 0) continue; // skip specials
-
-        const seasonRes = await fetch(
-            `https://api.themoviedb.org/3/tv/${tvId}/season/${season.season_number}?api_key=${apiKey}&language=en-US`
-        );
+        // return(season)
+        const seasonRes = await fetch(`https://api.themoviedb.org/3/tv/${tvId}/season/${season.season_number}?api_key=${apiKey}&language=en-US`);
         const seasonData = await seasonRes.json();
         console.log(seasonData);
-        seasonsWithEpisodes.push({
+        pushthemseasons.push({
             season_number: season.season_number,
             name: season.name,
             episodes: seasonData.episodes || []
+            // console.log(pushthemseasons)
         });
+            console.log(pushthemseasons)
+        
         // console.log(seasonsWithEpisodes[0].episodes[[1]]);
 
     }
 
-    return seasonsWithEpisodes;
+    // return seasonsWithEpisodes;
 }
 
 // task : integrate the season function into the popup display for TV shows only when needed
@@ -418,14 +419,14 @@ async function Gettingactioncontent() {
   }
 }
      const mergedstuff = [...clearAction_Movies.results,...clearAction_Shows.results];
-shuffle(mergedstuff)
+    shuffle(mergedstuff)
     const clearAction_Movies_results = clearAction_Movies.results
     const description_Action = clearAction_Movies_results[2].overview
     pushmerge.push(mergedstuff)
     const popupcover = document.getElementsByClassName("popup-div_popular");
     const actionposters = document.getElementsByClassName("Cardposter-action");
     const popupbutton = document.getElementsByClassName("displaymore");
-
+    // console.log(mergedstuff)
          for (let i = 0; i < mergedstuff.length && i < actionposters.length; i++) {
              const posterPath = mergedstuff[i].poster_path || mergedstuff[i].backdrop_path;
              const posterUrl = posterPath
@@ -433,10 +434,6 @@ shuffle(mergedstuff)
                  : 'https://via.placeholder.com/300x450?text=No+Image';
              actionposters[i].src = posterUrl;
          }
-
-
-
-
 }
  catch (error) {
         console.error('An error has occoured:', error);
@@ -475,8 +472,8 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
             const type = theitem.title ? "movie" : "tv"
         const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
         const viddata_action = await response.json();
-        console.log(viddata_action);
-        console.log(viddata_action.results)
+        // console.log(viddata_action);
+        // console.log(viddata_action.results)
         const trailered = viddata_action.results.filter((trail) => trail.type === "Trailer")
         console.log(trailered)
         // console.log(viddata_action.results[0].key);
@@ -500,11 +497,33 @@ GetTrailer_Action();
 
     const theitem = pushmerge[0][index];
 if (theitem.original_name) {
+            console.log(theitem)
+            console.log("++++++++++++++++++++++++++")
             console.log("this is a show");
-             fetchSeasonsAndEpisodes(theitem.id);
+            console.log("++++++++++++++++++++++++++")
+            console.log(theitem.overview)
+    fetchSeasonsAndEpisodes(theitem.id).then(() => {
+
+        for (let i = 0; i < pushthemseasons.length; i++) {
+            console.log(pushthemseasons[i].name);
+            console.log("lololololoolololololololol");
+        }
+
+    });
+
+            // console.log(pushthemseasons);
+            // console.log(pushthemseasons[[]]);
+            // console.log(pushthemseasons[0]);
+            // console.log(season)
+            // the description for a show is named overview
         }
         else{
+            console.log(theitem)
+            console.log("++++++++++++++++++++++++++")
             console.log("this is a movie");
+            console.log("++++++++++++++++++++++++++")
+            console.log(theitem.overview)
+            // the description for a movie is named overview
         }
 
             if(!pushmerge[0][index].original_name){
@@ -538,17 +557,20 @@ if (theitem.original_name) {
           </div>
           <div class="contentdetails">
             <div class="moviebuttons">
-              <div class="containbutton id = "tryit"><button class="buttoncontent" id = "letstry"><i id = "funnybtn" class="fa-solid fa-play"></i><p class = "playmeplz">Play</p></button></div>
+              <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-play"></i></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-plus"></i></button></div>
               <div class="containbutton"><button class="buttoncontent"><i class="fa-solid fa-thumbs-up"></i></button></div>
-
               <div class="containbutton showmore"><button class="displaymore"><i class="fa-solid fa-chevron-down"></i></button></div>
             </div>
             <div class="contentstats">
+                <div class="contentstats1st">
               <p class="contentname">${content_title}</p>
               <ul class="contenttag_action"></ul>
             <p class="content_discribtion">${pushmerge[0][index].overview || "No description available"}</p>
             </div>
+            <div class="contentstats2nd"><p>reeeeeeeeeeeeeeeee</p></div>
+            </div>
+            
           </div>
         </div>`;  
             }
@@ -834,18 +856,18 @@ async function GettingHorrorcontent() {
         const Horror_movies = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${APIkey}&with_genres=27`)
         const Horror_shows = await fetch(`https://api.themoviedb.org/3/discover/tv?api_key=${APIkey}&with_genres=9648`)
         const Clear_Horror_movies = await Horror_movies.json()
-        console.log(Clear_Horror_movies)
+        // console.log(Clear_Horror_movies)
         const Clear_Horror_shows = await Horror_shows.json()
-        console.log(Clear_Horror_shows)
+        // console.log(Clear_Horror_shows)
         Export_fun_Horror.push(Clear_Horror_movies)
         Export_fun_Horror.push(Clear_Horror_shows)
 
         const merged_Horror = [...Clear_Horror_movies.results, ...Clear_Horror_shows.results]
-        console.log(Clear_Horror_shows.results)
+        // console.log(Clear_Horror_shows.results)
 //         console.log("Movies:", Clear_Horror_movies.results.length);
 // console.log("TV:", Clear_Horror_shows.results.length);
         console.log("+++++++++++++++++++++++++++++==")
-        console.log(merged_Horror)
+        // console.log(merged_Horror)
         function shuffle(array) {
             let currentIndex = array.length;
             while (currentIndex != 0) {
