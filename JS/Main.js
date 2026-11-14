@@ -504,10 +504,20 @@ if (theitem.original_name) {
             console.log(theitem.overview)
     fetchSeasonsAndEpisodes(theitem.id).then(() => {
 
-        for (let i = 0; i < pushthemseasons.length; i++) {
-            console.log(pushthemseasons[i].name);
-            console.log("lololololoolololololololol");
-        }
+for (let i = 0; i < pushthemseasons.length; i++) {
+
+    console.log(pushthemseasons[i].name);
+
+    for (let j = 0; j < pushthemseasons[i].episodes.length; j++) {
+
+        const episode = pushthemseasons[i].episodes[j];
+
+        console.log(episode.name);
+        console.log(episode.overview);
+        console.log(episode.still_path);
+
+    }
+}
 
     });
 
@@ -568,7 +578,7 @@ if (theitem.original_name) {
               <ul class="contenttag_action"></ul>
             <p class="content_discribtion">${pushmerge[0][index].overview || "No description available"}</p>
             </div>
-            <div class="contentstats2nd"><p>reeeeeeeeeeeeeeeee</p></div>
+            <div class="contentstats2nd"><p class = "describeit">${pushthemseasons[i].episode.name}</p></div>
             </div>
             
           </div>

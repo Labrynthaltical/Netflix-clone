@@ -847,6 +847,12 @@ margin-right: -2.5rem;
     background-color: rgb(255, 255, 255);
     /* height: fit-content; */
 }
+.contentstats2nd{
+    display: none;
+}
+.helphereplz .contentstats2nd{
+    display: inline;
+}
 .containbutton:nth-child(1) i{
     color: black !important;
 }
