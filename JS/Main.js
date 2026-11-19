@@ -83,12 +83,7 @@ async function fetchSeasonsAndEpisodes(tvId) {
         const seasonRes = await fetch(`https://api.themoviedb.org/3/tv/${tvId}/season/${season.season_number}?api_key=${apiKey}&language=en-US`);
         const seasonData = await seasonRes.json();
         console.log(seasonData);
-        pushthemseasons.push({
-            season_number: season.season_number,
-            name: season.name,
-            episodes: seasonData.episodes || []
-            // console.log(pushthemseasons)
-        });
+        pushthemseasons.push(seasonData)
             console.log(pushthemseasons)
         
         // console.log(seasonsWithEpisodes[0].episodes[[1]]);
@@ -578,7 +573,6 @@ for (let i = 0; i < pushthemseasons.length; i++) {
               <ul class="contenttag_action"></ul>
             <p class="content_discribtion">${pushmerge[0][index].overview || "No description available"}</p>
             </div>
-            <div class="contentstats2nd"><p class = "describeit">${pushthemseasons[i].episode.name}</p></div>
             </div>
             
           </div>
