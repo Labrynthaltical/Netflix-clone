@@ -64,9 +64,7 @@ const pushthemseasons = []
 async function fetchSeasonsAndEpisodes(tvId) {
     const apiKey = "185134e7391a581ac86e9efd4a3a4bb3";
 
-    const showRes = await fetch(
-        `https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}&language=en-US`
-    );
+    const showRes = await fetch(`https://api.themoviedb.org/3/tv/${tvId}?api_key=${apiKey}&language=en-US`);
     const showData = await showRes.json();
     console.log(showData);
     console.log("++++++++++++++++++++++");
@@ -82,10 +80,11 @@ async function fetchSeasonsAndEpisodes(tvId) {
         // return(season)
         const seasonRes = await fetch(`https://api.themoviedb.org/3/tv/${tvId}/season/${season.season_number}?api_key=${apiKey}&language=en-US`);
         const seasonData = await seasonRes.json();
-        console.log(seasonData);
+        // console.log(seasonData);
         pushthemseasons.push(seasonData)
             console.log(pushthemseasons)
-        
+            console.log("+++++++++++++++++++++++++++")
+        console.log(seasonData)
         // console.log(seasonsWithEpisodes[0].episodes[[1]]);
 
     }
@@ -464,7 +463,7 @@ document.addEventListener("DOMContentLoaded", function namedfunq() {
  async function GetTrailer_Action() {
     try {
         const theitem = pushmerge[0][index];
-            const type = theitem.title ? "movie" : "tv"
+        const type = theitem.title ? "movie" : "tv"
         const response = await fetch(`https://api.themoviedb.org/3/${type}/${theitem.id}/videos?api_key=185134e7391a581ac86e9efd4a3a4bb3&language=en-US`);
         const viddata_action = await response.json();
         // console.log(viddata_action);
@@ -497,8 +496,14 @@ if (theitem.original_name) {
             console.log("this is a show");
             console.log("++++++++++++++++++++++++++")
             console.log(theitem.overview)
+            
     fetchSeasonsAndEpisodes(theitem.id).then(() => {
-
+        let testing = document.querySelectorAll(".describeit")
+                    testing.forEach(e => {
+                // e.innerHTML = ("KITYYYYYYYYYYY")
+                e.innerHTML = (theitem.adult)
+                console.log(e)
+            });
 for (let i = 0; i < pushthemseasons.length; i++) {
 
     console.log(pushthemseasons[i].name);
@@ -506,12 +511,12 @@ for (let i = 0; i < pushthemseasons.length; i++) {
     for (let j = 0; j < pushthemseasons[i].episodes.length; j++) {
 
         const episode = pushthemseasons[i].episodes[j];
-
-        console.log(episode.name);
-        console.log(episode.overview);
-        console.log(episode.still_path);
-
+        console.log(episode)
+        // console.log(episode.name);
+        // console.log(episode.overview);
+        // console.log(episode.still_path);
     }
+
 }
 
     });
@@ -574,7 +579,7 @@ for (let i = 0; i < pushthemseasons.length; i++) {
             <p class="content_discribtion">${pushmerge[0][index].overview || "No description available"}</p>
             </div>
             </div>
-            
+            <div class="contentstats2nd"><p class = "describeit"></p></div>
           </div>
         </div>`;  
             }
